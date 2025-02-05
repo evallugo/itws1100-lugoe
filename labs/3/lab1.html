@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Lab 1 - Eva Lugo</title>
+
+   <!-- Font Awesome for Icons -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+   <!-- Importing 'Alice' font for consistency -->
+   <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+
+   <style>
+      /* General styling */
+      body {
+          font-family: 'Alice', serif;
+          margin: 0;
+          padding: 40px;
+          background-color: white;
+          text-align: center;
+      }
+      h1 {
+          font-size: 42px;
+          color: hotpink;
+          margin-bottom: 20px;
+      }
+      #contactInfo {
+          text-align: center;
+          border-top: 1px solid #333;
+          border-bottom: 1px solid #333;
+          padding: 10px 0;
+          margin-bottom: 18px;
+      }
+      #contactInfo a {
+          color: black;
+          text-decoration: none;
+      }
+      .section-title {
+          font-size: 18px;
+          font-weight: bold;
+          border-bottom: 1px solid #333;
+          padding-bottom: 5px;
+          margin-top: 20px;
+          text-align: left;
+      }
+      .section {
+          text-align: left;
+          max-width: 900px;
+          margin: auto;
+      }
+      .subsection {
+          margin-top: 10px;
+      }
+      .dates {
+          float: right;
+          font-weight: bold;
+      }
+      ul {
+          padding-left: 20px;
+          list-style: none;
+      }
+      li {
+          padding-left: 15px;
+          text-indent: -15px;
+      }
+      .bullet::before {
+          content: "• ";
+          margin-right: 6px;
+          color: hotpink;
+      }
+      
+      /* Styling for images */
+      .image-container {
+          text-align: center;
+          margin-top: 20px;
+      }
+      .image-container img {
+          width: 80%; /* Adjust width as needed */
+          max-width: 900px; /* Ensures large images don’t overflow */
+          margin-bottom: 20px; /* Adds spacing between images */
+          border-radius: 5px; /* Soft rounded edges */
+          box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Light shadow for effect */
+      }
+      
+      /* Buttons - Transparent with Pink Text (No Border) */
+      .buttons {
+          margin-top: 30px;
+      }
+      .buttons a {
+          text-decoration: none;
+          color: hotpink;
+          background-color: transparent;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-weight: bold;
+          transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      .buttons a:hover {
+          background-color: hotpink;
+          color: white;
+      }
+   </style>
+</head>
+<body>
+    <h1>Lab 1 - Introduction</h1>
+
+    <!-- Image Display Section -->
+    <div class="image-container">
+        <img src="gitss.png" alt="GitHub Profile Screenshot">
+        <img src="vmacss.png" alt="Azure VM Screenshot">
+        <img src="servss.png" alt="PHP Version Screenshot">
+        <img src="helloworldss.png" alt="Hello World Screenshot">
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="buttons">
+        <a href="labs.html">↩ Back to Labs</a>
+        <a href="lab2.html">Next Lab <i class="fas fa-arrow-right"></i></a>
+    </div>
+</body>
+</html>

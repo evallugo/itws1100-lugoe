@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Lab 3 - Eva Lugo</title>
+   
+   <!-- Font Awesome for Icons -->
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+   
+   <!-- Importing the 'Alice' font from Google Fonts -->
+   <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
+   
+   <style>
+      /* Ensure the html and body take up the full height */
+      html, body {
+          height: 100%;
+          margin: 0;
+          padding: 0;
+          font-family: 'Alice', serif;
+          background-color: white; /* Light background color */
+      }
+
+      /* Center container using table display */
+      .center {
+          display: table;
+          width: 100%;
+          height: 100%;
+          text-align: center; /* Center horizontally */
+      }
+
+      /* Table-cell to enable vertical centering */
+      .center-content {
+          display: table-cell;
+          vertical-align: middle; /* Center vertically */
+      }
+
+      /* Styling for the main text */
+      .center-content h1 {
+          font-family: 'Alice', serif; /* Alice font */
+          font-size: 74px; 
+          color: #000000; 
+          font-weight: bold; 
+          margin-bottom: 40px; /* Space between text and buttons */
+          display: inline-block; /* Adjust width based on content */
+      }
+
+      /* Styling for buttons container */
+      .buttons {
+          text-align: center;
+      }   
+
+      /* Styling for each link wrapping the button */
+      .buttons a {
+          text-decoration: none; /* Remove underline from links */
+      }
+
+      /* Styling for each button */
+      .buttons button {
+          cursor: pointer;
+          border: none; /* Remove default borders */
+          font-size: 14px; /* Added 'px' for consistency */
+          font-weight: bold;
+          font-family: 'Courier New', Courier, monospace;
+          color: hotpink;
+          background-color: transparent;
+          display: inline-block;
+          margin: 5px; /* Spacing between buttons */
+          padding: 10px 20px; /* Increase clickable area */
+          border-radius: 5px; /* Rounded corners */
+          transition: background-color 0.2s ease; /* Smooth hover effect */
+      }
+
+      /* Hover effect for buttons */
+      .buttons button:hover {
+          background-color: #ffe6f2; /* Light pink background on hover */
+      }
+
+      /* Optional: Remove outline on focus for aesthetics */
+      .buttons button:focus {
+          outline: none;
+      }
+
+      /* Back to Labs button styling */
+      .back-labs {
+          margin-top: 40px;
+      }
+
+      .back-labs a {
+          text-decoration: none;
+          color: white;
+          background-color: hotpink;
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-weight: bold;
+          font-family: 'Courier New', Courier, monospace;
+          transition: background-color 0.2s ease;
+      }
+
+      .back-labs a:hover {
+          background-color: #ffb6c1; /* Lighter pink on hover */
+      }
+   </style>
+</head>
+
+<body>
+    <div class="center">
+        <div class="center-content">
+            <h1>Lab 3</h1>
+            <div class="content">
+                <p>Details about Lab 3 go here. Describe the objectives, methodologies, results, and any other relevant information.</p>
+                <!-- Add more content as needed -->
+            </div>
+            <div class="buttons">
+               <a href="lab2.html"><button>Previous Lab <i class="fas fa-arrow-left"></i></button></a>
+               <!-- Add more navigation buttons if needed -->
+            </div>
+            <div class="back-labs">
+                <a href="labs.html">← Back to Labs</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
