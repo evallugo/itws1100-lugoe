@@ -99,12 +99,24 @@
           background-color: hotpink;
           color: white;
       }
+
+      .footer {
+            position: fixed;
+            bottom: 0;
+            left: 0; /* Ensures it starts from the absolute left */
+            width: 100vw; /* Makes it span the full viewport width */
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-size: 12px;
+            font-family: 'Courier New', Courier, monospace;
+        }
    </style>
 </head>
 <body>
     <h1>Lab 1 - Introduction</h1>
 
-    <!-- Image Display Section -->
     <div class="image-container">
         <img src="gitss.png" alt="GitHub Profile Screenshot">
         <img src="vmacss.png" alt="Azure VM Screenshot">
@@ -112,10 +124,13 @@
         <img src="helloworldss.png" alt="Hello World Screenshot">
     </div>
 
-    <!-- Navigation Buttons -->
     <div class="buttons">
         <a href="labs.html">↩ Back to Labs</a>
         <a href="lab2.html">Next Lab <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Eva Lugo. All rights reserved.
     </div>
 </body>
 </html>
