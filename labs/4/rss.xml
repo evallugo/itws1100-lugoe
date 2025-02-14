@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?xml-stylesheet type="text/css" href="style.css" ?>
+<rss version="2.0">
+<channel>
+  <title>Eva Lugo's IIT Labs</title>
+  <description>A feed of my recent Interactive Information Technology labs at RPI.</description>
+  <link>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/</link>
+  <lastBuildDate>Tue, 24 Oct 2023 14:00:00 +0000</lastBuildDate>
+  <pubDate>Tue, 24 Oct 2023 14:00:00 +0000</pubDate>
+
+  <item>
+    <title>Lab 4: XML RSS and Atom Feed Creation</title>
+    <description>Created RSS 2.0 and Atom 1.0 feeds to syndicate my IIT lab work.  This lab involved understanding XML schemas, feed structures, and styling XML with CSS.</description>
+    <link>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab4/rss.xml</link>
+    <guid>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab4/rss.xml</guid>
+    <pubDate>Tue, 24 Oct 2023 13:30:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Lab 3: Developing a Personal Website </title>
+    <description>Createed a personal website within the "iit" subdirectory of the Azure instance, using a lab03 branch. The site requires multiple pages (home, projects/labs, and individual lab landing pages) with a consistent design and a separate CSS file.</description>
+    <link>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab3/calendar.xcs</link>
+    <guid>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab3/calendar.xcs</guid>
+    <pubDate>Tue, 17 Oct 2023 12:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Lab 2: Developing a Resume in HTML</title>
+    <description>Developed a resume using HTML and CSS. The website showcases my resume in a website form.</description>
+    <link>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab2/index.html</link>
+    <guid>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab2/index.html</guid>
+    <pubDate>Tue, 10 Oct 2023 12:00:00 +0000</pubDate>
+  </item>
+  <item>
+    <title>Lab 1: Introduction to Web Technologies/Setting Up</title>
+    <description>An introductory lab covering the basics of web technologies, and HTTP. Set up a basic web server and deployed a simple HTML page, also did all the background administrative tasks.</description>
+    <link>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab1/index.html</link>
+    <guid>http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/lab1/index.html</guid>
+    <pubDate>Tue, 03 Oct 2023 12:00:00 +0000</pubDate>
+  </item>
+</channel>
+</rss>

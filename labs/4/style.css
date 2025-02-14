@@ -1,0 +1,45 @@
+body {
+  font-family: sans-serif;
+  margin: 2em;
+}
+
+channel {
+  display: block;
+  margin-bottom: 2em;
+}
+
+title {
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+description {
+  display: block;
+  margin-bottom: 1em;
+}
+
+item {
+  display: block;
+  margin-bottom: 1.5em;
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+
+entry {
+  display: block;
+  margin-bottom: 1.5em;
+  border: 1px solid #ccc;
+  padding: 1em;
+}
+
+link {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+summary {
+  display: block;
+  margin-bottom: 1em;
+}
