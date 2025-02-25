@@ -35,5 +35,5 @@ fieldset {
 
 input:focus, 
 textarea:focus {
-  background-color: #fee;
+  background-color: rgb(233, 231, 231);
 }
