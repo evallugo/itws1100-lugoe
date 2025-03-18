@@ -33,7 +33,10 @@ readme.md file
   //   (Note that you need to look up the appropriate jQuery method - discussed in class - to do this)
   Nothing would happen if you click the lists. The new list items wouldn't turn red because they were created after the initial event handlers were bound. Direct event binding only affects elements that exist at the time the code runs. Dynamic elements created later don't automatically get these event handlers. To fix this I used event delegation with .on() where you attach the event to a parent element that's always in the DOM, and specify a selector for child elements that should trigger the event.
 
-
+links to repo and iit website:
+iit website: http://lugoerpi.eastus.cloudapp.azure.com/iit/
+lab 6 link: http://lugoerpi.eastus.cloudapp.azure.com/iit/labs/6/
+repo link: https://github.com/evallugo/itws1100-lugoe.git
 - - -
 
 ### Lab 6 guidance (Completion and Submission)
