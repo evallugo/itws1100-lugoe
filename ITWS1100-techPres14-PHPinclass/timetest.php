@@ -7,7 +7,22 @@
 
 <body>
 
-<p>The time is now <?php echo date('H:i:s'); ?>.</p>
+ <h1>Click the Button to See the Time</h1>
+
+    <form method="post">
+        <input type="submit" name="getTime" value="Get Time">
+    </form>
+
+    <hr>
+
+    <?php
+    if(isset($_POST['getTime'])) {
+        echo "<p>The time is now: " . date('H:i:s') . "</p>";
+    }
+    ?>
 
 </body>
 </html>
+
+
+   
