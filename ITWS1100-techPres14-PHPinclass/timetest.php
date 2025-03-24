@@ -7,17 +7,17 @@
 
 <body>
 
- <h1>click me to see the time</h1>
+ <h1>forgot your watch?</h1>
 
     <form method="post">
-        <input type="submit" name="getTime" value="Get Time">
+        <input type="submit" name="getTime" value="click me for the time">
     </form>
 
     <hr>
 
     <?php
     if(isset($_POST['getTime'])) {
-        echo "<p>woohoo it worked, the time is now: " . date('H:i:s') . "</p>";
+        echo "<p>woohoo, the time is now: " . date('H:i:s') . "</p>";
     }
     ?>
 
