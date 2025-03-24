@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book List</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+
+<ol id="bookList">
+</ol>
+
+<script>
+//book collection as a JavaScript variable
+const books = [
+{ id: "1", author: "Suzanne Collins", title: "The Hunger Games", genre: "Dystopian", description: "One of my favorite books. Really good. I love the whole series." },
+{ id: "2", author: "Suzanne Collins", title: "Catching Fire", genre: "Dystopian", description: "One of my favorite books. Really good. I love the whole series." },
+{ id: "3", author: "Suzanne Collins", title: "Mockingjay", genre: "Dystopian", description: "One of my favorite books. Really good. I love the whole series." },
+{ id: "4", author: "Suzanne Collins", title: "The Ballad of Songbirds and Snakes", genre: "Dystopian", description: "One of my favorite books. Really good. I love the whole series." },
+{ id: "5", author: "Suzanne Collins", title: "Sunrise on the Reaping", genre: "Dystopian", description: "One of my favorite books. Really good. I love the whole series." }
+];
+
+
+$(document).ready(function() {
+//list book names and descriptions in an ordered list
+const bookList = $("#bookList");
+books.forEach(book => {
+bookList.append(`<li><strong>${book.title}</strong>: ${book.description}</li>`);
+});
+
+
+//hover event to display author's name
+$("#bookList li").hover(
+function() {
+const index = $(this).index();
+$(this).append(`<span class="author">${books[index].author}</span>`);
+},
+function() {
+$(this).find(".author").remove();
+}
+);
+});
+</script>
+</body>
+</html>

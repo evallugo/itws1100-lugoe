@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color Change Example</title>
+</head>
+<body>
+
+  <p id="myParagraph" style="color: blue;">click me!</p>
+
+  <script>  
+    function changeColorWithCallback(element, callback) {
+      const originalColor = element.style.color; // Store original color
+      element.style.color = 'green'; // Change color to green
+
+      //set timeout to revert color after 2 seconds
+      setTimeout(function() {
+        element.style.color = originalColor; // Revert to original color
+        callback(); // Execute the callback function
+      }, 2000);
+    }
+
+    //add a click event listener to an item (e.g., a paragraph)
+    const myElement = document.getElementById('myParagraph'); // Get the element
+    myElement.addEventListener('click', function() {
+      changeColorWithCallback(myElement, function() {
+        console.log('Color change complete!'); // Optional callback function
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+<book id="1">
+  <author>Suzanne Collins</author>
+  <title>The Hunger Games</title>
+  <genre>Dystopian</genre>
+  <description>One of my favorite books. Really good. I love the whole series.</description>
+</book>
+
+<book id="2">
+  <author>Suzanne Collins</author>
+  <title>Catching Fire</title>
+  <genre>Dystopian</genre>
+  <description>One of my favorite books. Really good. I love the whole series.</description>
+</book>
+
+<book id="2">
+  <author>Suzanne Collins</author>
+  <title>Mockingjay</title>
+  <genre>Dystopian</genre>
+  <description>One of my favorite books. Really good. I love the whole series.</description>
+</book>
+
+<book id="4">
+  <author>Suzanne Collins</author>
+  <title>The Ballad of Songbirds and Snakes</title>
+  <genre>Dystopian</genre>
+  <description>One of my favorite books. Really good. I love the whole series.</description>
+</book>
+
+<book id="5">
+  <author>Suzanne Collins</author>
+  <title>Sunrise on the Reaping</title>
+  <genre>Dystopian</genre>
+  <description>One of my favorite books. Really good. I love the whole series.</description>
+</book>
+</books>
