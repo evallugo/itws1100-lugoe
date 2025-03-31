@@ -17,7 +17,7 @@
     {
       "title": "Lab 3",
       "description": "Website Development",
-      "link": "../3/index.html",
+      "link": "../../index.html",
       "icon": "fas fa-flask",
       "id": 3
     },
@@ -44,7 +44,7 @@
     },
     {
       "title": "Lab 7",
-      "description": "Advanced JavaScript",
+      "description": "Group Lab",
       "link": "../7/lab7.html",
       "icon": "fas fa-flask",
       "id": 7
