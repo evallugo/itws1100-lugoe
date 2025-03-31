@@ -351,10 +351,17 @@ li {
 }
 
 .lab-navigation .button {
+    display: inline-block;
     margin: 0 10px;
     padding: 10px 20px;
     text-decoration: none;
-    display: inline-block;
+    color: hotpink;
+    transition: all 0.3s ease;
+}
+
+.lab-navigation .button:hover {
+    background-color: rgba(255, 105, 180, 0.6);
+    color: white;
 }
 
 .prev-lab, .next-lab {

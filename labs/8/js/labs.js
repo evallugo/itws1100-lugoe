@@ -71,35 +71,46 @@ $(document).ready(function() {
         revert: true
     });
 
-    // Add navigation functionality
+    // Updated navigation functionality
     function setupLabNavigation() {
         $.ajax({
             url: '../8/projects.json',
             dataType: 'json',
             success: function(data) {
-                // Get current lab number from URL
                 const currentPath = window.location.pathname;
                 const labMatch = currentPath.match(/lab(\d+)/i);
                 if (!labMatch) return;
                 
                 const currentLabNum = parseInt(labMatch[1]);
                 const labs = data.menuItems;
+                const navContainer = $('.lab-navigation');
                 
-                // Find previous and next labs
-                const prevLab = labs.find(lab => lab.id === currentLabNum - 1);
-                const nextLab = labs.find(lab => lab.id === currentLabNum + 1);
+                // Clear existing navigation
+                navContainer.empty();
                 
-                // Update navigation buttons if they exist
-                if (prevLab) {
-                    $('.prev-lab').attr('href', prevLab.link).fadeIn(400);
-                } else {
-                    $('.prev-lab').hide();
+                // Add previous lab button if not lab 1
+                if (currentLabNum > 1) {
+                    const prevLab = labs.find(lab => lab.id === currentLabNum - 1);
+                    if (prevLab) {
+                        navContainer.append(`
+                            <a href="${prevLab.link}" class="button prev-lab">← Previous Lab</a>
+                        `);
+                    }
                 }
                 
-                if (nextLab) {
-                    $('.next-lab').attr('href', nextLab.link).fadeIn(400);
-                } else {
-                    $('.next-lab').hide();
+                // Always add "Back to Labs" button
+                navContainer.append(`
+                    <a href="../3/labs.html" class="button all-labs">Back to Labs</a>
+                `);
+                
+                // Add next lab button if not the last lab
+                if (currentLabNum < labs.length) {
+                    const nextLab = labs.find(lab => lab.id === currentLabNum + 1);
+                    if (nextLab) {
+                        navContainer.append(`
+                            <a href="${nextLab.link}" class="button next-lab">Next Lab →</a>
+                        `);
+                    }
                 }
             },
             error: function(xhr, status, error) {
@@ -108,6 +119,5 @@ $(document).ready(function() {
         });
     }
 
-    // Call the navigation setup
     setupLabNavigation();
 }); 
