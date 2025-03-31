@@ -81,9 +81,9 @@ li {
    padding: 10px 20px;
    text-decoration: none;
    color: hotpink;
-   transition: all 0.3s ease;
    font-family: 'Courier New', Courier, monospace;
    font-weight: bold;
+   transition: all 0.3s ease;
 }
 
 .buttons a:hover {
