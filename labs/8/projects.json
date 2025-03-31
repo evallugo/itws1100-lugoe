@@ -2,43 +2,45 @@
   "menuItems": [
     {
       "title": "Lab 1",
+      "description": "Introduction Lab",
       "link": "../3/lab1.html",
-      "id": 1
+      "icon": "fas fa-flask"
     },
     {
       "title": "Lab 2",
+      "description": "HTML and CSS Lab",
       "link": "../3/lab2.html",
-      "id": 2
-    },
-    {
-      "title": "Lab 3",
-      "link": "../../index.html",
-      "id": 3
+      "icon": "fas fa-flask"
     },
     {
       "title": "Lab 4",
+      "description": "XML Feeds Lab",
       "link": "../4/index.html",
-      "id": 4
+      "icon": "fas fa-flask"
     },
     {
       "title": "Lab 5",
+      "description": "Forms and JavaScript",
       "link": "../5/lab5.html",
-      "id": 5
+      "icon": "fas fa-flask"
     },
     {
       "title": "Lab 6",
+      "description": "jQuery Lab",
       "link": "../6/lab6.html",
-      "id": 6
+      "icon": "fas fa-flask"
     },
     {
       "title": "Lab 7",
+      "description": "Group Project",
       "link": "../7/lab7.html",
-      "id": 7
+      "icon": "fas fa-flask"
     },
     {
       "title": "Lab 8",
+      "description": "JavaScript, JSON and AJAX",
       "link": "../8/lab8.html",
-      "id": 8
+      "icon": "fas fa-flask"
     }
   ]
 } 
