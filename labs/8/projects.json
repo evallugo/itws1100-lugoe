@@ -1,0 +1,34 @@
+{
+  "menuItems": [
+    {
+      "title": "Lab 1",
+      "description": "Introduction Lab",
+      "link": "lab1.html",
+      "icon": "fas fa-flask"
+    },
+    {
+      "title": "Lab 2",
+      "description": "HTML and CSS Lab",
+      "link": "lab2.html",
+      "icon": "fas fa-flask"
+    },
+    {
+      "title": "Lab 4",
+      "description": "Advanced Web Development",
+      "link": "../4/index.html",
+      "icon": "fas fa-flask"
+    },
+    {
+      "title": "Lab 5",
+      "description": "Web Programming",
+      "link": "../5/lab5.html",
+      "icon": "fas fa-flask"
+    },
+    {
+      "title": "Lab 6",
+      "description": "Dynamic Content",
+      "link": "../6/lab6.html",
+      "icon": "fas fa-flask"
+    }
+  ]
+} 
