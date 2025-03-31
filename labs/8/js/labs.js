@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    // Add jQuery UI effects to the page title
-    $("h1").effect("bounce", { times: 1 }, 1000);
+    // Reduce bounce effect time from 1000ms to 500ms
+    $("h1").effect("bounce", { times: 1 }, 500);
 
     // Load the JSON file
     $.ajax({
@@ -24,10 +24,11 @@ $(document).ready(function() {
                     position: { my: "center bottom-20", at: "center top" }
                 });
 
-                // Add fade-in effect with delay based on index
+                // Reduce delay between items from 200ms to 100ms
+                // Reduce fadeIn time from 500ms to 200ms
                 button.hide().appendTo(buttonsContainer)
-                    .delay(index * 200)
-                    .fadeIn(500);
+                    .delay(index * 100)
+                    .fadeIn(200);
                 
                 // Add hover effect
                 button.hover(
@@ -40,5 +41,12 @@ $(document).ready(function() {
             console.error('Error loading projects:', error);
             $('.buttons').html('<p style="color: white;">Error loading projects. Please try again later.</p>');
         }
+    });
+
+    // Add this after your existing code to make buttons draggable
+    $('.button').draggable({ 
+        containment: ".center-content",
+        snap: true,
+        revert: true
     });
 }); 
