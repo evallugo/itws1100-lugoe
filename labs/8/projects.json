@@ -4,37 +4,57 @@
       "title": "Lab 1",
       "description": "Introduction Lab",
       "link": "lab1.html",
-      "icon": "fas fa-flask"
+      "icon": "fas fa-flask",
+      "id": 1
     },
     {
       "title": "Lab 2",
       "description": "HTML and CSS Lab",
       "link": "lab2.html",
-      "icon": "fas fa-flask"
+      "icon": "fas fa-flask",
+      "id": 2
+    },
+    {
+      "title": "Lab 3",
+      "description": "Website Development",
+      "link": "../3/index.html",
+      "icon": "fas fa-flask",
+      "id": 3
     },
     {
       "title": "Lab 4",
       "description": "Advanced Web Development",
       "link": "../4/index.html",
-      "icon": "fas fa-flask"
+      "icon": "fas fa-flask",
+      "id": 4
     },
     {
       "title": "Lab 5",
       "description": "Web Programming",
       "link": "../5/lab5.html",
-      "icon": "fas fa-flask"
+      "icon": "fas fa-flask",
+      "id": 5
     },
     {
       "title": "Lab 6",
       "description": "Dynamic Content",
       "link": "../6/lab6.html",
-      "icon": "fas fa-flask"
+      "icon": "fas fa-flask",
+      "id": 6
+    },
+    {
+      "title": "Lab 7",
+      "description": "Advanced JavaScript",
+      "link": "../7/lab7.html",
+      "icon": "fas fa-flask",
+      "id": 7
     },
     {
       "title": "Lab 8",
-      "description": "JavaScript, JSON and AJAX Lab",
+      "description": "JavaScript, JSON and AJAX",
       "link": "../8/lab8.html",
-      "icon": "fas fa-flask"
+      "icon": "fas fa-flask",
+      "id": 8
     }
   ]
 } 

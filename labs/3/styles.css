@@ -344,3 +344,23 @@ li {
 .index .center {
    display: inline-block;
 }
+
+.lab-navigation {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.lab-navigation .button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.prev-lab, .next-lab {
+    transition: opacity 0.3s ease;
+}
+
+.prev-lab:hover, .next-lab:hover {
+    opacity: 0.8;
+}
