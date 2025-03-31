@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    // Replace bounce with a gentler fade-in for the title
+    // Gentle fade-in for the title
     $("h1").hide().fadeIn(800);
 
     // Load the JSON file
@@ -71,53 +71,81 @@ $(document).ready(function() {
         revert: true
     });
 
-    // Updated navigation functionality
+    // Single AJAX call for navigation
     function setupLabNavigation() {
         $.ajax({
             url: '../8/projects.json',
             dataType: 'json',
             success: function(data) {
                 const currentPath = window.location.pathname;
-                const labMatch = currentPath.match(/lab(\d+)/i);
-                if (!labMatch) return;
+                console.log('Current path:', currentPath); // Debug log
                 
-                const currentLabNum = parseInt(labMatch[1]);
+                // Updated regex to handle both formats: lab1.html and index.html
+                const labMatch = currentPath.match(/lab(\d+)|.*\/(\d+)\//i);
+                if (!labMatch) {
+                    console.log('No lab number found in path'); // Debug log
+                    return;
+                }
+                
+                // Get lab number from either the first or second capture group
+                const currentLabNum = parseInt(labMatch[1] || labMatch[2]);
+                console.log('Current lab number:', currentLabNum); // Debug log
+                
                 const labs = data.menuItems;
                 const navContainer = $('.lab-navigation');
                 
                 // Clear existing navigation
                 navContainer.empty();
                 
-                // Add previous lab button if not lab 1
+                // Create navigation buttons
+                let navHTML = '';
+                
+                // Previous Lab button
                 if (currentLabNum > 1) {
                     const prevLab = labs.find(lab => lab.id === currentLabNum - 1);
                     if (prevLab) {
-                        navContainer.append(`
-                            <a href="${prevLab.link}" class="button prev-lab">← Previous Lab</a>
-                        `);
+                        navHTML += `<a href="${prevLab.link}" class="button">↩ Previous Lab</a>`;
                     }
                 }
                 
-                // Always add "Back to Labs" button
-                navContainer.append(`
-                    <a href="../3/labs.html" class="button all-labs">Back to Labs</a>
-                `);
+                // Back to Labs button
+                navHTML += `<a href="../3/labs.html" class="button">Back to Labs</a>`;
                 
-                // Add next lab button if not the last lab
+                // Next Lab button
                 if (currentLabNum < labs.length) {
                     const nextLab = labs.find(lab => lab.id === currentLabNum + 1);
                     if (nextLab) {
-                        navContainer.append(`
-                            <a href="${nextLab.link}" class="button next-lab">Next Lab →</a>
-                        `);
+                        navHTML += `<a href="${nextLab.link}" class="button">Next Lab <i class="fas fa-arrow-right"></i></a>`;
                     }
                 }
+                
+                // Add buttons to container
+                navContainer.html(navHTML);
+                
+                // Add hover effects
+                $('.lab-navigation .button').hover(
+                    function() { 
+                        $(this).css({
+                            'background-color': 'rgba(255, 105, 180, 0.6)',
+                            'color': 'white',
+                            'transition': 'all 0.3s ease'
+                        });
+                    },
+                    function() { 
+                        $(this).css({
+                            'background-color': 'transparent',
+                            'color': 'hotpink',
+                            'transition': 'all 0.3s ease'
+                        });
+                    }
+                );
             },
             error: function(xhr, status, error) {
-                console.error('Error loading lab navigation:', error);
+                console.error('Error loading navigation:', error);
             }
         });
     }
 
+    // Initialize navigation
     setupLabNavigation();
 }); 
