@@ -4,11 +4,15 @@ $(document).ready(function() {
 
     // Single AJAX call for navigation
     function setupLabNavigation() {
+        // Determine the correct path to projects.json based on current location
+        const currentPath = window.location.pathname;
+        const isLab8 = currentPath.includes('/8/');
+        const projectsJsonPath = isLab8 ? 'projects.json' : '../8/projects.json';
+
         $.ajax({
-            url: '../8/projects.json',
+            url: projectsJsonPath,
             dataType: 'json',
             success: function(data) {
-                const currentPath = window.location.pathname;
                 console.log('Current path:', currentPath); // Debug log
                 
                 // Better regex to match lab numbers in different formats
@@ -50,7 +54,7 @@ $(document).ready(function() {
                 navContainer.html(navHTML);
             },
             error: function(xhr, status, error) {
-                console.error('Error loading navigation:', error);
+                console.error('Error loading navigation:', error, 'Path attempted:', projectsJsonPath);
             }
         });
     }
