@@ -29,6 +29,12 @@
       "description": "Dynamic Content",
       "link": "../6/lab6.html",
       "icon": "fas fa-flask"
+    },
+    {
+      "title": "Lab 8",
+      "description": "JavaScript, JSON and AJAX Lab",
+      "link": "../8/lab8.html",
+      "icon": "fas fa-flask"
     }
   ]
 } 
