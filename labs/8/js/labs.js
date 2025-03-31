@@ -1,6 +1,6 @@
 $(document).ready(function() {
-    // Gentle fade-in for the title
-    $("h1").hide().fadeIn(800);
+    // Remove title animation - it will just be visible immediately
+    // $("h1").hide().fadeIn(800);  <- removing this line
 
     // Load menu items from JSON with corrected path
     $.ajax({
@@ -10,7 +10,7 @@ $(document).ready(function() {
             const buttonsContainer = $('.buttons');
             buttonsContainer.empty();
             
-            // Add each project with animation
+            // Add each project with smoother animation
             data.menuItems.forEach(function(item, index) {
                 const button = $(`
                     <a href="${item.link}" class="button">
@@ -21,26 +21,38 @@ $(document).ready(function() {
                 // Add tooltip
                 button.tooltip({
                     content: item.description,
-                    position: { my: "center bottom-20", at: "center top" }
+                    position: { my: "center bottom-20", at: "center top" },
+                    show: { effect: "fadeIn", duration: 200 },
+                    hide: { effect: "fadeOut", duration: 200 }
                 });
 
-                // Add fade-in animation
-                button.hide().appendTo(buttonsContainer)
-                    .delay(index * 100)
-                    .fadeIn(200);
+                // Smoother entrance animation
+                button.css({
+                    'opacity': '0',
+                    'transform': 'translateY(10px)'  // Reduced from 20px for subtler movement
+                }).appendTo(buttonsContainer);
+
+                // Animate each button with a gentler slide-up fade effect
+                setTimeout(() => {
+                    button.css({
+                        'transition': 'all 0.6s ease',  // Increased duration for smoother effect
+                        'opacity': '1',
+                        'transform': 'translateY(0)'
+                    });
+                }, index * 150);  // Slightly increased delay between buttons
                 
-                // Add hover effect
+                // Gentler hover effect
                 button.hover(
                     function() { 
                         $(this).css({
-                            'transform': 'scale(1.05)',
-                            'transition': 'transform 0.3s ease'
+                            'transform': 'scale(1.03)',  // Reduced scale for subtler effect
+                            'transition': 'all 0.4s ease'
                         });
                     },
                     function() { 
                         $(this).css({
                             'transform': 'scale(1)',
-                            'transition': 'transform 0.3s ease'
+                            'transition': 'all 0.4s ease'
                         });
                     }
                 );
