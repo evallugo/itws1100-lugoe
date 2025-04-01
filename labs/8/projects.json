@@ -1,46 +1,46 @@
 {
-  "menuItems": [
+  "labs": [
     {
-      "title": "Lab 1",
+      "name": "Lab 1",
       "description": "Introduction Lab",
-      "link": "../3/lab1.html",
-      "icon": "fas fa-flask"
+      "path": "../3/lab1.html",
+      "image": "fas fa-flask"
     },
     {
-      "title": "Lab 2",
+      "name": "Lab 2",
       "description": "HTML and CSS Lab",
-      "link": "../3/lab2.html",
-      "icon": "fas fa-flask"
+      "path": "../3/lab2.html",
+      "image": "fas fa-flask"
     },
     {
-      "title": "Lab 4",
+      "name": "Lab 4",
       "description": "XML Feeds Lab",
-      "link": "../4/index.html",
-      "icon": "fas fa-flask"
+      "path": "../4/index.html",
+      "image": "fas fa-flask"
     },
     {
-      "title": "Lab 5",
+      "name": "Lab 5",
       "description": "Forms and JavaScript",
-      "link": "../5/lab5.html",
-      "icon": "fas fa-flask"
+      "path": "../5/lab5.html",
+      "image": "fas fa-flask"
     },
     {
-      "title": "Lab 6",
+      "name": "Lab 6",
       "description": "jQuery Lab",
-      "link": "../6/lab6.html",
-      "icon": "fas fa-flask"
+      "path": "../6/lab6.html",
+      "image": "fas fa-flask"
     },
     {
-      "title": "Lab 7",
+      "name": "Lab 7",
       "description": "Group Project",
-      "link": "../7/lab7.html",
-      "icon": "fas fa-flask"
+      "path": "../7/lab7.html",
+      "image": "fas fa-flask"
     },
     {
-      "title": "Lab 8",
+      "name": "Lab 8",
       "description": "JavaScript, JSON and AJAX",
-      "link": "../8/lab8.html",
-      "icon": "fas fa-flask"
+      "path": "../8/lab8.html",
+      "image": "fas fa-flask"
     }
   ]
 } 
