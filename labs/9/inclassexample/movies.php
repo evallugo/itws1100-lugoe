@@ -1,6 +1,7 @@
 <?php 
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('includes/functions.inc.php'); // functions
+  include('includes/db_config.php'); // database configuration
 ?>
 <title>PHP &amp; MySQL - ITWS</title>   
 
@@ -19,7 +20,7 @@ $dbOk = false;
 
 /* create a new database connection object, passing in the host, username,
      password, and database to use. the "@" suppresses errors. */
-@$db = new mysqli('localhost', 'root', 'root', 'iit');
+@$db = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
 
 if ($db->connect_error) {
    echo '<div class="messages">could not connect to the database. error: ';
