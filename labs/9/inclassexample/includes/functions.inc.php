@@ -12,11 +12,14 @@ function buildMenu() {
 	// we are on the page that matches the URL
 	$menuOutput = '<ul id="menu">';
 	foreach ($menu as $key => $value) {
-		if($_SERVER['PHP_SELF'] == "$key.php") {
+		// Get the current script name without the full path
+		$currentScript = basename($_SERVER['PHP_SELF']);
+		if($currentScript == "$key.php") {
 			$selected = ' class="selected"';
 		} else {
 			$selected = '';
 		}
+		// Add the correct path to the links
 		$menuOutput .= '<li' . $selected . '><a href="' . $key . '.php" title="' . $value . '">' . $value . '</a></li>';
 	}
 	$menuOutput .= '</ul>';
