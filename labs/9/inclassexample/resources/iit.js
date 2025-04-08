@@ -21,6 +21,23 @@ function validate(formObj) {
   return true;
 }
 
+function validateMovie(formObj) {
+  
+  if (formObj.title.value == "") {
+    alert("Please enter a title");
+    formObj.title.focus();
+    return false;
+  }
+  
+  if (formObj.year.value == "") {
+    alert("Please enter a year");
+    formObj.year.focus();
+    return false;
+  }
+    
+  return true;
+}
+
 
 $(document).ready(function() {
   
@@ -63,6 +80,107 @@ $(document).ready(function() {
             
             // re-zebra the table
             $("#actorTable tr").each(function(i){
+              if (i % 2 == 0) {
+                // we must compensate for the header row...
+                $(this).addClass("odd"); 
+              } else {
+                $(this).removeClass("odd");
+              }
+            });
+          }
+        },
+        error: function(msg) {
+          // there was a problem
+          alert(msg.status + " " + msg.statusText);
+        }
+      });
+      
+    }
+  });
+  
+  // handle movie deletion
+  $(".deleteMovie").click(function() {
+    if(confirm("Remove movie? (This action cannot be undone.)")) {
+      
+      // get the id of the clicked element's row
+      var curId = $(this).closest("tr").attr("id");
+      // Extract the db id of the movie from the dom id of the clicked element
+      var movieId = curId.substr(curId.indexOf("-")+1);
+      // Build the data to send. 
+      var postData = "id=" + movieId;
+      
+      $.ajax({
+        type: "post",
+        url: "movie-delete.php",
+        dataType: "json",
+        data: postData,
+        success: function(responseData, status){
+          if (responseData.errors) {
+            alert(responseData.errno + " " + responseData.error);
+          } else {
+            // remove the table row in which the image was clicked
+            $("#" + curId).closest("tr").remove();
+            
+            // if a php generated message box is up, hide it:
+            $(".messages").hide();
+            
+            // populate the js message box and show it:
+            $("#jsMessages").html("<h4>Movie deleted</h4>").show();
+            
+            // re-zebra the table
+            $("#movieTable tr").each(function(i){
+              if (i % 2 == 0) {
+                // we must compensate for the header row...
+                $(this).addClass("odd"); 
+              } else {
+                $(this).removeClass("odd");
+              }
+            });
+          }
+        },
+        error: function(msg) {
+          // there was a problem
+          alert(msg.status + " " + msg.statusText);
+        }
+      });
+      
+    }
+  });
+  
+  // handle movie-actor relationship deletion
+  $(".deleteMovieActor").click(function() {
+    if(confirm("Remove this actor from the movie? (This action cannot be undone.)")) {
+      
+      // get the movie and actor IDs from the data attributes
+      var movieId = $(this).data("movieid");
+      var actorId = $(this).data("actorid");
+      
+      // get the id of the clicked element's row
+      var curId = $(this).closest("tr").attr("id");
+      
+      // Build the data to send
+      var postData = "movieId=" + movieId + "&actorId=" + actorId;
+      
+      $.ajax({
+        type: "post",
+        url: "movie-actor-delete.php",
+        dataType: "json",
+        data: postData,
+        success: function(responseData, status){
+          if (responseData.errors) {
+            alert(responseData.errno + " " + responseData.error);
+          } else {
+            // remove the table row in which the image was clicked
+            $("#" + curId).closest("tr").remove();
+            
+            // if a php generated message box is up, hide it:
+            $(".messages").hide();
+            
+            // populate the js message box and show it:
+            $("#jsMessages").html("<h4>Actor removed from movie</h4>").show();
+            
+            // re-zebra the table
+            $("#movieActorsTable tr").each(function(i){
               if (i % 2 == 0) {
                 // we must compensate for the header row...
                 $(this).addClass("odd"); 
