@@ -79,8 +79,7 @@ function validate(form) {
     }
   });
 
-  // If not valid, focus on the first error field
-  if (!isValid && focusId != '') {
+  if (!isValid) {
     $(focusId).focus();
   }
 

@@ -159,7 +159,7 @@ if ($havePost) {
          echo '</td><td>';
          echo htmlspecialchars($record['dob']);
          echo '</td><td>';
-         echo '<img src="resources/delete.png" class="deleteActor" width="16" height="16" alt="delete actor"/>';
+         echo '<img src="resources/delete.svg" class="deleteActor" width="16" height="16" alt="delete actor"/>';
          echo '</td></tr>';
       }
 
