@@ -6,7 +6,12 @@ document.addEventListener("DOMContentLoaded", function() {
   var birthDateStr = localStorage.getItem('birthDate');
   
   if (!birthDateStr) {
-    horoscopeElement.innerHTML = 'Please set up your birth date in your profile first! <a href="../profile/profile.html">Go to Profile</a>';
+    horoscopeElement.innerHTML = `
+      <div class="error-message">
+        <p>Please set up your birth date in your profile first!</p>
+        <a href="../profile/profile.html" class="profile-link">Go to Profile</a>
+      </div>
+    `;
     return;
   }
   
@@ -15,12 +20,22 @@ document.addEventListener("DOMContentLoaded", function() {
   try {
     birthDate = new Date(birthDateStr);
     if (isNaN(birthDate.getTime())) {
-      horoscopeElement.textContent = "There was an issue with your birth date. Please update it in your profile.";
+      horoscopeElement.innerHTML = `
+        <div class="error-message">
+          <p>There was an issue with your birth date format. Please update it in your profile using YYYY-MM-DD format.</p>
+          <a href="../profile/profile.html" class="profile-link">Update Profile</a>
+        </div>
+      `;
       return;
     }
   } catch (e) {
     console.error("Error parsing date:", e);
-    horoscopeElement.textContent = "There was an issue with your birth date. Please update it in your profile.";
+    horoscopeElement.innerHTML = `
+      <div class="error-message">
+        <p>There was an issue with your birth date. Please update it in your profile.</p>
+        <a href="../profile/profile.html" class="profile-link">Update Profile</a>
+      </div>
+    `;
     return;
   }
 
@@ -59,6 +74,15 @@ document.addEventListener("DOMContentLoaded", function() {
     "capricorn": "Your determination will lead to success today. Stay focused on your goals."
   };
 
+  function getSeed(userId, dateStr) {
+    var seed = 0;
+    var combined = userId + dateStr;
+    for (var i = 0; i < combined.length; i++) {
+      seed += combined.charCodeAt(i);
+    }
+    return seed;
+  }
+
   var zodiacSign = getZodiacSign(birthDate);
   var today = new Date().toISOString().slice(0, 10);
   
@@ -70,6 +94,9 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   `;
 
+  // Log the API request details for debugging
+  console.log('Making API request for zodiac sign:', zodiacSign);
+  
   const apiUrl = `https://best-daily-astrology-and-horoscope-api.p.rapidapi.com/api/Detailed-Horoscope/?zodiacSign=${zodiacSign}`;
   
   const options = {
@@ -92,12 +119,14 @@ document.addEventListener("DOMContentLoaded", function() {
     timeoutPromise
   ])
     .then(response => {
+      console.log('API Response status:', response.status);
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error(`Network response was not ok: ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
+      console.log('API Response data:', data);
       if (data && data.prediction) {
         // Personalize the horoscope with user-specific additions
         var personalAdditions = [
@@ -115,11 +144,20 @@ document.addEventListener("DOMContentLoaded", function() {
         var finalMessage = `For ${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}: ${data.prediction} ${personalMessage}`;
         horoscopeElement.textContent = finalMessage;
       } else {
+        console.error('Invalid API response format:', data);
         throw new Error("Invalid API response format");
       }
     })
     .catch(error => {
       console.error("Error fetching horoscope:", error);
+      
+      // Show error details in console for debugging
+      console.log('Error details:', {
+        message: error.message,
+        zodiacSign: zodiacSign,
+        apiUrl: apiUrl
+      });
+
       // Use fallback horoscope if API fails
       var fallbackMessage = fallbackHoroscopes[zodiacSign] || "Today is a day of possibilities. Trust your instincts and embrace the journey ahead.";
       var personalAdditions = [
@@ -134,7 +172,13 @@ document.addEventListener("DOMContentLoaded", function() {
       var index = seed % personalAdditions.length;
       var personalMessage = personalAdditions[index];
       
-      var finalMessage = `For ${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}: ${fallbackMessage} ${personalMessage}`;
-      horoscopeElement.textContent = finalMessage;
+      horoscopeElement.innerHTML = `
+        <div class="error-message">
+          <p>We couldn't connect to our horoscope service at the moment. Here's your backup horoscope:</p>
+        </div>
+        <div class="horoscope-text">
+          For ${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}: ${fallbackMessage} ${personalMessage}
+        </div>
+      `;
     });
 });
