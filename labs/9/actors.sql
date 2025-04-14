@@ -12,8 +12,8 @@ VALUES
    (1, "Jennifer", "Lawrence", "1949-06-22"),
    (2, "Tom", "Cruise", "1943-08-17"),
    (3, "Jennifer", "Lopez", "1940-04-25"),
-   (4, "Jack", "Nicholson", "1937-04-22"),
-   (5, "Morgan", "Freeman", "1937-06-01");
+   (4, "Olivia", "Rodrigo", "1937-04-22"),
+   (5, "Paul", "Walker", "1937-06-01");
 
 CREATE TABLE `relationship` (
     `actorid` int(10) unsigned NOT NULL,
