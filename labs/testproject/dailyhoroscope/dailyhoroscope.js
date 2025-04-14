@@ -75,13 +75,60 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   function getSeed(userId, dateStr) {
-    var seed = 0;
-    var combined = userId + dateStr;
+    // Get just the date part for daily consistency
+    const today = new Date();
+    const dailyComponent = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
+    
+    var seed = dailyComponent; // Start with date-based seed
+    var combined = (userId || 'defaultUser') + dateStr;
     for (var i = 0; i < combined.length; i++) {
       seed += combined.charCodeAt(i);
     }
     return seed;
   }
+
+  // Expanded message variations for more uniqueness
+  const personalityTraits = [
+    "creative", "intuitive", "determined", "compassionate", "energetic",
+    "analytical", "peaceful", "adventurous", "wise", "charismatic"
+  ];
+
+  const actions = [
+    "embrace new opportunities", "trust your instincts", "take bold steps",
+    "nurture relationships", "explore new ideas", "maintain balance",
+    "focus on growth", "share your wisdom", "express yourself freely",
+    "build strong foundations"
+  ];
+
+  const outcomes = [
+    "leading to unexpected joy", "bringing positive change",
+    "creating lasting happiness", "opening new doors",
+    "strengthening your spirit", "enhancing your journey",
+    "manifesting your dreams", "aligning with your destiny",
+    "attracting good fortune", "deepening your understanding"
+  ];
+
+  function generateUniqueMessage(seed) {
+    // Use the seed to select different components
+    const trait = personalityTraits[seed % personalityTraits.length];
+    const action = actions[(seed * 13) % actions.length]; // Use prime numbers for better distribution
+    const outcome = outcomes[(seed * 17) % outcomes.length];
+    
+    return `Your ${trait} nature guides you to ${action}, ${outcome}.`;
+  }
+
+  const positiveAffirmations = [
+    "Remember, your unique spark lights up every room you enter.",
+    "Embrace your individuality and let it shine through today.",
+    "Your personal energy is unmatched—make the most of this vibrant day.",
+    "Today is all about harnessing your distinct talents; let them guide you.",
+    "Your journey is uniquely yours; trust your instincts and celebrate who you are.",
+    "The universe conspires in your favor today.",
+    "Your potential knows no bounds—embrace it fully.",
+    "Every moment brings new opportunities for growth.",
+    "Your presence makes a difference in ways you may not realize.",
+    "The stars align to support your deepest aspirations."
+  ];
 
   var zodiacSign = getZodiacSign(birthDate);
   var today = new Date().toISOString().slice(0, 10);
@@ -89,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Add loading animation
   horoscopeElement.innerHTML = `
     <div class="loading">
-      <p>Loading your personalized horoscope...</p>
+      <p>Loading your personalized horoscope! Please wait...</p>
       <div class="spinner"></div>
     </div>
   `;
@@ -128,20 +175,11 @@ document.addEventListener("DOMContentLoaded", function() {
     .then(data => {
       console.log('API Response data:', data);
       if (data && data.prediction) {
-        // Personalize the horoscope with user-specific additions
-        var personalAdditions = [
-          "Remember, your unique spark lights up every room you enter.",
-          "Embrace your individuality and let it shine through today.",
-          "Your personal energy is unmatched—make the most of this vibrant day.",
-          "Today is all about harnessing your distinct talents; let them guide you.",
-          "Your journey is uniquely yours; trust your instincts and celebrate who you are."
-        ];
+        const seed = getSeed(userId || 'defaultUser', today);
+        const uniqueMessage = generateUniqueMessage(seed);
+        const affirmation = positiveAffirmations[(seed * 23) % positiveAffirmations.length];
         
-        var seed = getSeed(userId || 'defaultUser', today);
-        var index = seed % personalAdditions.length;
-        var personalMessage = personalAdditions[index];
-        
-        var finalMessage = `For ${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}: ${data.prediction} ${personalMessage}`;
+        const finalMessage = `For ${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}: ${data.prediction} ${uniqueMessage} ${affirmation}`;
         horoscopeElement.textContent = finalMessage;
       } else {
         console.error('Invalid API response format:', data);
@@ -151,33 +189,24 @@ document.addEventListener("DOMContentLoaded", function() {
     .catch(error => {
       console.error("Error fetching horoscope:", error);
       
-      // Show error details in console for debugging
       console.log('Error details:', {
         message: error.message,
         zodiacSign: zodiacSign,
         apiUrl: apiUrl
       });
 
-      // Use fallback horoscope if API fails
-      var fallbackMessage = fallbackHoroscopes[zodiacSign] || "Today is a day of possibilities. Trust your instincts and embrace the journey ahead.";
-      var personalAdditions = [
-        "Remember, your unique spark lights up every room you enter.",
-        "Embrace your individuality and let it shine through today.",
-        "Your personal energy is unmatched—make the most of this vibrant day.",
-        "Today is all about harnessing your distinct talents; let them guide you.",
-        "Your journey is uniquely yours; trust your instincts and celebrate who you are."
-      ];
+      const seed = getSeed(userId || 'defaultUser', today);
+      const uniqueMessage = generateUniqueMessage(seed);
+      const affirmation = positiveAffirmations[(seed * 23) % positiveAffirmations.length];
       
-      var seed = getSeed(userId || 'defaultUser', today);
-      var index = seed % personalAdditions.length;
-      var personalMessage = personalAdditions[index];
+      const fallbackMessage = fallbackHoroscopes[zodiacSign] || "Today is a day of possibilities. Trust your instincts and embrace the journey ahead.";
       
       horoscopeElement.innerHTML = `
         <div class="error-message">
           <p>We couldn't connect to our horoscope service at the moment. Here's your backup horoscope:</p>
         </div>
         <div class="horoscope-text">
-          For ${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}: ${fallbackMessage} ${personalMessage}
+          For ${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}: ${fallbackMessage} ${uniqueMessage} ${affirmation}
         </div>
       `;
     });
