@@ -39,7 +39,7 @@ h1 {
   color: #44008B; /* Consistent with the header color */
 }
 
-#horoscope {
+.horoscope-text {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
@@ -55,6 +55,12 @@ h1 {
 .loading {
   text-align: center;
   padding: 20px;
+}
+
+.loading p {
+  color: #44008B;
+  margin-bottom: 15px;
+  font-size: 16px;
 }
 
 .spinner {
@@ -81,4 +87,35 @@ h1 {
 
 #horoscope a:hover {
   text-decoration: underline;
+}
+
+.error-message {
+  background-color: #fff3f3;
+  border: 1px solid #ffcdd2;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+.error-message p {
+  color: #d32f2f;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.profile-link {
+  display: inline-block;
+  background-color: #44008B;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.profile-link:hover {
+  background-color: #33006b;
 }
