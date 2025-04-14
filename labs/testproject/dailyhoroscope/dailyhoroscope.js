@@ -5,11 +5,14 @@ document.addEventListener("DOMContentLoaded", function() {
   var userId = localStorage.getItem('userId');
   var birthDateStr = localStorage.getItem('birthDate');
   
+  // clear any existing content and show disclaimer if no birth date
   if (!birthDateStr) {
+    localStorage.removeItem('lastHoroscope'); // clear any stored horoscope
     horoscopeElement.innerHTML = `
       <div class="error-message">
-        <p>Please set up your birth date in your profile first!</p>
-        <a href="../profile/profile.html" class="profile-link">Go to Profile</a>
+        <p>Welcome to your Daily Horoscope! To receive your personalized reading, please set up your birth date in your profile first.</p>
+        <p>This information is necessary to calculate your zodiac sign and provide accurate astrological insights.</p>
+        <a href="../profile/profile.html" class="profile-link">Set Up Profile</a>
       </div>
     `;
     return;
@@ -20,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function() {
   try {
     birthDate = new Date(birthDateStr);
     if (isNaN(birthDate.getTime())) {
+      localStorage.removeItem('lastHoroscope'); // clear any stored horoscope
       horoscopeElement.innerHTML = `
         <div class="error-message">
           <p>There was an issue with your birth date format. Please update it in your profile using YYYY-MM-DD format.</p>
@@ -30,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   } catch (e) {
     console.error("Error parsing date:", e);
+    localStorage.removeItem('lastHoroscope'); // clear any stored horoscope
     horoscopeElement.innerHTML = `
       <div class="error-message">
         <p>There was an issue with your birth date. Please update it in your profile.</p>
