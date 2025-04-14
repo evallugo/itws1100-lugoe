@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WIP Profile Page</title>
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+  <!-- added navigation header -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../homepage/home.html">Home</a></li>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="../dailyhoroscope/dailyhoroscope.html">Daily Horoscope</a></li>
+        <li><a href="../birthchart/birthchart.html">Birth Chart</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="profileHeader">
+    <h1>Beyond the Zodiac</h1>
+  </div>
+  <div class="profileContainer">
+    <img id="profileImg" src="profilepicture.jpg" alt="Profile Picture" class="profileImg">
+    <div class="profileInfo">
+      <h2 id="profileHeader"> User Information:</h2>
+      <h3 id="profileName">Name: </h3>
+      <h3 id="profileBD">Date of birth: </h3>
+      <h3 id="profileBDP">Place of birth: </h3>
+      <h3 id="profileBDT">Time of birth: </h3>
+    </div>
+  </div>
+  <div class="profileEdit">
+    <div class="editArea">
+      <label for="nameInput">Name:</label>
+      <input type="text" id="nameInput" placeholder="Enter your name">
+    </div>
+    <div class="editArea">
+      <label for="bdInput">Day of Birth: </label>
+      <input type="text" id="bdInput" placeholder="Enter your birthday (YYYY-MM-DD)">
+    </div>
+    <div class="editArea">
+      <label for="bdDInput">Place of Birth: </label>
+      <input type="text" id="bdDInput" placeholder="Enter your place of birth">
+    </div>
+    <div class="editArea">
+      <label for="bdTInput">Time of Birth: </label>
+      <input type="text" id="bdTInput" placeholder="Enter your time of birth (HH:MM military time)">
+    </div>
+    <div class="editArea">
+      <label for="ImgInput">Profile Picture URL:</label>
+      <input type="text" id="ImgInput" placeholder="Enter an URl to your profile picture">
+    </div>
+    <!-- Added Email Input for Unique Identifier -->
+    <div class="editArea">
+      <label for="emailInput">Email:</label>
+      <input type="text" id="emailInput" placeholder="Enter your email address">
+    </div>
+    <button id="submit" onclick="updateProfile(); updateBirthChart();">Update Information</button>
+  </div>
+  <script src="profile.js"></script>
+  <script src="../birthchart/birthchart.js"></script>
+  <script> src="../birthchart/birthchart.js"</script>
+</body>
+</html>
