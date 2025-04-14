@@ -1,0 +1,53 @@
+body {
+    background-color: blueviolet;
+}
+
+button {
+    font-size: 16px;
+    background-color: rgb(188, 116, 255);
+}
+
+#Intro {
+    color: white;
+    text-align: left;
+}
+
+#Header {
+    color: white;
+    text-decoration: underline;
+}
+
+#Steps {
+    color: white;
+}
+
+#SignLogBox {
+    padding: 2px;
+    color: black;
+    margin-left: 50%;
+    text-align: center;
+    background-color: white;
+}
+
+/* added navigation header styles */
+header {
+  background-color: #44008B;
+  padding: 10px;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin-right: 20px;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
