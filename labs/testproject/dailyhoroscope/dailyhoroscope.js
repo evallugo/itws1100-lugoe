@@ -1,23 +1,27 @@
 document.addEventListener("DOMContentLoaded", function() {
-  //retrieve user data from localStorage
-  var userId = localStorage.getItem('userId') || 'defaultUser';
-  //expect the birthDate to be stored in a proper format (preferably YYYY-MM-DD)
-  var birthDateStr = localStorage.getItem('birthDate') || '1995-06-15';
+  var horoscopeElement = document.getElementById("horoscope");
+  
+  // Check if user data exists
+  var userId = localStorage.getItem('userId');
+  var birthDateStr = localStorage.getItem('birthDate');
+  
+  if (!birthDateStr) {
+    horoscopeElement.innerHTML = 'Please set up your birth date in your profile first! <a href="../profile/profile.html">Go to Profile</a>';
+    return;
+  }
   
   //ensure the date is in the correct format for parsing
   var birthDate;
   try {
-    //try to parse the date string
     birthDate = new Date(birthDateStr);
-    
-    //check if the date is valid
     if (isNaN(birthDate.getTime())) {
-      console.error("Invalid date format:", birthDateStr);
-      birthDate = new Date('1995-06-15'); //Fallback to default date
+      horoscopeElement.textContent = "There was an issue with your birth date. Please update it in your profile.";
+      return;
     }
   } catch (e) {
     console.error("Error parsing date:", e);
-    birthDate = new Date('1995-06-15'); //Fallback to default date
+    horoscopeElement.textContent = "There was an issue with your birth date. Please update it in your profile.";
+    return;
   }
 
   //function to calculate the zodiac sign from the birth date
@@ -56,18 +60,39 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   var zodiacSign = getZodiacSign(birthDate);
-  var today = new Date().toISOString().slice(0, 10); //Format: "YYYY-MM-DD"
-  var horoscopeElement = document.getElementById("horoscope");
+  var today = new Date().toISOString().slice(0, 10);
   horoscopeElement.textContent = "Loading your personalized horoscope...";
 
-  //aztro API uses a POST request; build the URL using the zodiac sign
+  // Add loading animation
+  horoscopeElement.innerHTML = `
+    <div class="loading">
+      <p>Loading your personalized horoscope...</p>
+      <div class="spinner"></div>
+    </div>
+  `;
+
+  //aztro API uses a POST request
   var apiUrl = "https://aztro.sameerkumar.website/?sign=" + encodeURIComponent(zodiacSign) + "&day=today";
 
-  //call the aztro API to get the base horoscope message.
-  fetch(apiUrl, { method: "POST" })
+  // Set a timeout for the API call
+  const timeoutDuration = 5000; // 5 seconds
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('Request timed out')), timeoutDuration);
+  });
+
+  // Race between the fetch and the timeout
+  Promise.race([
+    fetch(apiUrl, { 
+      method: "POST",
+      headers: {
+        'Accept': 'application/json'
+      }
+    }),
+    timeoutPromise
+  ])
     .then(function(response) {
       if (!response.ok) {
-        throw new Error("Network response was not ok.");
+        throw new Error("Network response was not ok");
       }
       return response.json();
     })
@@ -93,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Your journey is uniquely yours; trust your instincts and celebrate who you are."
       ];
 
-      var seed = getSeed(userId, today);
+      var seed = getSeed(userId || 'defaultUser', today);
       var index = seed % personalAdditions.length;
       var personalMessage = personalAdditions[index];
 
@@ -103,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
     })
     .catch(function(error) {
       console.error("Error fetching horoscope:", error);
-      //Use fallback horoscope if API fails
+      // Use fallback horoscope if API fails
       var fallbackMessage = fallbackHoroscopes[zodiacSign] || "Today is a day of possibilities. Trust your instincts and embrace the journey ahead.";
       var personalAdditions = [
         "Remember, your unique spark lights up every room you enter.",
@@ -113,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function() {
         "Your journey is uniquely yours; trust your instincts and celebrate who you are."
       ];
       
-      var seed = getSeed(userId, today);
+      var seed = getSeed(userId || 'defaultUser', today);
       var index = seed % personalAdditions.length;
       var personalMessage = personalAdditions[index];
       
