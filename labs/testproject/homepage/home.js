@@ -18,8 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
     // Add event listeners
     if (loginBtn) {
         loginBtn.addEventListener("click", function() {
-            // Simple login - just redirect to profile page
+            // For demo purposes, we'll just set a default user and redirect
             // In a real app, you would validate credentials
+            localStorage.setItem('userId', 'demo@example.com');
+            localStorage.setItem('userData', JSON.stringify({
+                name: 'Demo',
+                surname: 'User',
+                email: 'demo@example.com'
+            }));
+            
+            // Redirect to profile page
             window.location.href = "../profile/profile.html";
         });
     }
@@ -45,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Store user data
             var userData = {
-                name: nameInput.value + " " + surnameInput.value,
+                name: nameInput.value,
                 surname: surnameInput.value,
                 email: emailInput.value
             };

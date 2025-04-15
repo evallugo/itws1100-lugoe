@@ -3,5 +3,4 @@
 
 </div>
 <div id="bodyBlock">
-  <div id="jsMessages"> 
-  </div>
+  <div id="jsMessages"></div>

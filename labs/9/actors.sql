@@ -1,19 +1,19 @@
 -- create the tables for our movies
-CREATE TABLE actors (
-    actorid INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    firstNames VARCHAR(50) NOT NULL,
-    lastName VARCHAR(50) NOT NULL,
-    dob DATE NOT NULL
+CREATE TABLE `actors` (
+   `actorid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+   `firstNames` varchar(100) NOT NULL,
+   `lastName` varchar(100) NOT NULL,
+   `dob` char(10) DEFAULT NULL,
+   PRIMARY KEY (`actorid`)
 );
-
 -- insert data into the tables
 INSERT INTO actors
 VALUES 
-   (NULL, "Jennifer", "Lopez", "1969-07-24"),
-   (NULL, "Brad", "Pitt", "1953-12-18"),
-   (NULL, "Tom", "Cruise", "1942-07-03"),
-   (NULL, "Tom", "Hanks", "1956-07-09"),
-   (NULL, "Will", "Smith", "1968-09-25");
+   (1, "Jennifer", "Lawrence", "1949-06-22"),
+   (2, "Tom", "Cruise", "1943-08-17"),
+   (3, "Jennifer", "Lopez", "1940-04-25"),
+   (4, "Olivia", "Rodrigo", "1937-04-22"),
+   (5, "Paul", "Walker", "1937-06-01");
 
 CREATE TABLE `relationship` (
     `actorid` int(10) unsigned NOT NULL,

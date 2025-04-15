@@ -1,7 +1,7 @@
 Lab 9 - SQL
 
 
-Q2: /2 "actors" table created
+Q2: /2 "characters" table created
 Q3: /2 new actors inserted into "actors" table
 Q4: /2 CSV file of all actors on or after 1965
 Q5: /2 movie actors table created and relations added

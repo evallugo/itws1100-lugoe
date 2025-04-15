@@ -1,3 +1,45 @@
+<<<<<<< HEAD
+document.addEventListener("DOMContentLoaded", function() {
+  var horoscopeElement = document.getElementById("horoscope");
+  
+  // Check if user is logged in
+  var userId = localStorage.getItem('userId');
+  if (!userId) {
+    // Redirect to homepage if not logged in
+    window.location.href = "../homepage/home.html";
+    return;
+  }
+  
+  // check for user data
+  var birthDateStr = localStorage.getItem('birthDate');
+  
+  // clear any existing content and show disclaimer if no birth date
+  if (!birthDateStr) {
+    localStorage.removeItem('lastHoroscope'); // clear any stored horoscope
+    horoscopeElement.innerHTML = `
+      <div class="error-message">
+        <p>Welcome to your Daily Horoscope! To receive your personalized reading, please set up your birth date in your profile first.</p>
+        <p>This information is necessary to calculate your zodiac sign and provide accurate astrological insights.</p>
+        <a href="../profile/profile.html" class="profile-link">Set Up Profile</a>
+      </div>
+    `;
+    return;
+  }
+  
+  // validate birth date
+  var birthDate;
+  try {
+    birthDate = new Date(birthDateStr);
+    if (isNaN(birthDate.getTime())) {
+      localStorage.removeItem('lastHoroscope'); // clear any stored horoscope
+      horoscopeElement.innerHTML = `
+        <div class="error-message">
+          <p>There was an issue with your birth date format. Please update it in your profile using YYYY-MM-DD format.</p>
+          <a href="../profile/profile.html" class="profile-link">Update Profile</a>
+        </div>
+      `;
+      return;
+=======
 document.addEventListener('DOMContentLoaded', () => {
     // Get user data from localStorage
     const userId = localStorage.getItem('userId');
@@ -11,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
         return;
+>>>>>>> cfa93460a462e1f20dbe46a5478d092873b2db62
     }
 
   var zodiacSign = getZodiacSign(birthDate);

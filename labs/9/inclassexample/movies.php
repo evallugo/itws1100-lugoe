@@ -19,7 +19,7 @@
 
   /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */
-  @ $db = new mysqli('localhost', 'root', 'PRLugo22!', 'iit');
+  @ $db = new mysqli('localhost', 'phpmyadmin', 'Loveshadow12!', 'iit');
 
   if ($db->connect_error) {
     echo '<div class="messages">Could not connect to the database. Error: ';
@@ -39,9 +39,9 @@
     // Get the output and clean it for output on-screen.
     // First, let's get the output one param at a time.
     // Could also output escape with htmlentities()
-    $movieid = htmlspecialchars(isset($_POST["movieid"]) ? trim($_POST["movieid"]) : '');
-    $title = htmlspecialchars(isset($_POST["title"]) ? trim($_POST["title"]) : '');
-    $year = htmlspecialchars(isset($_POST["year"]) ? trim($_POST["year"]) : '');
+    $movieid = htmlspecialchars(trim($_POST["movieid"]));
+    $title = htmlspecialchars(trim($_POST["title"]));
+    $year = htmlspecialchars(trim($_POST["year"]));
 
     $focusId = ''; // trap the first field that needs updating, better would be to save errors in an array
 
@@ -70,9 +70,11 @@
     } else {
       if ($dbOk) {
         // Let's trim the input for inserting into MySQL
-        $movieidForDb = isset($_POST["movieid"]) ? trim($_POST["movieid"]) : '';
-        $titleForDb = isset($_POST["title"]) ? trim($_POST["title"]) : '';
-        $yearForDb = isset($_POST["year"]) ? trim($_POST["year"]) : '';
+        // Note that aside from trimming, we'll do no further escaping because we
+        // use prepared statements to put these values in the database.
+        $movieidForDb = trim($_POST["movieid"]);
+        $titleForDb = trim($_POST["title"]);
+        $yearForDb = trim($_POST["year"]);
 
         // Setup a prepared statement. Alternately, we could write an insert statement - but
         // *only* if we escape our data using addslashes() or (better) mysqli_real_escape_string().
@@ -95,7 +97,7 @@
 ?>
 
 <h3>Add Movie</h3>
-<form id="addForm" name="addForm" action="movies.php" method="post" onsubmit="return validate(this);">
+<form id="addForm" name="addForm" action="index.php" method="post" onsubmit="return validate(this);">
   <fieldset>
     <div class="formData">
 

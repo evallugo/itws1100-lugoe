@@ -4,8 +4,7 @@ function buildMenu() {
   // create an array of URLs and labels
 	$menu = array(
 		'index' => 'actors',
-		'movies' => 'movies',
-		'movieactors' => 'movieactors'
+		'movies' => 'movies'
 	);
 	// construct the menu, setting the current menu item 'selected' if 
 	// we are on the page that matches the URL
