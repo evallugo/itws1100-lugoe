@@ -23,23 +23,84 @@
   } else {
     $dbOk = true;
   }
+
+  // Process form submission
+  $havePost = isset($_POST["save"]);
+  $errors = '';
+
+  if ($havePost) {
+    // Get and validate form data
+    $movieid = isset($_POST["movieid"]) ? trim($_POST["movieid"]) : '';
+    $actorid = isset($_POST["actorid"]) ? trim($_POST["actorid"]) : '';
+
+    if ($movieid == '') {
+      $errors .= '<li>Movie ID may not be blank</li>';
+    }
+    if ($actorid == '') {
+      $errors .= '<li>Actor ID may not be blank</li>';
+    }
+
+    if ($errors != '') {
+      echo '<div class="messages"><h4>Please correct the following errors:</h4><ul>';
+      echo $errors;
+      echo '</ul></div>';
+    } else if ($dbOk) {
+      // Insert the relationship
+      $insQuery = "INSERT INTO relationship (movieid, actorid) VALUES (?, ?)";
+      $statement = $db->prepare($insQuery);
+      $statement->bind_param("ii", $movieid, $actorid);
+      
+      if ($statement->execute()) {
+        echo '<div class="messages"><h4>Success: Relationship added to database.</h4></div>';
+      } else {
+        echo '<div class="messages"><h4>Error: Could not add relationship.</h4></div>';
+      }
+      $statement->close();
+    }
+  }
 ?>
+
+<h3>Add Movie-Actor Relationship</h3>
+<form id="addForm" name="addForm" action="movieactors.php" method="post" onsubmit="return validate(this);">
+  <fieldset>
+    <div class="formData">
+      <label class="field" for="movieid">Movie ID:</label>
+      <div class="value"><input type="text" size="60" value="<?php if($havePost && $errors != '') { echo $movieid; } ?>" name="movieid" id="movieid"/></div>
+
+      <label class="field" for="actorid">Actor ID:</label>
+      <div class="value"><input type="text" size="60" value="<?php if($havePost && $errors != '') { echo $actorid; } ?>" name="actorid" id="actorid"/></div>
+
+      <input type="submit" value="save" id="save" name="save"/>
+    </div>
+  </fieldset>
+</form>
 
 <h3>Movie Actors</h3>
 <table id="movieActorTable">
 <?php
   if ($dbOk) {
-    $query = 'SELECT * FROM relationship ORDER BY movieid';
+    // Query to show movie titles and actor names
+    $query = 'SELECT m.title, CONCAT(a.firstNames, " ", a.lastName) as actor_name, 
+              r.movieid, r.actorid 
+              FROM relationship r 
+              JOIN movies m ON r.movieid = m.movieid 
+              JOIN actors a ON r.actorid = a.actorid 
+              ORDER BY m.title';
+    
     $result = $db->query($query);
 
     if ($result) {
-      echo '<tr><th>Movie ID:</th><th>Actor ID:</th><th></th></tr>';
+      echo '<tr><th>Movie Title:</th><th>Actor Name:</th><th></th></tr>';
       
+      $i = 0;
       while ($record = $result->fetch_assoc()) {
         $rowClass = ($i % 2 == 0) ? '' : 'class="odd"';
-        echo "<tr $rowClass><td>{$record['movieid']}</td><td>{$record['actorid']}</td><td>";
-        echo '<img src="resources/delete.png" class="deletemovieactor" width="16" height="16" alt="delete movie actor"/>';
-        echo '</td></tr>';
+        echo "<tr $rowClass>";
+        echo "<td>{$record['title']}</td>";
+        echo "<td>{$record['actor_name']}</td>";
+        echo '<td><img src="resources/delete.png" class="deletemovieactor" width="16" height="16" alt="delete movie actor"/></td>';
+        echo '</tr>';
+        $i++;
       }
 
       $result->free();
@@ -47,7 +108,7 @@
       echo '<div class="messages">Error retrieving records from the database.</div>';
     }
 
-    // Finally, let's close the database
+    // Close the database connection
     $db->close();
   }
 ?>
