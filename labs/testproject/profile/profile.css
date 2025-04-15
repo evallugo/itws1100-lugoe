@@ -1,100 +1,88 @@
 body {
-    margin: 0;
-    padding: 0;
-    background-color: #ffe4f2;
-    font-family: Arial, sans-serif;
-}
-
-/* added navigation header styles */
-header {
-  background-color: #44008B;
-  padding: 10px;
-}
-
-header nav ul {
-  list-style-type: none;
-  display: flex;
   margin: 0;
   padding: 0;
-}
-
-header nav ul li {
-  margin-right: 20px;
-}
-
-header nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+  background-color: #ffe4f2;
+  font-family: Arial, sans-serif;
 }
 
 .profileHeader {
-    padding: 20px;
-    color: white;
-    text-align: center;
-    background-color: #44008B;
+  padding: 20px;
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  background-color: #44008B;
 }
 
 .profileContainer {
-    display: flex;
-    margin-top: 20px;
-    align-items: center;
-    flex-direction: column;
+  gap: 30px;
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .profileImg {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 2px solid #ccc;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #ccc;
 }
 
-.profileInfo {
-    text-align: center;
-    margin-top: 10px;
+.profileInfo h2 {
+  font-size: 30px;
+  margin-bottom: 15px;
 }
 
 .profileInfo h3 {
-    margin: 10px 0;
+  margin: 12px 0;
+  font-size: 22px;
 }
 
 .profileEdit {
-    margin-top: 20px;
-    text-align: center;
+  margin-top: 20px;
+  text-align: center;
 }
 
 .profileEdit label {
-    display: block;
+  display: block;
 }
 
-.profileEdit input,
-.profileEdit textarea {
-    width: 100%;
-    margin-top: 15px;
-    max-width: 300px;
+.profileEdit input {
+  width: 100%;
+  margin-top: 15px;
+  max-width: 300px;
 }
 
 .profileEdit button {
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-top: 10px;
-    padding: 5px 15px;
-    background-color: #44008B;
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 5px 15px;
+  background-color: #44008B;
 }
 
 .profileEdit button:hover {
-    background-color: #00076f;
+  background-color: #00076f;
 }
 
 .editArea {
-    margin: 15px;
-    background-color: #ffe4f2;
+  margin: 15px;
+  background-color: #ffe4f2;
 }
 
-th, td {
-    border: 1px solid;
-    padding: 8px;
-    border-spacing: 0;
+#toggleButton, #logoutBtn {
+  border: none;
+  display: block;
+  color: white;
+  cursor: pointer;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #44008B;
+}
+
+#toggleButton:hover, #logoutBtn:hover {
+  background-color: #00076f;
 }
