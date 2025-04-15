@@ -17,13 +17,6 @@
       // get our id and cast as an integer
       $actorId = (int) $_POST["id"];
       
-      // First, delete from the movie_actor table to remove any relationships
-      $deleteRelationsQuery = "DELETE FROM movie_actor WHERE actorid = ?";
-      $statement = $db->prepare($deleteRelationsQuery);
-      $statement->bind_param("i", $actorId);
-      $statement->execute();
-      $statement->close();
-      
       // Setup a prepared statement. 
       $query = "delete from actors where actorid = ?";
       $statement = $db->prepare($query);
