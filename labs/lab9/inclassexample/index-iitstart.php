@@ -1,8 +1,6 @@
 <?php
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('includes/functions.inc.php'); // functions
-  error_reporting(E_ALL);
-  ini_set('display_errors', '1');
 ?>
 <title>PHP &amp; MySQL - ITWS</title>
 
@@ -24,7 +22,7 @@
 
   /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */
-  @ $db = new mysqli('localhost', 'phpmyadmin', 'Loveshadow12!', 'iit');
+  @ $db = new mysqli('localhost', 'root','root', 'iit');
 
   if ($db->connect_error) {
     echo '<div class="messages">Could not connect to the database. Error: ';
@@ -95,7 +93,7 @@
 
         // Setup a prepared statement. Alternately, we could write an insert statement - but
         // *only* if we escape our data using addslashes() or (better) mysqli_real_escape_string().
-        $insQuery = "insert into actors (`lastName`,`firstNames`,`dob`) values(?,?,?)";
+        $insQuery = "insert into actors (`last_name`,`first_names`,`dob`) values(?,?,?)";
         $statement = $db->prepare($insQuery);
         // bind our variables to the question marks
         $statement->bind_param("sss",$lastNameForDb,$firstNamesForDb,$dobForDb);
@@ -137,7 +135,7 @@
 <?php
   if ($dbOk) {
 
-    $query = 'select * from actors order by lastName';
+    $query = 'select * from actors order by last_name';
     $result = $db->query($query);
     $numRecords = $result->num_rows;
 
@@ -149,8 +147,8 @@
       } else {
         echo "\n".'<tr class="odd" id="actor-' . $record['actorid'] . '"><td>';
       }
-      echo htmlspecialchars($record['lastName']) . ', ';
-      echo htmlspecialchars($record['firstNames']);
+      echo htmlspecialchars($record['last_name']) . ', ';
+      echo htmlspecialchars($record['first_names']);
       echo '</td><td>';
       echo htmlspecialchars($record['dob']);
       echo '</td><td>';
