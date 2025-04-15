@@ -34,10 +34,10 @@
     $actorid = isset($_POST["actorid"]) ? trim($_POST["actorid"]) : '';
 
     if ($movieid == '') {
-      $errors .= '<li>Movie ID may not be blank</li>';
+      $errors .= '<li>Please select a movie</li>';
     }
     if ($actorid == '') {
-      $errors .= '<li>Actor ID may not be blank</li>';
+      $errors .= '<li>Please select an actor</li>';
     }
 
     if ($errors != '') {
@@ -53,7 +53,7 @@
       if ($statement->execute()) {
         echo '<div class="messages"><h4>Success: Relationship added to database.</h4></div>';
       } else {
-        echo '<div class="messages"><h4>Error: Could not add relationship.</h4></div>';
+        echo '<div class="messages"><h4>Error: Could not add relationship. The relationship might already exist.</h4></div>';
       }
       $statement->close();
     }
@@ -64,11 +64,41 @@
 <form id="addForm" name="addForm" action="movieactors.php" method="post" onsubmit="return validate(this);">
   <fieldset>
     <div class="formData">
-      <label class="field" for="movieid">Movie ID:</label>
-      <div class="value"><input type="text" size="60" value="<?php if($havePost && $errors != '') { echo $movieid; } ?>" name="movieid" id="movieid"/></div>
+      <label class="field" for="movieid">Select Movie:</label>
+      <div class="value">
+        <select name="movieid" id="movieid">
+          <option value="">-- Select a Movie --</option>
+          <?php
+          if ($dbOk) {
+              $query = 'SELECT movieid, title FROM movies ORDER BY title';
+              $result = $db->query($query);
+              
+              while ($movie = $result->fetch_assoc()) {
+                  echo "<option value='{$movie['movieid']}'>{$movie['title']}</option>";
+              }
+              $result->free();
+          }
+          ?>
+        </select>
+      </div>
 
-      <label class="field" for="actorid">Actor ID:</label>
-      <div class="value"><input type="text" size="60" value="<?php if($havePost && $errors != '') { echo $actorid; } ?>" name="actorid" id="actorid"/></div>
+      <label class="field" for="actorid">Select Actor:</label>
+      <div class="value">
+        <select name="actorid" id="actorid">
+          <option value="">-- Select an Actor --</option>
+          <?php
+          if ($dbOk) {
+              $query = 'SELECT actorid, CONCAT(firstNames, " ", lastName) as name FROM actors ORDER BY lastName';
+              $result = $db->query($query);
+              
+              while ($actor = $result->fetch_assoc()) {
+                  echo "<option value='{$actor['actorid']}'>{$actor['name']}</option>";
+              }
+              $result->free();
+          }
+          ?>
+        </select>
+      </div>
 
       <input type="submit" value="save" id="save" name="save"/>
     </div>

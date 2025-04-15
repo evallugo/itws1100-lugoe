@@ -17,12 +17,17 @@
       // get our id and cast as an integer
       $movieId = (int) $_POST["id"];
       
-      // Setup a prepared statement
+      // First delete any relationships this movie has
+      $query = "delete from relationship where movieid = ?";
+      $statement = $db->prepare($query);
+      $statement->bind_param("i", $movieId);
+      $statement->execute();
+      $statement->close();
+      
+      // Then delete the movie
       $query = "delete from movies where movieid = ?";
       $statement = $db->prepare($query);
-      // bind our variable to the question mark
-      $statement->bind_param("i",$movieId);
-      // make it so:
+      $statement->bind_param("i", $movieId);
       $statement->execute();
       
       // return a json object that indicates success
