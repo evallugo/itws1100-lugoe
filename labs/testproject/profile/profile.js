@@ -52,4 +52,66 @@ function updateProfile() {
 
     // Show success message
     alert("Profile updated successfully!");
-}  
+}
+
+// Function to handle logout
+function logout() {
+    // Clear user data from localStorage
+    localStorage.removeItem('userId');
+    localStorage.removeItem('birthDate');
+    localStorage.removeItem('birthTime');
+    localStorage.removeItem('lastHoroscope');
+    localStorage.removeItem('userData');
+    
+    // Redirect to homepage
+    window.location.href = "../homepage/home.html";
+}
+
+// Initialize profile page
+window.onload = function() {
+    // Check if user is logged in
+    var userId = localStorage.getItem('userId');
+    if (!userId) {
+        // Redirect to homepage if not logged in
+        window.location.href = "../homepage/home.html";
+        return;
+    }
+    
+    // Load user data from localStorage
+    var userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    var birthDate = localStorage.getItem('birthDate');
+    var birthTime = localStorage.getItem('birthTime');
+    
+    // Set name if available
+    if (userData.name) {
+        document.getElementById("nameInput").value = userData.name;
+        document.getElementById("profileName").textContent = "Name: " + userData.name;
+    }
+    
+    // Set email if available
+    if (userData.email) {
+        document.getElementById("emailInput").value = userData.email;
+        document.getElementById("profileEmail").textContent = "Email: " + userData.email;
+    }
+    
+    // Set birth date if available
+    if (birthDate) {
+        document.getElementById("bdInput").value = birthDate;
+        document.getElementById("profileBD").textContent = "Date of birth: " + birthDate;
+    }
+    
+    // Set birth time if available
+    if (birthTime) {
+        document.getElementById("bdTInput").value = birthTime;
+        document.getElementById("profileBDT").textContent = "Time of birth: " + birthTime;
+    }
+    
+    // Add logout button if it doesn't exist
+    if (!document.getElementById("logoutBtn")) {
+        var logoutBtn = document.createElement("button");
+        logoutBtn.id = "logoutBtn";
+        logoutBtn.textContent = "Logout";
+        logoutBtn.onclick = logout;
+        document.querySelector(".profileEdit").appendChild(logoutBtn);
+    }
+};  
