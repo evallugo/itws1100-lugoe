@@ -22,7 +22,7 @@ $dbOk = false;
 
 /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */
-@$db = new mysqli('localhost', 'root', 'PRLugo22!', 'iitF23');
+@$db = new mysqli('localhost', 'root', 'PRLugo22!', 'iit');
 
 if ($db->connect_error) {
    echo '<div class="messages">Could not connect to the database. Error: ';
@@ -158,7 +158,7 @@ if ($havePost) {
          echo '</td><td>';
          echo htmlspecialchars($record['dob']);
          echo '</td><td>';
-         echo '<img src="resources/delete.png" class="deleteActor" width="16" height="16" alt="delete actor"/>';
+         echo '<img src="resources/delete.png" class="deleteActor" data-id="' . $record['actorid'] . '" width="16" height="16" alt="delete actor"/>';
          echo '</td></tr>';
          // Uncomment the following three lines to see the underlying
          // associative array for each record.
@@ -175,6 +175,45 @@ if ($havePost) {
 
    ?>
 </table>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+   // Add event listeners to all delete buttons
+   const deleteButtons = document.querySelectorAll('.deleteActor');
+   
+   deleteButtons.forEach(button => {
+      button.addEventListener('click', function() {
+         if (confirm('Are you sure you want to delete this actor?')) {
+            const actorId = this.getAttribute('data-id');
+            
+            // Create form data
+            const formData = new FormData();
+            formData.append('id', actorId);
+            
+            // Send delete request
+            fetch('actor-delete.php', {
+               method: 'POST',
+               body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+               if (!data.errors) {
+                  // Remove the row from the table
+                  this.closest('tr').remove();
+                  alert('Actor deleted successfully');
+               } else {
+                  alert('Error: ' + data.error);
+               }
+            })
+            .catch(error => {
+               console.error('Error:', error);
+               alert('An error occurred while deleting the actor');
+            });
+         }
+      });
+   });
+});
+</script>
 
 <?php include('includes/foot.inc.php');
 // footer info and closing tags
