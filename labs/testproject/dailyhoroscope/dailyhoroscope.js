@@ -13,6 +13,54 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+  var zodiacSign = getZodiacSign(birthDate);
+  
+  // show loading state
+  horoscopeElement.innerHTML = `
+    <div class="loading">
+      <p>Loading your personalized horoscope! Please wait...</p>
+      <div class="spinner"></div>
+    </div>
+  `;
+
+  // Get horoscope text based on zodiac sign
+  function getHoroscopeText(sign) {
+    const horoscopes = {
+      aries: "Today is a day of new beginnings for you, Aries. Your natural leadership abilities will be highlighted, and you'll find yourself taking charge of situations. Trust your instincts and don't be afraid to take risks. Your energy levels are high, so use this to your advantage.",
+      taurus: "Taurus, today brings opportunities for financial growth and stability. Your practical approach to life will serve you well. Focus on your long-term goals and avoid impulsive decisions. Take time to enjoy the simple pleasures of life.",
+      gemini: "Communication is key for you today, Gemini. Your curiosity will lead you to interesting conversations and new information. Be mindful of spreading yourself too thin - focus on quality over quantity in your interactions.",
+      cancer: "Emotional connections are highlighted for you today, Cancer. Your intuition is strong, so trust your feelings. Take time to nurture yourself and those you care about. Home and family matters may require your attention.",
+      leo: "Your creative energy is at its peak today, Leo. Express yourself boldly and don't be afraid to shine. Your natural charisma will attract positive attention. Focus on projects that allow you to showcase your talents.",
+      virgo: "Today is a good day for organization and attention to detail, Virgo. Your analytical mind will help you solve problems efficiently. Take care of practical matters and don't forget to take breaks to avoid overthinking.",
+      libra: "Balance and harmony are your focus today, Libra. Your diplomatic skills will be valuable in resolving conflicts. Focus on creating beauty and peace in your surroundings. Trust your ability to make fair decisions.",
+      scorpio: "Your intensity and passion are heightened today, Scorpio. Trust your instincts and don't be afraid to dig deep into matters that interest you. Your transformative energy can help you overcome obstacles.",
+      sagittarius: "Adventure and learning await you today, Sagittarius. Your optimistic outlook will attract positive opportunities. Be open to new experiences and don't be afraid to expand your horizons. Your philosophical nature will guide you well.",
+      capricorn: "Today brings opportunities for career advancement, Capricorn. Your disciplined approach will help you achieve your goals. Focus on long-term success and don't be afraid to take on responsibilities. Your practical wisdom will serve you well.",
+      aquarius: "Innovation and originality are your strengths today, Aquarius. Your unique perspective will help you solve problems in creative ways. Connect with like-minded individuals and don't be afraid to think outside the box.",
+      pisces: "Your intuition and creativity are heightened today, Pisces. Trust your inner voice and allow yourself to dream big. Take time for spiritual practices and artistic expression. Your compassionate nature will help others."
+    };
+    
+    return horoscopes[sign] || "Your horoscope is not available at this time.";
+  }
+
+  // Simulate loading delay for better user experience
+  setTimeout(function() {
+    const horoscopeText = getHoroscopeText(zodiacSign);
+    
+    horoscopeElement.innerHTML = `
+      <div class="horoscope-text">
+        <h2>${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}'s Horoscope</h2>
+        <p>${horoscopeText}</p>
+      </div>
+    `;
+    
+    // Store the horoscope for potential caching
+    localStorage.setItem('lastHoroscope', JSON.stringify({
+      sign: zodiacSign,
+      text: horoscopeText,
+      date: new Date().toDateString()
+    }));
+  }, 1000); // 1 second delay to show loading animation
     // Validate birth date format
     const birthDateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!birthDateRegex.test(birthDate)) {
