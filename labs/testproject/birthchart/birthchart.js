@@ -94,14 +94,47 @@ async function updateBirthChart() {
 
 // Initialize birth chart when page loads
 document.addEventListener("DOMContentLoaded", function() {
-    // Check if user is logged in
-    var userId = localStorage.getItem('userId');
-    if (!userId) {
-        // Redirect to homepage if not logged in
-        window.location.href = "../homepage/home.html";
-        return;
-    }
-    
-    // Try to update birth chart
-    updateBirthChart();
+  // Check if user is logged in
+  var userId = localStorage.getItem('userId');
+  if (!userId) {
+    // Redirect to homepage if not logged in
+    window.location.href = "../homepage/home.html";
+    return;
+  }
+
+  // Get user data from localStorage
+  var birthDateStr = localStorage.getItem('birthDate');
+  var birthPlace = localStorage.getItem('birthPlace');
+  var birthTime = localStorage.getItem('birthTime');
+
+  // Validate required data
+  if (!birthDateStr || !birthPlace || !birthTime) {
+    document.getElementById('birthchart-results').innerHTML = `
+      <div class="error-message">
+        <p>Please complete your profile with birth date, place, and time to view your birth chart.</p>
+        <a href="../profile/profile.html" class="profile-link">Complete Profile</a>
+      </div>
+    `;
+    return;
+  }
+
+  // Display birth chart information
+  var birthDate = new Date(birthDateStr);
+  var formattedDate = birthDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+
+  document.getElementById('birthchart-results').innerHTML = `
+    <div class="birth-chart-info">
+      <h2>Your Birth Chart Details</h2>
+      <p><strong>Date of Birth:</strong> ${formattedDate}</p>
+      <p><strong>Place of Birth:</strong> ${birthPlace}</p>
+      <p><strong>Time of Birth:</strong> ${birthTime}</p>
+    </div>
+    <div class="birth-chart-disclaimer">
+      <p>Note: This is a simplified birth chart display. For a complete astrological reading, please consult with a professional astrologer.</p>
+    </div>
+  `;
 });

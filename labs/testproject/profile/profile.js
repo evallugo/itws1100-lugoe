@@ -77,30 +77,31 @@ window.onload = function() {
         return;
     }
     
-    // Load user data from localStorage
+    // Load user data
     var userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    var birthDate = localStorage.getItem('birthDate');
-    var birthTime = localStorage.getItem('birthTime');
-    
-    // Set name if available
     if (userData.name) {
         document.getElementById("nameInput").value = userData.name;
         document.getElementById("profileName").textContent = "Name: " + userData.name;
     }
     
-    // Set email if available
+    if (userData.surname) {
+        document.getElementById("surnameInput").value = userData.surname;
+    }
+    
     if (userData.email) {
         document.getElementById("emailInput").value = userData.email;
         document.getElementById("profileEmail").textContent = "Email: " + userData.email;
     }
     
-    // Set birth date if available
+    // Load existing profile data if available
+    var birthDate = localStorage.getItem('birthDate');
+    var birthTime = localStorage.getItem('birthTime');
+    
     if (birthDate) {
         document.getElementById("bdInput").value = birthDate;
         document.getElementById("profileBD").textContent = "Date of birth: " + birthDate;
     }
     
-    // Set birth time if available
     if (birthTime) {
         document.getElementById("bdTInput").value = birthTime;
         document.getElementById("profileBDT").textContent = "Time of birth: " + birthTime;

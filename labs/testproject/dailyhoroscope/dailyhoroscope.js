@@ -1,8 +1,15 @@
 document.addEventListener("DOMContentLoaded", function() {
   var horoscopeElement = document.getElementById("horoscope");
   
-  // check for user data
+  // Check if user is logged in
   var userId = localStorage.getItem('userId');
+  if (!userId) {
+    // Redirect to homepage if not logged in
+    window.location.href = "../homepage/home.html";
+    return;
+  }
+  
+  // check for user data
   var birthDateStr = localStorage.getItem('birthDate');
   
   // clear any existing content and show disclaimer if no birth date
