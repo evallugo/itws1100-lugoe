@@ -20,9 +20,9 @@ include('includes/head.inc.php');
 // we'll change the $dbOk flag.
 $dbOk = false;
 
-/* Create a new database connection object, passing in the host, username, roots should be replaced by the 
-     password, and database to use. The "@" suppresses errors. */  
-@$db = new mysqli('localhost', 'root', 'PRLugo22!', 'iit'); //have not etablished a connection
+/* Create a new database connection object, passing in the host, username,
+     password, and database to use. The "@" suppresses errors. */
+@$db = new mysqli('localhost', 'root', 'PRLugo22!', 'iitF23');
 
 if ($db->connect_error) {
    echo '<div class="messages">Could not connect to the database. Error: ';
@@ -33,7 +33,7 @@ if ($db->connect_error) {
 
 // Now let's process our form:
 // Have we posted?
-$havePost = isset($_POST["save"]);x
+$havePost = isset($_POST["save"]);
 
 // Let's do some basic validation
 $errors = '';
