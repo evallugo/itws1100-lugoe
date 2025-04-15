@@ -44,9 +44,9 @@
     // Get the output and clean it for output on-screen.
     // First, let's get the output one param at a time.
     // Could also output escape with htmlentities()
-    $firstNames = htmlspecialchars(trim($_POST["firstNames"]));
-    $lastName = htmlspecialchars(trim($_POST["lastName"]));
-    $dob = htmlspecialchars(trim($_POST["dob"]));
+    $firstNames = htmlspecialchars(isset($_POST["firstNames"]) ? trim($_POST["firstNames"]) : '');
+    $lastName = htmlspecialchars(isset($_POST["lastName"]) ? trim($_POST["lastName"]) : '');
+    $dob = htmlspecialchars(isset($_POST["dob"]) ? trim($_POST["dob"]) : '');
 
     // special handling for the date of birth
     $dobTime = strtotime($dob); // parse the date of birth into a Unix timestamp (seconds since Jan 1, 1970)
