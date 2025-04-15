@@ -46,23 +46,48 @@
     <div class="editArea">
       <label for="bdDInput">Place of Birth: </label>
       <input type="text" id="bdDInput" placeholder="Enter your place of birth">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="profileHeader">
+        <h1>Beyond the Zodiac</h1>
     </div>
-    <div class="editArea">
-      <label for="bdTInput">Time of Birth: </label>
-      <input type="text" id="bdTInput" placeholder="Enter your time of birth (HH:MM military time)">
+
+    <div class="profileContainer">
+        <div class="profileInfo">
+            <h2 id="profileHeader">User Information:</h2>
+            <h3 id="profileName">Name: </h3>
+            <h3 id="profileBD">Date of birth: </h3>
+        </div>
+        <img id="profileImg" src="profilepicture.jpg" alt="Profile Picture" class="profileImg">
     </div>
-    <div class="editArea">
-      <label for="ImgInput">Profile Picture URL:</label>
-      <input type="text" id="ImgInput" placeholder="Enter an URl to your profile picture">
-    </div>
-    <!-- Added Email Input for Unique Identifier -->
-    <div class="editArea">
-      <label for="emailInput">Email:</label>
-      <input type="text" id="emailInput" placeholder="Enter your email address">
+
+    <button onclick="toggleEdit()" id="toggleButton">Edit Profile</button>
+    <button id="logoutBtn">Log Out</button>
+
+    <div class="profileEdit" id="editSection">
+        <div class="editArea">
+            <label for="nameInput">Name:</label>
+            <input type="text" id="nameInput" placeholder="Enter your name">
+        </div>
+        <div class="editArea">
+            <label for="bdInput">Date of Birth:</label>
+            <input type="text" id="bdInput" placeholder="Enter your birthday (MM/DD/YY)">
+        </div>
+        <div class="editArea">
+            <label for="ImgInput">Profile Picture URL:</label>
+            <input type="text" id="ImgInput" placeholder="Enter a URL to your profile picture">
+        </div>
+        <button onclick="updateProfile()">Update Information</button>
     </div>
     <button id="submit" onclick="updateProfile(); updateBirthChart();">Update Information</button>
   </div>
   <script src="profile.js"></script>
   <script src="../birthchart/birthchart.js"></script>
+
+    <script src="profile.js"></script>
 </body>
 </html>
