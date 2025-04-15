@@ -5,13 +5,14 @@ function buildMenu() {
 	$menu = array(
 		'index' => 'actors',
 		'movies' => 'movies',
-		'movie_actors' => 'movie actors'
+		'movie-cast' => 'movie cast'
 	);
+
 	// construct the menu, setting the current menu item 'selected' if 
 	// we are on the page that matches the URL
 	$menuOutput = '<ul id="menu">';
 	foreach ($menu as $key => $value) {
-		if($_SERVER['PHP_SELF'] == "$key.php") {
+		if($_SERVER['PHP_SELF'] == "/$key.php") {
 			$selected = ' class="selected"';
 		} else {
 			$selected = '';
