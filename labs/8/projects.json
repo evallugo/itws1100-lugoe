@@ -41,6 +41,18 @@
       "description": "JavaScript, JSON and AJAX",
       "path": "../8/lab8.html",
       "image": "fas fa-flask"
+    },
+    {
+      "name": "Lab 9",
+      "description": "PHP and MySQL",
+      "path": "../9/inclassexample/index.php",
+      "image": "fas fa-flask"
+    },
+    {
+      "name": "Lab 10",
+      "description": "Final Project",
+      "path": "../10/index.php",
+      "image": "fas fa-flask"
     }
   ]
 } 
