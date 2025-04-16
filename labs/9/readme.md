@@ -1,0 +1,1 @@
+I tried my best. This lab gave me so many problems, especially with GitHub and stashed changes. I hated every bit of this. Please be merciful because this was so bad. 
