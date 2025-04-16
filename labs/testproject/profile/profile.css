@@ -3,7 +3,6 @@
 
 /* base styles */
 body {
-<<<<<<< HEAD
   font-family: 'Quicksand', sans-serif;
   margin: 0;
   padding: 0;
@@ -14,6 +13,8 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  display: flex;
+  flex-direction: column;
 }
 
 /* navigation styles */
@@ -43,12 +44,6 @@ header nav ul li a {
   padding: 8px 16px;
   border-radius: 4px;
   transition: all 0.3s ease;
-=======
-  margin: 0;
-  padding: 0;
-  background-color: #ffe4f2;
-  font-family: Arial, sans-serif;
->>>>>>> cfa93460a462e1f20dbe46a5478d092873b2db62
 }
 
 header nav ul li a:hover {
@@ -60,7 +55,6 @@ header nav ul li a:hover {
 .profileHeader {
   padding: 20px;
   color: white;
-<<<<<<< HEAD
   text-align: center;
   background-color: rgba(68, 0, 139, 0.8);
   backdrop-filter: blur(8px);
@@ -80,7 +74,9 @@ header nav ul li a:hover {
   margin: 40px auto;
   align-items: center;
   flex-direction: column;
-  max-width: 800px;
+  width: 60%;
+  min-width: 300px;
+  max-width: 600px;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   backdrop-filter: blur(8px);
@@ -98,6 +94,16 @@ header nav ul li a:hover {
   border: 3px solid rgba(147, 112, 219, 0.7);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .profileImg:hover {
@@ -125,12 +131,65 @@ header nav ul li a:hover {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
   color: #fff;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.profileInfo h3:hover {
+  color: #ffd700;
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Button styles */
+#toggleButton, #logoutBtn {
+  border: none;
+  color: white;
+  cursor: pointer;
+  margin: 20px 10px;
+  padding: 12px 25px;
+  border-radius: 25px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+#toggleButton {
+  background-color: rgba(68, 0, 139, 0.8);
+}
+
+#logoutBtn {
+  background-color: rgba(220, 53, 69, 0.8);
+}
+
+#toggleButton:hover {
+  background-color: rgba(68, 0, 139, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(68, 0, 139, 0.4);
+}
+
+#logoutBtn:hover {
+  background-color: rgba(220, 53, 69, 1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.4);
+}
+
+/* Button container for bottom positioning */
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 30px 0;
+  width: 100%;
 }
 
 .profileEdit {
   margin: 40px auto;
   text-align: center;
-  max-width: 800px;
+  width: 60%;
+  min-width: 300px;
+  max-width: 600px;
   background: rgba(0, 0, 0, 0.3);
   border-radius: 15px;
   backdrop-filter: blur(8px);
@@ -138,48 +197,11 @@ header nav ul li a:hover {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   padding: 30px;
   animation: fadeIn 0.5s ease-out;
-=======
-  font-size: 30px;
-  text-align: center;
-  background-color: #44008B;
-}
-
-.profileContainer {
-  gap: 30px;
-  display: flex;
-  margin-top: 20px;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.profileImg {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 2px solid #ccc;
-}
-
-.profileInfo h2 {
-  font-size: 30px;
-  margin-bottom: 15px;
-}
-
-.profileInfo h3 {
-  margin: 12px 0;
-  font-size: 22px;
-}
-
-.profileEdit {
-  margin-top: 20px;
-  text-align: center;
->>>>>>> cfa93460a462e1f20dbe46a5478d092873b2db62
+  display: none; /* Hidden by default, will be shown when edit button is clicked */
 }
 
 .profileEdit label {
   display: block;
-<<<<<<< HEAD
   text-align: left;
   margin-left: 10px;
   color: #e6e6fa;
@@ -205,21 +227,12 @@ header nav ul li a:hover {
   outline: none;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 10px rgba(147, 112, 219, 0.5);
-=======
-}
-
-.profileEdit input {
-  width: 100%;
-  margin-top: 15px;
-  max-width: 300px;
->>>>>>> cfa93460a462e1f20dbe46a5478d092873b2db62
 }
 
 .profileEdit button {
   border: none;
   color: white;
   cursor: pointer;
-<<<<<<< HEAD
   margin-top: 20px;
   padding: 12px 25px;
   background-color: rgba(68, 0, 139, 0.8);
@@ -295,32 +308,10 @@ th {
   header nav ul li {
     margin: 10px 0;
   }
-=======
-  margin-top: 10px;
-  padding: 5px 15px;
-  background-color: #44008B;
-}
-
-.profileEdit button:hover {
-  background-color: #00076f;
-}
-
-.editArea {
-  margin: 15px;
-  background-color: #ffe4f2;
-}
-
-#toggleButton, #logoutBtn {
-  border: none;
-  display: block;
-  color: white;
-  cursor: pointer;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background-color: #44008B;
-}
-
-#toggleButton:hover, #logoutBtn:hover {
-  background-color: #00076f;
->>>>>>> cfa93460a462e1f20dbe46a5478d092873b2db62
+  
+  #toggleButton, #logoutBtn {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+  }
 }

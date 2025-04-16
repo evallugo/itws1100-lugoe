@@ -4,54 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beyond the Zodiac - Birth Chart</title>
-  <link rel="stylesheet" href="../profile/profile.css">
+  <link rel="stylesheet" href="birthchart.css">
 </head>
 <body>
   <header>
     <nav>
       <ul>
-        <li><a href="../homepage/home.html">Home</a></li>
         <li><a href="../profile/profile.html">Profile</a></li>
         <li><a href="../dailyhoroscope/dailyhoroscope.html">Daily Horoscope</a></li>
-        <li><a href="./birthchart.html">Birth Chart</a></li>
+        <li><a href="birthchart.html">Birth Chart</a></li>
       </ul>
     </nav>
   </header>
   
   <div class="container">
     <h1>Your Birth Chart</h1>
-    <div id="table"></div>
-    <div id="result"></div>
+    <div id="chart">Loading chart...</div>
+    <div id="result">Loading analysis...</div>
   </div>
   
   <script src="birthchart.js"></script>
+  <script>
+  window.addEventListener("DOMContentLoaded", getBirthChart);
+  </script>
 </body>
-=======
-<html>
-<head>
-  <title>Birth Chart</title>
-  <link rel="stylesheet" href="../profile/profile.css">
-</head>
-
-<header>
-  <nav>
-    <ul>
-      <li><a href="../homepage/home.html">Home</a></li>
-      <li><a href="../profile/profile.html">Profile</a></li>
-      <li><a href="../dailyhoroscope/dailyhoroscope.html">Daily Horoscope</a></li>
-      <li><a href="./birthchart.html">Birth Chart</a></li>
-    </ul>
-  </nav>
-</header>
-
-<body>
-  <h1>Your Birth Chart</h1>
-  <div id="chart">Loading chart...</div>
-  <div id="result">Loading analysis...</div>
-</body>
-
-<script src="./birthchart.js"></script>
-<script>
-    window.addEventListener("DOMContentLoaded", getBirthChart);
-</script>
 </html>
