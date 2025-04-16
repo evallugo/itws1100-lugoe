@@ -1,7 +1,5 @@
 <?php
 
-// commit to git
-
 function buildMenu() {
   // create an array of URLs and labels
 	$menu = array(
