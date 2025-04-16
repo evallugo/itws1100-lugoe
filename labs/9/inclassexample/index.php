@@ -1,10 +1,12 @@
 <?php
-include('includes/init.inc.php'); // include the DOCTYPE and opening tags
-include('includes/functions.inc.php'); // functions
+// Include necessary files
+include('includes/init.inc.php');    // Initialize basic HTML structure
+include('includes/functions.inc.php'); // Include common functions
 ?>
 <title>PHP &amp; MySQL - ITWS</title>
 
 <?php
+// Include header elements and open body tag
 include('includes/head.inc.php');
 // include global css, javascript, end the head and open the body
 ?>
@@ -14,15 +16,12 @@ include('includes/head.inc.php');
 <?php include('includes/menubody.inc.php'); ?>
 
 <?php
-// We'll need a database connection both for retrieving records and for
-// inserting them.  Let's get it up front and use it for both processes
-// to avoid opening the connection twice.  If we make a good connection,
-// we'll change the $dbOk flag.
+// Database connection setup
 $dbOk = false;
 
 /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */
-@$db = new mysqli('localhost', 'root', 'PRLugo22!', 'iitF23');
+@$db = new mysqli('localhost', 'root', 'PRLugo22', 'iitF23');
 
 if ($db->connect_error) {
    echo '<div class="messages">Could not connect to the database. Error: ';

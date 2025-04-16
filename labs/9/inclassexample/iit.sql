@@ -32,11 +32,13 @@ CREATE TABLE `actors` (
 --
 
 INSERT INTO `actors` (`actorid`, `first_name`, `last_name`, `dob`) VALUES
-(1, 'Leonardo', 'DiCaprio', '1974-11-11'),
-(2, 'Tom', 'Hanks', '1956-07-09'),
-(3, 'Al', 'Pacino', '1940-04-25'),
-(4, 'Robert', 'De Niro', '1943-08-17'),
-(5, 'Meryl', 'Streep', '1949-06-22');
+(6, 'Caroline', 'Baskin', '2000-04-21'),
+(7, 'Joseph', 'Colangelo', '1954-07-09'),
+(8, 'Tom', 'Cruise', '1942-07-03'),
+(9, 'Tom', 'Hanks', '1956-07-09'),
+(10, 'Kevin', 'Hart', '1979-07-06'),
+
+
 
 -- --------------------------------------------------------
 
