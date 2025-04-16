@@ -53,12 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const horoscopeText = generateDailyHoroscope(zodiacSign, uniqueSeed);
     
-    document.getElementById('horoscope').innerHTML = `
-        <div class="horoscope-content">
-            <h2>${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}'s Horoscope</h2>
-            <p>${horoscopeText}</p>
-        </div>
-    `;
+    setTimeout(() => {
+        document.getElementById('horoscope').innerHTML = `
+            <div class="horoscope-content">
+                <h2>${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}'s Horoscope</h2>
+                <p>${horoscopeText}</p>
+            </div>
+        `;
+    }, 2000);
 });
 
 function seededRandom(seed) {
