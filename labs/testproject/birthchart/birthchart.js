@@ -92,6 +92,9 @@ async function getBirthChart() {
   }
   table += "</tbody></table>";
 
+  // Add a delay before showing the content
+  await new Promise(resolve => setTimeout(resolve, 1500));
+  
   document.getElementById("chart").innerHTML = table;
   document.getElementById("result").innerHTML = output;
 }
