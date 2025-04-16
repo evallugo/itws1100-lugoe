@@ -1,12 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Generation Time: Nov 21, 2023 at 04:24 AM
--- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
--- PHP Version: 8.1.2-1ubuntu2.14
-
+-- commit to git
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -49,8 +41,8 @@ INSERT INTO `actors` (`actorid`, `firstNames`, `lastName`, `dob`) VALUES
 (11, 'emma', 'watson', '2004-12-02'),
 (12, 'kevin', 'heart', '2005-12-12'),
 (13, 'kevin', 'heart', '2005-12-12'),
-(14, 'Emmanuel', 'usman', '2005-12-12'),
-(15, 'Emmanuel', 'usman', '2005-12-12');
+(14, 'gary', 'sponge', '2003-06-22'),
+(15, 'sponge', 'bob', '1994-08-01');
 
 -- --------------------------------------------------------
 
@@ -117,37 +109,4 @@ ALTER TABLE `movies`
 -- Indexes for table `relationship`
 --
 ALTER TABLE `relationship`
-  ADD PRIMARY KEY (`actorid`,`movieid`),
-  ADD KEY `movieid` (`movieid`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `actors`
---
-ALTER TABLE `actors`
-  MODIFY `actorid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `movies`
---
-ALTER TABLE `movies`
-  MODIFY `movieid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `relationship`
---
-ALTER TABLE `relationship`
-  ADD CONSTRAINT `relationship_ibfk_1` FOREIGN KEY (`actorid`) REFERENCES `actors` (`actorid`),
-  ADD CONSTRAINT `relationship_ibfk_2` FOREIGN KEY (`movieid`) REFERENCES `movies` (`movieid`);
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+  ADD PRIMARY KEY (`actorid`,`

@@ -19,7 +19,7 @@
 
   /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */
-  @ $db = new mysqli('localhost', 'phpmyadmin', 'Loveshadow12!', 'iit');
+  @ $db = new mysqli('localhost', 'root', 'PRLugo22!!', 'iit');
 
   if ($db->connect_error) {
     echo '<div class="messages">Could not connect to the database. Error: ';
@@ -141,9 +141,9 @@
       echo '</td></tr>';
       // Uncomment the following three lines to see the underlying
       // associative array for each record.
-      // echo '<tr><td colspan="3" style="white-space: pre;">';
-      // print_r($record);
-      // echo '</td></tr>';
+      echo '<tr><td colspan="3" style="white-space: pre;">';
+      print_r($record);
+      echo '</td></tr>';
     }
 
     $result->free();
