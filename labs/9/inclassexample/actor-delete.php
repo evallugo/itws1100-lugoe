@@ -1,5 +1,7 @@
 <?php
-  /* Delete an actor */
+  /* commit to git */
+
+/* Delete an actor */
   
   /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */

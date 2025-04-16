@@ -1,4 +1,5 @@
 <?php
+  // commit to git
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('includes/functions.inc.php'); // functions
   error_reporting(E_ALL);
@@ -24,7 +25,7 @@
 
   /* Create a new database connection object, passing in the host, username,
      password, and database to use. The "@" suppresses errors. */
-  @ $db = new mysqli('localhost', 'phpmyadmin', 'Loveshadow12!', 'iit');
+  @ $db = new mysqli('localhost', 'root', 'PRLugo22!!', 'iit');
 
   if ($db->connect_error) {
     echo '<div class="messages">Could not connect to the database. Error: ';
@@ -157,10 +158,10 @@
       echo '<img src="resources/delete.png" class="deleteActor" width="16" height="16" alt="delete actor"/>';
       echo '</td></tr>';
       // Uncomment the following three lines to see the underlying
-      // associative array for each record.
-      // echo '<tr><td colspan="3" style="white-space: pre;">';
-      // print_r($record);
-      // echo '</td></tr>';
+      associative array for each record.
+       echo '<tr><td colspan="3" style="white-space: pre;">';
+      print_r($record);
+       echo '</td></tr>';
     }
 
     $result->free();

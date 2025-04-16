@@ -1,3 +1,4 @@
+-- commit to git
 -- create the tables for our movies
 CREATE TABLE `actors` (
    `actorid` int(10) unsigned NOT NULL AUTO_INCREMENT,
