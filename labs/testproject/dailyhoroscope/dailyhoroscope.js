@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    //get user data from localStorage
     const userId = localStorage.getItem('userId');
     const birthDate = localStorage.getItem('birthDate');
 
@@ -18,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
   
-    //validate birth date format
     const birthDateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!birthDateRegex.test(birthDate)) {
         document.getElementById('horoscope').innerHTML = `
@@ -30,14 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    //show loading state
-    document.getElementById('horoscope').innerHTML = `
-        <div class="loading">
-            <p>Loading your personalized horoscope...</p>
-        </div>
-    `;
-
-    //calculate zodiac sign based on birth date
     const date = new Date(birthDate);
     const month = date.getMonth() + 1;
     const day = date.getDate();
@@ -56,39 +46,30 @@ document.addEventListener('DOMContentLoaded', () => {
     else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) zodiacSign = 'aquarius';
     else zodiacSign = 'pisces';
 
-    //get current date for seed
     const today = new Date();
     const dateSeed = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
-    
-    //create a unique seed based on user ID and date
     const userSeed = userId.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
     const uniqueSeed = dateSeed + userSeed;
     
-    //simulate loading delay for better user experience
-    setTimeout(() => {
-        const horoscopeText = generateDailyHoroscope(zodiacSign, uniqueSeed);
-        
-        document.getElementById('horoscope').innerHTML = `
-            <div class="horoscope-content">
-                <h2>${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}'s Horoscope</h2>
-                <p>${horoscopeText}</p>
-            </div>
-        `;
-    }, 1000);
+    const horoscopeText = generateDailyHoroscope(zodiacSign, uniqueSeed);
+    
+    document.getElementById('horoscope').innerHTML = `
+        <div class="horoscope-content">
+            <h2>${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}'s Horoscope</h2>
+            <p>${horoscopeText}</p>
+        </div>
+    `;
 });
 
-//function to generate a pseudo-random number based on seed
 function seededRandom(seed) {
     const x = Math.sin(seed++) * 10000;
     return x - Math.floor(x);
 }
 
-//function to pick a random item from an array using seeded random
 function pickRandom(array, seed) {
     return array[Math.floor(seededRandom(seed) * array.length)];
 }
 
-//function to generate dynamic horoscope text
 function generateDailyHoroscope(zodiacSign, seed) {
     const aspects = {
         aries: {
