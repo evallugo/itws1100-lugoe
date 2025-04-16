@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="150px" height="150px" viewBox="0 0 150 150" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background circle -->
+    <circle cx="75" cy="75" r="75" fill="#44008B" opacity="0.3"/>
+    
+    <!-- Head outline -->
+    <g stroke="#FFFFFF" stroke-width="4" fill="none">
+        <!-- Head circle -->
+        <circle cx="75" cy="75" r="30"/>
+        <!-- Shoulders -->
+        <path d="M45,115 C45,105 60,95 75,95 C90,95 105,105 105,115"/>
+    </g>
+</svg> 
