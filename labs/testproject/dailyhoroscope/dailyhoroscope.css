@@ -84,23 +84,23 @@ header nav ul li a:hover {
 
 /* Loading state styles */
 .loading {
-    text-align: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     padding: 30px;
+    margin-bottom: 30px;
     animation: fadeIn 0.5s ease-out;
+    text-align: center;
 }
 
-.loading h2 {
-    font-family: 'Cormorant Garamond', serif;
-    color: #fff;
-    font-size: 2em;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.loading p {
+.loading h3 {
     font-family: 'Quicksand', sans-serif;
-    font-size: 1.2em;
     color: #fff;
+    font-size: 1.2em;
+    line-height: 1.8;
+    margin: 0;
 }
 
 /* Horoscope content styles */
