@@ -10,8 +10,6 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    margin: 0;
-    padding: 0;
     min-height: 100vh;
     color: #fff;
     background-image: url('../astrobg.png');
@@ -38,10 +36,6 @@ header nav ul {
     padding: 0;
     justify-content: center;
     gap: 50px;
-}
-
-header nav ul li {
-    margin: 0;
 }
 
 header nav ul li a {
@@ -86,6 +80,34 @@ header nav ul li a:hover {
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
+}
+
+/* Loading state styles */
+.loading {
+    text-align: center;
+    padding: 30px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.loading h2 {
+    font-family: 'Cormorant Garamond', serif;
+    color: #fff;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loading p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.2em;
+    color: #fff;
+}
+
+/* Horoscope content styles */
+.horoscope-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
     padding: 30px;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -94,7 +116,7 @@ header nav ul li a:hover {
     overflow: hidden;
 }
 
-#horoscope::before {
+.horoscope-content::before {
     content: '';
     position: absolute;
     top: 0;
@@ -105,27 +127,19 @@ header nav ul li a:hover {
     z-index: -1;
 }
 
-.horoscope-content {
-    position: relative;
-    z-index: 1;
-    text-align: center;
-}
-
-#horoscope h2 {
-    font-family: 'Cormorant Garamond', serif !important;
+.horoscope-content h2 {
+    font-family: 'Cormorant Garamond', serif;
     color: #fff;
     font-size: 2em;
     margin-bottom: 20px;
-    text-align: center;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-#horoscope p {
-    font-family: 'Quicksand', sans-serif !important;
+.horoscope-content p {
+    font-family: 'Quicksand', sans-serif;
     font-size: 1.2em;
     line-height: 1.8;
     margin: 20px 0;
-    text-align: center;
     color: #fff;
     padding: 0 20px;
 }
@@ -161,23 +175,15 @@ header nav ul li a:hover {
     box-shadow: 0 4px 15px rgba(147, 112, 219, 0.3);
 }
 
-.loading {
-    text-align: center;
-    padding: 20px;
-    color: #e6e6fa;
-}
-
 /* animations */
 @keyframes fadeIn {
     from { 
         opacity: 0; 
         transform: translateY(20px);
-        filter: blur(10px);
     }
     to { 
         opacity: 1; 
         transform: translateY(0);
-        filter: blur(0);
     }
 }
 
@@ -193,11 +199,11 @@ header nav ul li a:hover {
         font-size: 2em;
     }
     
-    #horoscope h2 {
+    .horoscope-content h2 {
         font-size: 1.8em;
     }
     
-    #horoscope p {
+    .horoscope-content p {
         font-size: 1.1em;
     }
 }
