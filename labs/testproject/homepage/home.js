@@ -29,6 +29,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     surname: matchedUser.surname,
                     email: matchedUser.email
                 }));
+                // Restore birth date if it exists
+                if (matchedUser.birthDate) {
+                    localStorage.setItem('birthDate', matchedUser.birthDate);
+                }
                 window.location.href = "../profile/profile.html";
             } else {
                 alert("Invalid email or password.");
@@ -69,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 name: nameInput.value,
                 surname: surnameInput.value,
                 email: email,
-                password: password
+                password: password,
+                birthDate: null  // Initialize birth date as null
             };
             
             users.push(userData);
