@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p>${horoscopeText}</p>
             </div>
         `;
-    }, 1500);
+    }, 1000);
 });
 
 function seededRandom(seed) {
