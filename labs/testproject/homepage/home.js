@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Clear all stored user data
-    localStorage.clear();
+    // Clear only session data, not stored users
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userData');
+    localStorage.removeItem('birthDate');
     
     // Get form elements
     var nameInput = document.getElementById("nameInput");
@@ -73,14 +75,22 @@ document.addEventListener('DOMContentLoaded', function() {
             users.push(userData);
             localStorage.setItem("beyondUsers", JSON.stringify(users));
             
+            // Set session data
+            localStorage.setItem('userId', email);
+            localStorage.setItem('userData', JSON.stringify({
+                name: userData.name,
+                surname: userData.surname,
+                email: userData.email
+            }));
+            
             // Clear the form
             nameInput.value = '';
             surnameInput.value = '';
             emailInput.value = '';
             pwInput.value = '';
             
-            // Show success message and prompt to log in
-            alert("Sign up successful! Please log in with your email and password.");
+            // Redirect to profile page
+            window.location.href = "../profile/profile.html";
         });
     }
 });
