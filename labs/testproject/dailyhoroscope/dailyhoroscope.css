@@ -9,10 +9,12 @@ body {
   min-height: 100vh;
   color: #fff;
   background-image: url('../astrobg.png');
-  background-size: 100% 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+  display: flex;
+  flex-direction: column;
 }
 
 /* navigation styles */
@@ -20,6 +22,7 @@ header {
   background-color: #44008B;
   padding: 15px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 
 header nav ul {
@@ -54,41 +57,51 @@ header nav ul li a:hover {
   max-width: 800px;
   margin: 40px auto;
   padding: 30px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container h1 {
   font-family: 'Cormorant Garamond', serif;
-  color: #e6e6fa;
+  color: #fff;
   font-size: 2.5em;
   margin-bottom: 30px;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 100%;
 }
 
 #horoscope {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 15px;
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
   padding: 30px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
   animation: fadeIn 0.5s ease-out;
 }
 
 #horoscope h2 {
   font-family: 'Cormorant Garamond', serif;
-  color: #e6e6fa;
-  font-size: 1.8em;
+  color: #fff;
+  font-size: 2em;
   margin-bottom: 20px;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #horoscope p {
-  font-size: 1.1em;
-  line-height: 1.6;
-  margin: 0;
-  text-align: justify;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1.2em;
+  line-height: 1.8;
+  margin: 20px 0;
+  text-align: center;
+  color: #fff;
 }
 
 .error-message {
@@ -124,12 +137,7 @@ header nav ul li a:hover {
 
 .loading {
   text-align: center;
-  padding: 40px;
-}
-
-.loading p {
-  margin-bottom: 20px;
-  font-size: 1.2em;
+  padding: 20px;
   color: #e6e6fa;
 }
 
@@ -160,10 +168,10 @@ header nav ul li a:hover {
   }
   
   #horoscope h2 {
-    font-size: 1.5em;
+    font-size: 1.8em;
   }
   
   #horoscope p {
-    font-size: 1em;
+    font-size: 1.1em;
   }
 }
