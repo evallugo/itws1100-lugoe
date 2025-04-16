@@ -1,4 +1,4 @@
-// commit to git
+
 <?php echo buildMenu(); ?>
 
 </div>

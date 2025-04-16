@@ -1,5 +1,3 @@
-// commit to git
-
 function validate(formObj) {
   
   if (formObj.firstNames.value == "") {
