@@ -10,31 +10,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!birthDate) {
         document.getElementById('horoscope').innerHTML = `
-      <div class="error-message">
+            <div class="error-message">
                 <p>Please set up your profile with a birth date first.</p>
-        <a href="../profile/profile.html" class="profile-link">Set Up Profile</a>
-      </div>
-    `;
-    return;
-  }
+                <a href="../profile/profile.html" class="profile-link">Set Up Profile</a>
+            </div>
+        `;
+        return;
+    }
   
     //validate birth date format
     const birthDateRegex = /^\d{4}-\d{2}-\d{2}$/;
     if (!birthDateRegex.test(birthDate)) {
         document.getElementById('horoscope').innerHTML = `
-        <div class="error-message">
+            <div class="error-message">
                 <p>Invalid birth date format. Please update your profile.</p>
-          <a href="../profile/profile.html" class="profile-link">Update Profile</a>
-        </div>
-      `;
-      return;
+                <a href="../profile/profile.html" class="profile-link">Update Profile</a>
+            </div>
+        `;
+        return;
     }
 
     //show loading state
     document.getElementById('horoscope').innerHTML = `
         <div class="loading">
             <p>Loading your personalized horoscope...</p>
-      </div>
+        </div>
     `;
 
     //calculate zodiac sign based on birth date
@@ -69,8 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const horoscopeText = generateDailyHoroscope(zodiacSign, uniqueSeed);
         
         document.getElementById('horoscope').innerHTML = `
-            <h2>${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}'s Horoscope</h2>
-            <p>${horoscopeText}</p>
+            <div class="horoscope-content">
+                <h2>${zodiacSign.charAt(0).toUpperCase() + zodiacSign.slice(1)}'s Horoscope</h2>
+                <p>${horoscopeText}</p>
+            </div>
         `;
     }, 1000);
 });
