@@ -1,7 +1,7 @@
 <?php
   /* Delete a movie-actor relationship */
   
-  // Get the id from the request
+  // get the id from the request
   $movieid = isset($_POST['movieid']) ? (int)$_POST['movieid'] : 0;
   $actorid = isset($_POST['actorid']) ? (int)$_POST['actorid'] : 0;
 
