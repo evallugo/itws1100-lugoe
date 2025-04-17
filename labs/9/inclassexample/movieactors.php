@@ -1,4 +1,6 @@
 <?php 
+  error_reporting(E_ALL);
+  ini_set('display_errors', 1);
   include('includes/init.inc.php'); // include the DOCTYPE and opening tags
   include('includes/functions.inc.php'); // functions
 ?>
@@ -106,7 +108,7 @@
 ?>
 
 <h3>Add Movie-Actor Relationship</h3>
-<form id="addForm" name="addForm" action="movieactors.php" method="post" onsubmit="return validate(this);">
+<form id="addForm" name="addForm" action="movieactors.php" method="post">
   <fieldset>
     <div class="formData">
       <label class="field" for="movieid">Movie:</label>
