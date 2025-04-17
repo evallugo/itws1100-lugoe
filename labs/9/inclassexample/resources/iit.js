@@ -168,15 +168,15 @@ $(document).ready(function() {
       
       $.ajax({
         type: "post",
-        url: "movieactor-delete.php",
+        url: "relationship-delete.php",
         dataType: "json",
         data: {
-          movieId: movieId,
-          actorId: actorId
+          movieid: movieId,
+          actorid: actorId
         },
         success: function(responseData, status){
-          if (responseData.errors) {
-            alert(responseData.errno + " " + responseData.error);
+          if (responseData.error) {
+            alert(responseData.error);
           } else {
             // remove the table row
             $row.remove();
