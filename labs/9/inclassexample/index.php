@@ -42,7 +42,7 @@ if ($havePost) {
    // Get the output and clean it for output on-screen.
    // First, let's get the output one param at a time.
    // Could also output escape with htmlentities()
-   $firstNames = htmlspecialchars(trim($_POST["firstName"]));
+   $firstName = htmlspecialchars(trim($_POST["firstName"]));
    $lastName = htmlspecialchars(trim($_POST["lastName"]));
    $dob = htmlspecialchars(trim($_POST["dob"]));
 
@@ -56,9 +56,9 @@ if ($havePost) {
 
    $focusId = ''; // trap the first field that needs updating, better would be to save errors in an array
 
-   if ($firstNames == '') {
+   if ($firstName == '') {
       $errors .= '<li>First name may not be blank</li>';
-      if ($focusId == '') $focusId = '#firstNames';
+      if ($focusId == '') $focusId = '#firstName';
    }
    if ($lastName == '') {
       $errors .= '<li>Last name may not be blank</li>';
@@ -87,22 +87,22 @@ if ($havePost) {
          // Let's trim the input for inserting into mysql
          // Note that aside from trimming, we'll do no further escaping because we
          // use prepared statements to put these values in the database.
-         $firstNamesForDb = trim($_POST["firstNames"]);
+         $firstNameForDb = trim($_POST["firstName"]);
          $lastNameForDb = trim($_POST["lastName"]);
          $dobForDb = trim($_POST["dob"]);
 
          // Setup a prepared statement. Alternately, we could write an insert statement - but
          // *only* if we escape our data using addslashes() or (better) mysqli_real_escape_string().
-         $insQuery = "insert into actors (`last_name`,`first_names`,`dob`) values(?,?,?)";
+         $insQuery = "insert into actors (`last_name`,`first_name`,`dob`) values(?,?,?)";
          $statement = $db->prepare($insQuery);
          // bind our variables to the question marks
-         $statement->bind_param("sss", $lastNameForDb, $firstNamesForDb, $dobForDb);
+         $statement->bind_param("sss", $lastNameForDb, $firstNameForDb, $dobForDb);
          // make it so:
          $statement->execute();
 
          // give the user some feedback
          echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' actor added to database.</h4>';
-         echo $firstNames . ' ' . $lastName . ', born ' . $dob . '</div>';
+         echo $firstName . ' ' . $lastName . ', born ' . $dob . '</div>';
 
          // close the prepared statement obj
          $statement->close();
@@ -116,10 +116,10 @@ if ($havePost) {
    <fieldset>
       <div class="formData">
 
-         <label class="field" for="firstNames">First Name(s):</label>
+         <label class="field" for="firstName">First Name:</label>
          <div class="value"><input type="text" size="60" value="<?php if ($havePost && $errors != '') {
-                                                                     echo $firstNames;
-                                                                  } ?>" name="firstNames" id="firstNames" /></div>
+                                                                     echo $firstName;
+                                                                  } ?>" name="firstName" id="firstName" /></div>
 
          <label class="field" for="lastName">Last Name:</label>
          <div class="value"><input type="text" size="60" value="<?php if ($havePost && $errors != '') {
