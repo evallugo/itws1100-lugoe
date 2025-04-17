@@ -60,7 +60,7 @@
         $actoridForDb = trim($_POST["actorid"]);
 
         // Insert using prepared statement
-        $insQuery = "INSERT INTO movie_actor (`movieid`,`actorid`) VALUES (?,?)";
+        $insQuery = "INSERT INTO movie_actor (`movie_id`,`actor_id`) VALUES (?,?)";
         $statement = $db->prepare($insQuery);
         $statement->bind_param("ss", $movieidForDb, $actoridForDb);
         $statement->execute();
@@ -80,10 +80,41 @@
   <fieldset>
     <div class="formData">
       <label class="field" for="movieid">Movie ID:</label>
-      <div class="value"><input type="text" size="40" value="<?php if($havePost && $errors != '') { echo $movieid; } ?>" name="movieid" id="movieid"/></div>
+      <div class="value">
+        <select name="movieid" id="movieid">
+          <option value="">Select a Movie</option>
+          <?php
+            if ($dbOk) {
+              $query = 'SELECT movieid, title, year FROM movies ORDER BY title';
+              $result = $db->query($query);
+              while ($record = $result->fetch_assoc()) {
+                echo '<option value="' . $record['movieid'] . '">' . 
+                     htmlspecialchars($record['title']) . ' (' . $record['year'] . ')</option>';
+              }
+              $result->free();
+            }
+          ?>
+        </select>
+      </div>
 
       <label class="field" for="actorid">Actor ID:</label>
-      <div class="value"><input type="text" size="40" value="<?php if($havePost && $errors != '') { echo $actorid; } ?>" name="actorid" id="actorid"/></div>
+      <div class="value">
+        <select name="actorid" id="actorid">
+          <option value="">Select an Actor</option>
+          <?php
+            if ($dbOk) {
+              $query = 'SELECT actorid, first_name, last_name FROM actors ORDER BY last_name, first_name';
+              $result = $db->query($query);
+              while ($record = $result->fetch_assoc()) {
+                echo '<option value="' . $record['actorid'] . '">' . 
+                     htmlspecialchars($record['first_name']) . ' ' . 
+                     htmlspecialchars($record['last_name']) . '</option>';
+              }
+              $result->free();
+            }
+          ?>
+        </select>
+      </div>
 
       <input type="submit" value="save" id="save" name="save"/>
     </div>
@@ -94,25 +125,26 @@
 <table id="movieActorTable">
 <?php
   if ($dbOk) {
-    $query = 'SELECT ma.movieid, ma.actorid, m.title, CONCAT(a.firstname, " ", a.lastname) as actor_name 
+    $query = 'SELECT m.title, m.year, a.first_name, a.last_name, ma.movie_id, ma.actor_id 
               FROM movie_actor ma 
-              JOIN movies m ON ma.movieid = m.movieid 
-              JOIN actors a ON ma.actorid = a.actorid 
-              ORDER BY ma.movieid';
+              JOIN movies m ON ma.movie_id = m.movieid 
+              JOIN actors a ON ma.actor_id = a.actorid 
+              ORDER BY m.title, a.last_name, a.first_name';
     $result = $db->query($query);
 
     if ($result) {
-      echo '<tr><th>Movie ID</th><th>Movie Title</th><th>Actor ID</th><th>Actor Name</th><th></th></tr>';
+      echo '<tr><th>Movie</th><th>Year</th><th>Actor</th><th></th></tr>';
       
       $i = 0;
       while ($record = $result->fetch_assoc()) {
         $rowClass = ($i % 2 == 0) ? '' : 'class="odd"';
         echo "<tr $rowClass>";
-        echo "<td>" . htmlspecialchars($record['movieid']) . "</td>";
         echo "<td>" . htmlspecialchars($record['title']) . "</td>";
-        echo "<td>" . htmlspecialchars($record['actorid']) . "</td>";
-        echo "<td>" . htmlspecialchars($record['actor_name']) . "</td>";
-        echo '<td><img src="resources/delete.png" class="deletemovieactor" width="16" height="16" alt="delete movie actor"/></td>';
+        echo "<td>" . htmlspecialchars($record['year']) . "</td>";
+        echo "<td>" . htmlspecialchars($record['first_name']) . " " . 
+             htmlspecialchars($record['last_name']) . "</td>";
+        echo '<td><img src="resources/delete.png" class="deletemovieactor" width="16" height="16" alt="delete movie actor relationship" data-movieid="' . 
+             $record['movie_id'] . '" data-actorid="' . $record['actor_id'] . '"/></td>';
         echo '</tr>';
         $i++;
       }
