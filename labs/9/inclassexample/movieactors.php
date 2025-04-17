@@ -56,18 +56,37 @@
     } else {
       if ($dbOk) {
         // Prepare data for insertion
-        $movieidForDb = trim($_POST["movieid"]);
-        $actoridForDb = trim($_POST["actorid"]);
+        $movieidForDb = (int)trim($_POST["movieid"]);
+        $actoridForDb = (int)trim($_POST["actorid"]);
 
         // Insert using prepared statement
         $insQuery = "INSERT INTO movie_actor (`movie_id`,`actor_id`) VALUES (?,?)";
         $statement = $db->prepare($insQuery);
-        $statement->bind_param("ss", $movieidForDb, $actoridForDb);
+        // bind our variables as integers
+        $statement->bind_param("ii", $movieidForDb, $actoridForDb);
         $statement->execute();
 
-        // Provide feedback
+        // Get the movie and actor details for the success message
+        $movieQuery = "SELECT title FROM movies WHERE movieid = ?";
+        $movieStmt = $db->prepare($movieQuery);
+        $movieStmt->bind_param("i", $movieidForDb);
+        $movieStmt->execute();
+        $movieResult = $movieStmt->get_result();
+        $movieTitle = $movieResult->fetch_assoc()['title'];
+        $movieStmt->close();
+
+        $actorQuery = "SELECT first_name, last_name FROM actors WHERE actorid = ?";
+        $actorStmt = $db->prepare($actorQuery);
+        $actorStmt->bind_param("i", $actoridForDb);
+        $actorStmt->execute();
+        $actorResult = $actorStmt->get_result();
+        $actor = $actorResult->fetch_assoc();
+        $actorName = $actor['first_name'] . ' ' . $actor['last_name'];
+        $actorStmt->close();
+
+        // Provide detailed feedback
         echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' relationship added to the database.</h4>';
-        echo 'Movie ID: ' . $movieid . ', Actor ID: ' . $actorid . '</div>';
+        echo 'Added ' . htmlspecialchars($actorName) . ' to movie "' . htmlspecialchars($movieTitle) . '"</div>';
 
         $statement->close();
       }
@@ -131,28 +150,26 @@
               JOIN actors a ON ma.actor_id = a.actorid 
               ORDER BY m.title, a.last_name, a.first_name';
     $result = $db->query($query);
+    $numRecords = $result->num_rows;
 
-    if ($result) {
-      echo '<tr><th>Movie</th><th>Year</th><th>Actor</th><th></th></tr>';
-      
-      $i = 0;
-      while ($record = $result->fetch_assoc()) {
-        $rowClass = ($i % 2 == 0) ? '' : 'class="odd"';
-        echo "<tr $rowClass>";
-        echo "<td>" . htmlspecialchars($record['title']) . "</td>";
-        echo "<td>" . htmlspecialchars($record['year']) . "</td>";
-        echo "<td>" . htmlspecialchars($record['first_name']) . " " . 
-             htmlspecialchars($record['last_name']) . "</td>";
-        echo '<td><img src="resources/delete.png" class="deletemovieactor" width="16" height="16" alt="delete movie actor relationship" data-movieid="' . 
-             $record['movie_id'] . '" data-actorid="' . $record['actor_id'] . '"/></td>';
-        echo '</tr>';
-        $i++;
+    echo '<tr><th>Movie</th><th>Year</th><th>Actor</th><th></th></tr>';
+    for ($i = 0; $i < $numRecords; $i++) {
+      $record = $result->fetch_assoc();
+      if ($i % 2 == 0) {
+        echo "\n".'<tr id="movieactor-' . $record['movie_id'] . '-' . $record['actor_id'] . '"><td>';
+      } else {
+        echo "\n".'<tr class="odd" id="movieactor-' . $record['movie_id'] . '-' . $record['actor_id'] . '"><td>';
       }
-
-      $result->free();
-    } else {
-      echo '<div class="messages">Error retrieving records from the database.</div>';
+      echo htmlspecialchars($record['title']) . '</td><td>';
+      echo htmlspecialchars($record['year']) . '</td><td>';
+      echo htmlspecialchars($record['first_name']) . ' ' . htmlspecialchars($record['last_name']);
+      echo '</td><td>';
+      echo '<img src="resources/delete.png" class="deletemovieactor" width="16" height="16" alt="delete movie actor relationship" data-movieid="' . 
+           $record['movie_id'] . '" data-actorid="' . $record['actor_id'] . '"/>';
+      echo '</td></tr>';
     }
+
+    $result->free();
 
     // Close the database connection
     $db->close();
