@@ -58,7 +58,7 @@
     } else {
       if ($dbOk) {
         // Check if relationship already exists
-        $checkQuery = "SELECT COUNT(*) as count FROM movie_actor WHERE movieid = ? AND actorid = ?";
+        $checkQuery = "SELECT COUNT(*) as count FROM relationship WHERE movieid = ? AND actorid = ?";
         $checkStmt = $db->prepare($checkQuery);
         $movieidForDb = (int)trim($_POST["movieid"]);
         $actoridForDb = (int)trim($_POST["actorid"]);
@@ -72,7 +72,7 @@
           echo '<div class="messages"><h4>Error: This movie-actor relationship already exists.</h4></div>';
         } else {
           // Insert using prepared statement
-          $insQuery = "INSERT INTO movie_actor (movieid, actorid) VALUES (?,?)";
+          $insQuery = "INSERT INTO relationship (movieid, actorid) VALUES (?,?)";
           $statement = $db->prepare($insQuery);
           // bind our variables as integers
           $statement->bind_param("ii", $movieidForDb, $actoridForDb);
@@ -157,10 +157,10 @@
 <table id="movieActorTable">
 <?php
   if ($dbOk) {
-    $query = 'SELECT m.title, m.year, a.first_name, a.last_name, ma.movieid, ma.actorid 
-              FROM movie_actor ma 
-              JOIN movies m ON ma.movieid = m.movieid 
-              JOIN actors a ON ma.actorid = a.actorid 
+    $query = 'SELECT m.title, m.year, a.first_name, a.last_name, r.movieid, r.actorid 
+              FROM relationship r 
+              JOIN movies m ON r.movieid = m.movieid 
+              JOIN actors a ON r.actorid = a.actorid 
               ORDER BY m.title, a.last_name, a.first_name';
     $result = $db->query($query);
     $numRecords = $result->num_rows;
