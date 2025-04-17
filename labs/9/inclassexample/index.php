@@ -42,7 +42,7 @@ if ($havePost) {
    // Get the output and clean it for output on-screen.
    // First, let's get the output one param at a time.
    // Could also output escape with htmlentities()
-   $firstNames = htmlspecialchars(trim($_POST["firstNames"]));
+   $firstNames = htmlspecialchars(trim($_POST["firstName"]));
    $lastName = htmlspecialchars(trim($_POST["lastName"]));
    $dob = htmlspecialchars(trim($_POST["dob"]));
 
@@ -153,18 +153,13 @@ if ($havePost) {
          } else {
             echo "\n" . '<tr class="odd" id="actor-' . $record['actorid'] . '"><td>';
          }
-         echo htmlspecialchars($record['last_name']) . ', ';
-         echo htmlspecialchars($record['first_names']);
+         echo htmlspecialchars($record['first_name']) . ' ';
+         echo htmlspecialchars($record['last_name']);
          echo '</td><td>';
          echo htmlspecialchars($record['dob']);
          echo '</td><td>';
          echo '<img src="resources/delete.png" class="deleteActor" width="16" height="16" alt="delete actor"/>';
          echo '</td></tr>';
-         // Uncomment the following three lines to see the underlying
-         // associative array for each record.
-         // echo '<tr><td colspan="3" style="white-space: pre;">';
-         // print_r($record);
-         // echo '</td></tr>';
       }
 
       $result->free();
