@@ -1,1 +1,1 @@
-Hallelujah I think I did it. Things tend to work better when you read things all the way. Lol. 
+Hallelujah, I did it. Things tend to work better when you read things all the way. Thanks for all the help and patience. 

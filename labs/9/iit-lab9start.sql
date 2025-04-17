@@ -26,7 +26,16 @@ VALUES
    ("Leonardo", "DiCaprio", "1958-11-11"),
    ("Morgan", "Freeman", "1937-06-01");
 
-   INSERT INTO `relationship` (`movieid`, `actorid`) VALUES
+--create the relationship table
+CREATE TABLE `relationship` (
+    `movieid` int(10) unsigned NOT NULL,
+    `actorid` int(10) unsigned NOT NULL,
+    PRIMARY KEY (`movieid`,`actorid`),
+    KEY `actorid` (`actorid`),
+    );
+
+-- insert data into the relationship table
+INSERT INTO `relationship` (`movieid`, `actorid`) VALUES
 (8,1),
 (7,4), 
 (6,5);
