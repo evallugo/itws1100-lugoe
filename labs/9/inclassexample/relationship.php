@@ -108,7 +108,7 @@
 ?>
 
 <h3>Add Movie-Actor Relationship</h3>
-<form id="addForm" name="addForm" action="movieactors.php" method="post">
+<form id="addForm" name="addForm" action="relationship.php" method="post">
   <fieldset>
     <div class="formData">
       <label class="field" for="movieid">Movie:</label>
