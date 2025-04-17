@@ -1,21 +1,61 @@
 function validate(formObj) {
-  
-  if (formObj.firstNames.value == "") {
-    alert("Please enter a first name");
-    formObj.firstNames.focus();
-    return false;
+  // For actors form
+  if (formObj.firstNames && formObj.lastName && formObj.dob) {
+    if (formObj.firstNames.value == "") {
+      alert("Please enter a first name");
+      formObj.firstNames.focus();
+      return false;
+    }
+    
+    if (formObj.lastName.value == "") {
+      alert("Please enter a last name");
+      formObj.lastName.focus();
+      return false;
+    }
+    
+    if (formObj.dob.value == "") {
+      alert("Please enter a date of birth");
+      formObj.dob.focus();
+      return false;
+    }
   }
   
-  if (formObj.lastName.value == "") {
-    alert("Please enter a last name");
-    formObj.lastName.focus();
-    return false;
+  // For movies form
+  if (formObj.title && formObj.year) {
+    if (formObj.title.value == "") {
+      alert("Please enter a movie title");
+      formObj.title.focus();
+      return false;
+    }
+    
+    if (formObj.year.value == "") {
+      alert("Please enter a year");
+      formObj.year.focus();
+      return false;
+    }
+    
+    // Check if year is a valid 4-digit number
+    var yearPattern = /^\d{4}$/;
+    if (!yearPattern.test(formObj.year.value)) {
+      alert("Please enter a valid 4-digit year");
+      formObj.year.focus();
+      return false;
+    }
   }
   
-  if (formObj.dob.value == "") {
-    alert("Please enter a date of birth");
-    formObj.dob.focus();
-    return false;
+  // For movie-actor relationship form
+  if (formObj.movieid && formObj.actorid) {
+    if (formObj.movieid.value == "") {
+      alert("Please select a movie");
+      formObj.movieid.focus();
+      return false;
+    }
+    
+    if (formObj.actorid.value == "") {
+      alert("Please select an actor");
+      formObj.actorid.focus();
+      return false;
+    }
   }
     
   return true;
