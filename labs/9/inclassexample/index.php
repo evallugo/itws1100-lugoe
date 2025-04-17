@@ -141,7 +141,7 @@ if ($havePost) {
    <?php
    if ($dbOk) {
 
-      $query = 'select * from actors order by last_name';
+      $query = 'select * from actors order by actorid';
       $result = $db->query($query);
       $numRecords = $result->num_rows;
 
