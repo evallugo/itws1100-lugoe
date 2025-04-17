@@ -36,11 +36,11 @@
     $focusId = '';
 
     if ($movieid == '') {
-      $errors .= '<li>Movie ID may not be blank</li>';
+      $errors .= '<li>Movie may not be blank</li>';
       if ($focusId == '') $focusId = '#movieid';
     }
     if ($actorid == '') {
-      $errors .= '<li>Actor ID may not be blank</li>';
+      $errors .= '<li>Actor may not be blank</li>';
       if ($focusId == '') $focusId = '#actorid';
     }
 
@@ -55,40 +55,51 @@
       echo '</script>';
     } else {
       if ($dbOk) {
-        // Prepare data for insertion
+        // Check if relationship already exists
+        $checkQuery = "SELECT COUNT(*) as count FROM movie_actor WHERE movieid = ? AND actorid = ?";
+        $checkStmt = $db->prepare($checkQuery);
         $movieidForDb = (int)trim($_POST["movieid"]);
         $actoridForDb = (int)trim($_POST["actorid"]);
+        $checkStmt->bind_param("ii", $movieidForDb, $actoridForDb);
+        $checkStmt->execute();
+        $checkResult = $checkStmt->get_result();
+        $count = $checkResult->fetch_assoc()['count'];
+        $checkStmt->close();
 
-        // Insert using prepared statement
-        $insQuery = "INSERT INTO movie_actor (`movie_id`,`actor_id`) VALUES (?,?)";
-        $statement = $db->prepare($insQuery);
-        // bind our variables as integers
-        $statement->bind_param("ii", $movieidForDb, $actoridForDb);
-        $statement->execute();
+        if ($count > 0) {
+          echo '<div class="messages"><h4>Error: This movie-actor relationship already exists.</h4></div>';
+        } else {
+          // Insert using prepared statement
+          $insQuery = "INSERT INTO movie_actor (movieid, actorid) VALUES (?,?)";
+          $statement = $db->prepare($insQuery);
+          // bind our variables as integers
+          $statement->bind_param("ii", $movieidForDb, $actoridForDb);
+          $statement->execute();
 
-        // Get the movie and actor details for the success message
-        $movieQuery = "SELECT title FROM movies WHERE movieid = ?";
-        $movieStmt = $db->prepare($movieQuery);
-        $movieStmt->bind_param("i", $movieidForDb);
-        $movieStmt->execute();
-        $movieResult = $movieStmt->get_result();
-        $movieTitle = $movieResult->fetch_assoc()['title'];
-        $movieStmt->close();
+          // Get the movie and actor details for the success message
+          $movieQuery = "SELECT title FROM movies WHERE movieid = ?";
+          $movieStmt = $db->prepare($movieQuery);
+          $movieStmt->bind_param("i", $movieidForDb);
+          $movieStmt->execute();
+          $movieResult = $movieStmt->get_result();
+          $movieTitle = $movieResult->fetch_assoc()['title'];
+          $movieStmt->close();
 
-        $actorQuery = "SELECT first_name, last_name FROM actors WHERE actorid = ?";
-        $actorStmt = $db->prepare($actorQuery);
-        $actorStmt->bind_param("i", $actoridForDb);
-        $actorStmt->execute();
-        $actorResult = $actorStmt->get_result();
-        $actor = $actorResult->fetch_assoc();
-        $actorName = $actor['first_name'] . ' ' . $actor['last_name'];
-        $actorStmt->close();
+          $actorQuery = "SELECT first_name, last_name FROM actors WHERE actorid = ?";
+          $actorStmt = $db->prepare($actorQuery);
+          $actorStmt->bind_param("i", $actoridForDb);
+          $actorStmt->execute();
+          $actorResult = $actorStmt->get_result();
+          $actor = $actorResult->fetch_assoc();
+          $actorName = $actor['first_name'] . ' ' . $actor['last_name'];
+          $actorStmt->close();
 
-        // Provide detailed feedback
-        echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' relationship added to the database.</h4>';
-        echo 'Added ' . htmlspecialchars($actorName) . ' to movie "' . htmlspecialchars($movieTitle) . '"</div>';
+          // Provide detailed feedback
+          echo '<div class="messages"><h4>Success: ' . $statement->affected_rows . ' relationship added to the database.</h4>';
+          echo 'Added ' . htmlspecialchars($actorName) . ' to movie "' . htmlspecialchars($movieTitle) . '"</div>';
 
-        $statement->close();
+          $statement->close();
+        }
       }
     }
   }
@@ -98,7 +109,7 @@
 <form id="addForm" name="addForm" action="movieactors.php" method="post" onsubmit="return validate(this);">
   <fieldset>
     <div class="formData">
-      <label class="field" for="movieid">Movie ID:</label>
+      <label class="field" for="movieid">Movie:</label>
       <div class="value">
         <select name="movieid" id="movieid">
           <option value="">Select a Movie</option>
@@ -116,7 +127,7 @@
         </select>
       </div>
 
-      <label class="field" for="actorid">Actor ID:</label>
+      <label class="field" for="actorid">Actor:</label>
       <div class="value">
         <select name="actorid" id="actorid">
           <option value="">Select an Actor</option>
@@ -144,10 +155,10 @@
 <table id="movieActorTable">
 <?php
   if ($dbOk) {
-    $query = 'SELECT m.title, m.year, a.first_name, a.last_name, ma.movie_id, ma.actor_id 
+    $query = 'SELECT m.title, m.year, a.first_name, a.last_name, ma.movieid, ma.actorid 
               FROM movie_actor ma 
-              JOIN movies m ON ma.movie_id = m.movieid 
-              JOIN actors a ON ma.actor_id = a.actorid 
+              JOIN movies m ON ma.movieid = m.movieid 
+              JOIN actors a ON ma.actorid = a.actorid 
               ORDER BY m.title, a.last_name, a.first_name';
     $result = $db->query($query);
     $numRecords = $result->num_rows;
@@ -156,27 +167,28 @@
     for ($i = 0; $i < $numRecords; $i++) {
       $record = $result->fetch_assoc();
       if ($i % 2 == 0) {
-        echo "\n".'<tr id="movieactor-' . $record['movie_id'] . '-' . $record['actor_id'] . '"><td>';
+        echo "\n".'<tr id="movieactor-' . $record['movieid'] . '-' . $record['actorid'] . '"><td>';
       } else {
-        echo "\n".'<tr class="odd" id="movieactor-' . $record['movie_id'] . '-' . $record['actor_id'] . '"><td>';
+        echo "\n".'<tr class="odd" id="movieactor-' . $record['movieid'] . '-' . $record['actorid'] . '"><td>';
       }
       echo htmlspecialchars($record['title']) . '</td><td>';
       echo htmlspecialchars($record['year']) . '</td><td>';
       echo htmlspecialchars($record['first_name']) . ' ' . htmlspecialchars($record['last_name']);
       echo '</td><td>';
       echo '<img src="resources/delete.png" class="deletemovieactor" width="16" height="16" alt="delete movie actor relationship" data-movieid="' . 
-           $record['movie_id'] . '" data-actorid="' . $record['actor_id'] . '"/>';
+           $record['movieid'] . '" data-actorid="' . $record['actorid'] . '"/>';
       echo '</td></tr>';
     }
 
     $result->free();
-
-    // Close the database connection
-    $db->close();
   }
 ?>
 </table>
 
-<?php include('includes/foot.inc.php');
-  // footer info and closing tags
+<?php 
+  // Only close the database connection at the very end
+  if ($dbOk) {
+    $db->close();
+  }
+  include('includes/foot.inc.php');
 ?>
