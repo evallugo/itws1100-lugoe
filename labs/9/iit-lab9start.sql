@@ -28,5 +28,5 @@ VALUES
 
    INSERT INTO `relationship` (`movieid`, `actorid`) VALUES
 (8,1),
-()
-
+(7,4), 
+(6,5);
