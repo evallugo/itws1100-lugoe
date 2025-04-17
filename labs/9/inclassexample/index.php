@@ -1,12 +1,10 @@
 <?php
-// Include necessary files
-include('includes/init.inc.php');    // Initialize basic HTML structure
-include('includes/functions.inc.php'); // Include common functions
+include('includes/init.inc.php'); // include the DOCTYPE and opening tags
+include('includes/functions.inc.php'); // functions
 ?>
 <title>PHP &amp; MySQL - ITWS</title>
 
 <?php
-// Include header elements and open body tag
 include('includes/head.inc.php');
 // include global css, javascript, end the head and open the body
 ?>
@@ -16,7 +14,10 @@ include('includes/head.inc.php');
 <?php include('includes/menubody.inc.php'); ?>
 
 <?php
-// Database connection setup
+// We'll need a database connection both for retrieving records and for
+// inserting them.  Let's get it up front and use it for both processes
+// to avoid opening the connection twice.  If we make a good connection,
+// we'll change the $dbOk flag.
 $dbOk = false;
 
 /* Create a new database connection object, passing in the host, username,
