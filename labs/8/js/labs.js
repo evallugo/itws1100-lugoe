@@ -3,7 +3,7 @@ $(document).ready(function() {
 
   //load labs from json file
   $.ajax({
-    url: '../projects.json',
+    url: '../../labs/8/projects.json',
     dataType: 'json',
     success: function(data) {
       const buttonsContainer = $('.buttons');
@@ -59,15 +59,16 @@ $(document).ready(function() {
     },
     error: function(xhr, status, error) {
       console.error('Error loading projects:', error);
-      //fallback static buttons if json fails to load
       $('.buttons').html(`
-        <a href="lab1.html" class="button">Lab 1 <i class="fas fa-flask"></i></a>
-        <a href="lab2.html" class="button">Lab 2 <i class="fas fa-flask"></i></a>
-        <a href="../4/index.html" class="button">Lab 4 <i class="fas fa-flask"></i></a>
-        <a href="../5/lab5.html" class="button">Lab 5 <i class="fas fa-flask"></i></a>
-        <a href="../6/lab6.html" class="button">Lab 6 <i class="fas fa-flask"></i></a>
-        <a href="../7/lab7.html" class="button">Lab 7 <i class="fas fa-flask"></i></a>
-        <a href="../8/lab8.html" class="button">Lab 8 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/3/lab1.html" class="button">Lab 1 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/3/lab2.html" class="button">Lab 2 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/4/index.html" class="button">Lab 4 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/5/lab5.html" class="button">Lab 5 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/6/lab6.html" class="button">Lab 6 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/7/lab7.html" class="button">Lab 7 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/8/lab8.html" class="button">Lab 8 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/9/index.php" class="button">Lab 9 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/10/index.php" class="button">Lab 10 <i class="fas fa-flask"></i></a>
       `);
     }
   });
