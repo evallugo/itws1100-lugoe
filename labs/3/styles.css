@@ -81,9 +81,10 @@ li {
    padding: 10px 20px;
    text-decoration: none;
    color: hotpink;
-   font-family: 'Courier New', Courier, monospace;
+   font-family: 'Alice', serif;
    font-weight: bold;
    transition: all 0.3s ease;
+   border-radius: 3px;
 }
 
 .buttons a:hover {
@@ -126,8 +127,7 @@ li {
    gap: 15px;
 }
 
-.header nav a,
-.header nav button {
+.header nav a {
    font-family: 'Alice', serif;
    color: white;
    text-decoration: none;
@@ -136,18 +136,31 @@ li {
    padding: 5px 10px;
    transition: background-color 0.3s ease, color 0.3s ease;
    border-radius: 3px;
-   border: none;
-   background-color: transparent;
-   cursor: pointer;
    display: flex;
    align-items: center;
    gap: 5px;
 }
 
-.header nav a:hover,
-.header nav button:hover {
+.header nav a:hover {
    background-color: white;
    color: hotpink;
+}
+
+/* Add specific styles for GitHub and LinkedIn buttons */
+.header nav a[href*="github"],
+.header nav a[href*="linkedin"] {
+   font-family: 'Alice', serif;
+   display: flex;
+   align-items: center;
+   gap: 5px;
+}
+
+.buttons a[href*="github"],
+.buttons a[href*="linkedin"] {
+   font-family: 'Alice', serif;
+   display: inline-flex;
+   align-items: center;
+   gap: 5px;
 }
 
 /*labs.html styles*/
@@ -169,6 +182,7 @@ li {
 .labs .buttons a,
 .labs .buttons button {
    color: white;
+   font-family: 'Alice', serif;
 }
 
 .labs::before {
@@ -326,8 +340,8 @@ li {
 .index .buttons a,
 .index .buttons button {
    color: white;
+   font-family: 'Alice', serif;
 }
-
 
 .index .center {
    display: inline-block;
