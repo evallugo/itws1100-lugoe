@@ -37,7 +37,7 @@ $(document).ready(function() {
     error: function(xhr, status, error) {
       console.error('Error loading projects:', error);
       const fallbackButtons = `
-        <a href="../../labs/1/lab1.html" class="button">Lab 1 <i class="fas fa-flask"></i></a>
+        <a href="../../labs/3/lab1.html" class="button">Lab 1 <i class="fas fa-flask"></i></a>
         <a href="../../labs/3/lab2.html" class="button">Lab 2 <i class="fas fa-flask"></i></a>
         <a href="../../labs/4/index.html" class="button">Lab 4 <i class="fas fa-flask"></i></a>
         <a href="../../labs/5/lab5.html" class="button">Lab 5 <i class="fas fa-flask"></i></a>
