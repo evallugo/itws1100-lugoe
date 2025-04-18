@@ -87,14 +87,6 @@ li {
    transition: all 0.3s ease;
    border-radius: 3px;
    gap: 5px;
-   opacity: 0;
-   transform: translateY(10px);
-   will-change: transform, opacity;
-}
-
-.buttons a.visible {
-   opacity: 1;
-   transform: translateY(0);
 }
 
 .buttons a i {
@@ -104,7 +96,6 @@ li {
 .buttons a:hover {
    background-color: rgba(255, 105, 180, 0.6);
    color: white;
-   transform: scale(1.03);
 }
 
 /*footer (general)*/
@@ -397,4 +388,22 @@ li {
 
 .prev-lab:hover, .next-lab:hover {
     opacity: 0.8;
+}
+
+/* Lab page specific button animations */
+.labs .buttons a {
+   opacity: 0;
+   transform: translateY(10px);
+   will-change: transform, opacity;
+}
+
+.labs .buttons a.visible {
+   opacity: 1;
+   transform: translateY(0);
+}
+
+.labs .buttons a:hover {
+   background-color: rgba(255, 105, 180, 0.6);
+   color: white;
+   transform: scale(1.03);
 }
