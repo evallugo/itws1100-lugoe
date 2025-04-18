@@ -25,41 +25,18 @@ $(document).ready(function() {
           hide: { effect: "fadeOut", duration: 200 }
         });
 
-        //set initial state for entrance animation
-        button.css({
-          'opacity': '0',
-          'transform': 'translateY(10px)'
-        }).appendTo(buttonsContainer);
+        //append button to container
+        button.appendTo(buttonsContainer);
 
         //animate button entrance with fade and slide
         setTimeout(() => {
-          button.css({
-            'transition': 'all 0.6s ease',
-            'opacity': '1',
-            'transform': 'translateY(0)'
-          });
+          button.addClass('visible');
         }, index * 150);
-        
-        //add subtle hover animation
-        button.hover(
-          function() { 
-            $(this).css({
-              'transform': 'scale(1.03)',
-              'transition': 'all 0.4s ease'
-            });
-          },
-          function() { 
-            $(this).css({
-              'transform': 'scale(1)',
-              'transition': 'all 0.4s ease'
-            });
-          }
-        );
       });
     },
     error: function(xhr, status, error) {
       console.error('Error loading projects:', error);
-      $('.buttons').html(`
+      const fallbackButtons = `
         <a href="../../labs/3/lab1.html" class="button">Lab 1 <i class="fas fa-flask"></i></a>
         <a href="../../labs/3/lab2.html" class="button">Lab 2 <i class="fas fa-flask"></i></a>
         <a href="../../labs/4/index.html" class="button">Lab 4 <i class="fas fa-flask"></i></a>
@@ -69,7 +46,16 @@ $(document).ready(function() {
         <a href="../../labs/8/lab8.html" class="button">Lab 8 <i class="fas fa-flask"></i></a>
         <a href="../../labs/9/index.php" class="button">Lab 9 <i class="fas fa-flask"></i></a>
         <a href="../../labs/10/index.php" class="button">Lab 10 <i class="fas fa-flask"></i></a>
-      `);
+      `;
+      
+      $('.buttons').html(fallbackButtons);
+      
+      // Animate fallback buttons
+      $('.buttons a').each(function(index) {
+        setTimeout(() => {
+          $(this).addClass('visible');
+        }, index * 150);
+      });
     }
   });
 }); 
