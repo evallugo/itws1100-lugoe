@@ -4,7 +4,7 @@ $pageTitle = "Eva Lugo";
 $pageClass = "home";
 
 //include the required files
-include($_SERVER['DOCUMENT_ROOT'] . '/iit/Quiz3/includes/head.inc.php');
+include('Quiz3/includes/head.inc.php');
 ?>
 
 <div class="content">
@@ -13,5 +13,5 @@ include($_SERVER['DOCUMENT_ROOT'] . '/iit/Quiz3/includes/head.inc.php');
 </div>
 
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/iit/Quiz3/includes/foot.inc.php');
+include('Quiz3/includes/foot.inc.php');
 ?> 
