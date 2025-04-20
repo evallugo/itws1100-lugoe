@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 //include database connection
-require_once 'conn.php';
+require_once __DIR__ . '/../conn.php';
 
 //function to handle login
 function handleLogin($db) {

@@ -2,7 +2,7 @@
     <div class="footer">
       <?php
       //include database connection
-      require_once 'Quiz3/conn.php';
+      require_once __DIR__ . '/../conn.php';
 
       //get footer text from database
       $footer_query = "SELECT footer_text FROM myFooter ORDER BY footer_id DESC LIMIT 1";
