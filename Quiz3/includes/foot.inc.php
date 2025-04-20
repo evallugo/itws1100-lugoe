@@ -1,20 +1,28 @@
-    </div>
-    <div class="footer">
-      <?php
-      //include database connection
-      require_once 'Quiz3/conn.php';
+<?php
+// Database connection
+$conn = mysqli_connect("localhost", "root", "", "mySite");
 
-      //get footer text from database
-      $footer_query = "SELECT footer_text FROM myFooter ORDER BY footer_id DESC LIMIT 1";
-      $footer_result = $db->query($footer_query);
-      $footer_text = "© 2025 Eva Lugo. All rights reserved."; //default text
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-      if ($footer_result && $footer_result->num_rows > 0) {
-          $footer_row = $footer_result->fetch_assoc();
-          $footer_text = $footer_row['footer_text'];
-      }
-      echo htmlspecialchars($footer_text);
-      ?>
-    </div>
-  </body>
+// Get footer text from database
+$sql = "SELECT footerText FROM myFooter WHERE id = 1";
+$result = mysqli_query($conn, $sql);
+
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $footerText = $row['footerText'];
+} else {
+    $footerText = "© 2024 Eva Lugo. All rights reserved.";
+}
+
+mysqli_close($conn);
+?>
+
+<footer>
+    <p><?php echo $footerText; ?></p>
+</footer>
+</body>
 </html>
