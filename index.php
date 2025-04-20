@@ -1,17 +1,33 @@
 <?php
 //set page variables
-$pageTitle = "Eva Lugo";
-$pageClass = "home";
+$page_title = "Eva Lugo";
+$page_class = "index";
 
 //include the required files
 include('Quiz3/includes/head.inc.php');
 ?>
 
-<div class="content">
+<div class="center">
+  <div class="center-content">
     <h1>Eva Lugo</h1>
-    <p>Welcome to my website! I am a student at Rensselaer Polytechnic Institute studying Information Technology and Web Science.</p>
+    <div class="buttons">
+      <a href="aboutme.php">
+        About Me <i class="fa-solid fa-user"></i>
+      </a>
+      <a href="resume.php">
+        Resume <i class="fa-solid fa-file"></i>
+      </a>
+      <a href="labs.php">
+        Labs <i class="fa-solid fa-folder"></i>
+      </a>
+      <a href="https://github.com/evallugo" target="_blank" rel="noopener noreferrer">
+        GitHub <i class="fa-brands fa-github"></i>
+      </a>   
+      <a href="https://www.linkedin.com/in/eva-lugo" target="_blank" rel="noopener noreferrer">
+        LinkedIn <i class="fa-brands fa-linkedin"></i>
+      </a>       
+    </div>
+  </div>
 </div>
 
-<?php
-include('Quiz3/includes/foot.inc.php');
-?> 
+<?php include('Quiz3/includes/foot.inc.php'); ?> 
