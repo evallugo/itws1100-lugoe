@@ -11,13 +11,13 @@ include('Quiz3/includes/head.inc.php');
   <div class="center-content">
     <h1>Eva Lugo</h1>
     <div class="buttons">
-      <a href="labs/3/aboutme.html">
+      <a href="aboutme.php">
         About Me <i class="fa-solid fa-user"></i>
       </a>
-      <a href="labs/3/resume.html">
+      <a href="resume.php">
         Resume <i class="fa-solid fa-file"></i>
       </a>
-      <a href="labs/3/labs.html">
+      <a href="labs.php">
         Labs <i class="fa-solid fa-folder"></i>
       </a>
       <a href="https://github.com/evallugo" target="_blank" rel="noopener noreferrer">
