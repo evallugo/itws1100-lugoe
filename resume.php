@@ -4,10 +4,10 @@ $page_title = "Resume - Eva Lugo";
 $page_class = "resume-page";
 
 // Include necessary files
-include('Quiz3/includes/init.inc.php');
-include('Quiz3/includes/head.inc.php');
-include('Quiz3/includes/menu.inc.php');
-include('Quiz3/includes/login.inc.php');
+require_once __DIR__ . '/Quiz3/includes/init.inc.php';
+require_once __DIR__ . '/Quiz3/includes/head.inc.php';
+require_once __DIR__ . '/Quiz3/includes/menu.inc.php';
+require_once __DIR__ . '/Quiz3/includes/login.inc.php';
 ?>
 
 <div class="content">
@@ -78,5 +78,5 @@ include('Quiz3/includes/login.inc.php');
 
 <?php
 // Include footer
-include('Quiz3/includes/foot.inc.php');
+require_once __DIR__ . '/Quiz3/includes/foot.inc.php';
 ?> 

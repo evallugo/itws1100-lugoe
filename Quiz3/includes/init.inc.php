@@ -14,5 +14,5 @@ if (!isset($page_class)) {
 }
 
 //include database connection
-require_once 'conn.php';
+require_once __DIR__ . '/../conn.php';
 ?> 
