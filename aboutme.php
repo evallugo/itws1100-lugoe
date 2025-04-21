@@ -13,7 +13,7 @@ require_once __DIR__ . '/Quiz3/includes/head.inc.php';
     
     <div class="about-container">
         <div class="profile-pic">
-            <img src="labs/3/IMG_2174.jpg" alt="Eva Lugo">
+            <img src="labs/3/=headsho.jpeg" alt="Eva Lugo">
         </div>
         
         <div class="bio">
