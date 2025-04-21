@@ -6,7 +6,7 @@ define('INCLUDED', true);
 
 //include the required files
 require_once __DIR__ . '/Quiz3/includes/init.inc.php';
-require_once __DIR__ . '/Quiz3/includes/head.inc.php';
+require_once __DIR__ . '/Quiz3/includes/header.php';
 ?>
 
 <div class="center">
