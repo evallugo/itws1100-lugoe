@@ -241,8 +241,8 @@
 }
 
 .labs-intro h1 {
-    font-size: 2.5rem;
-    color: var(--text-color);
+    font-size: 42px;
+    color: hotpink;
     margin-bottom: 1rem;
 }
 
@@ -276,8 +276,8 @@
 }
 
 .labs-intro h1 {
-    font-size: 2.5rem;
-    color: var(--text-color);
+    font-size: 42px;
+    color: hotpink;
     margin-bottom: 1rem;
 }
 
@@ -290,63 +290,39 @@
 
 /* Lab Grid Layout */
 .lab-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
+    text-align: center;
+    margin: 20px 0;
 }
 
 /* Lab Button Styles */
 .lab-button {
-    background: white;
-    border: 2px solid var(--primary-color);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    text-decoration: none;
-    color: var(--text-color);
-    transition: var(--transition);
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    position: relative;
-    top: 0;
-}
-
-.lab-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    border-color: var(--secondary-color);
+    margin: 0 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: hotpink;
+    font-family: 'Alice', serif;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    gap: 5px;
 }
 
 .lab-button i {
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-left: 5px;
 }
 
-.lab-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--secondary-color);
-}
-
-.lab-description {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.5;
+.lab-button:hover {
+    background-color: rgba(255, 105, 180, 0.6);
+    color: white;
 }
 
 /* No Labs Message */
 .no-labs {
     text-align: center;
-    padding: 3rem;
-    background: var(--light-bg);
-    border-radius: var(--border-radius);
-    font-size: 1.1rem;
-    color: var(--text-color);
-    margin: 2rem auto;
-    max-width: 600px;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+    width: 100%;
 } 
