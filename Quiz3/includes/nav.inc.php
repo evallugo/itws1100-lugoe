@@ -1,10 +1,10 @@
 <div class="header">
     <nav>
-        <a href="index.php"><i class="fas fa-home"></i> Home</a>
-        <a href="./aboutme.php"><i class="fa-solid fa-user"></i> About</a>
-        <a href="./resume.php"><i class="fa-solid fa-file"></i> Resume</a>
-        <a href="./labs.php"><i class="fa-solid fa-folder"></i> Labs</a>
-        <a href="./projects.php"><i class="fa-solid fa-code"></i> Projects</a>
+        <a href="/iit/Quiz3/index.php"><i class="fas fa-home"></i> Home</a>
+        <a href="/iit/Quiz3/aboutme.php"><i class="fa-solid fa-user"></i> About</a>
+        <a href="/iit/Quiz3/resume.php"><i class="fa-solid fa-file"></i> Resume</a>
+        <a href="/iit/Quiz3/labs.php"><i class="fa-solid fa-folder"></i> Labs</a>
+        <a href="/iit/Quiz3/projects.php"><i class="fa-solid fa-code"></i> Projects</a>
         <a href="https://github.com/evallugo" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-github"></i> GitHub
         </a>  
