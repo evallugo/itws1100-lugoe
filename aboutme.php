@@ -13,24 +13,27 @@ require_once __DIR__ . '/Quiz3/includes/head.inc.php';
     
     <div class="about-container">
         <div class="profile-pic">
-            <img src="labs/3/images/profile.jpg" alt="Eva Lugo">
+            <img src="labs/3/IMG_2174.jpg" alt="Eva Lugo">
         </div>
         
         <div class="bio">
             <p>Hello! I'm Eva Lugo, a student at Rensselaer Polytechnic Institute (RPI) studying Information Technology and Web Science.</p>
             
-            <p>I'm passionate about web development and creating user-friendly applications. This website showcases my work throughout the ITWS-1100 course, where I've learned various web technologies including HTML, CSS, JavaScript, PHP, and more.</p>
+            <p>I'm passionate about web development and creating user-friendly applications. Throughout my coursework at RPI, I've gained experience in various web technologies and programming languages. I enjoy solving complex problems and creating elegant solutions.</p>
             
-            <p>When I'm not coding, I enjoy exploring new technologies, reading, and spending time outdoors.</p>
+            <p>When I'm not coding, I enjoy exploring new technologies, reading about tech trends, and contributing to open-source projects. I'm always eager to learn new skills and take on challenging projects.</p>
             
-            <h2>Skills</h2>
-            <ul>
-                <li class="bullet">HTML5 & CSS3</li>
-                <li class="bullet">JavaScript & jQuery</li>
-                <li class="bullet">PHP & MySQL</li>
-                <li class="bullet">Responsive Web Design</li>
-                <li class="bullet">Git Version Control</li>
-            </ul>
+            <div class="skills">
+                <h2>Technical Skills</h2>
+                <ul>
+                    <li class="bullet">HTML5 & CSS3</li>
+                    <li class="bullet">JavaScript & jQuery</li>
+                    <li class="bullet">PHP & MySQL</li>
+                    <li class="bullet">Python & Java</li>
+                    <li class="bullet">Git Version Control</li>
+                    <li class="bullet">Responsive Web Design</li>
+                </ul>
+            </div>
         </div>
     </div>
     
