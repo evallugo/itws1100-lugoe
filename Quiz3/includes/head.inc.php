@@ -11,4 +11,4 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 </head>
-<body class="<?php echo $page_class; ?>"> 
+<body class="<?php echo isset($page_type) && $page_type === 'plain' ? 'plain' : ''; ?>">
