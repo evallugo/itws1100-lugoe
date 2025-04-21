@@ -79,10 +79,14 @@ nav a:hover {
 /* Buttons */
 .buttons {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-direction: row;   /* ← make them go horizontally */
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   margin-top: 20px;
+  flex-wrap: wrap;       /* ← allow wrapping on small screens */
 }
+
 
 .buttons a {
   background-color: transparent;
