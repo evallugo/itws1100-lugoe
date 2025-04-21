@@ -1,19 +1,17 @@
 <?php
 // Set page variables
 $page_title = "Labs - Eva Lugo";
-$page_class = "labs-page";
+$page_class = "labs";
 
 // Include necessary files
 require_once __DIR__ . '/Quiz3/includes/init.inc.php';
 require_once __DIR__ . '/Quiz3/includes/head.inc.php';
-require_once __DIR__ . '/Quiz3/includes/menu.inc.php';
-require_once __DIR__ . '/Quiz3/includes/login.inc.php';
 
 // Include database connection
 require_once __DIR__ . '/Quiz3/conn.php';
 ?>
 
-<div class="content">
+<div class="center">
     <h1>My Labs</h1>
     
     <div class="labs-container">
@@ -23,21 +21,15 @@ require_once __DIR__ . '/Quiz3/conn.php';
         $result = $db->query($query);
         
         if ($result && $result->num_rows > 0) {
-            echo '<div class="labs-grid">';
+            echo '<div class="buttons">';
             
             while ($lab = $result->fetch_assoc()) {
-                echo '<div class="lab-card">';
-                echo '<h2>' . htmlspecialchars($lab['lab_title']) . '</h2>';
-                
-                if (!empty($lab['lab_description'])) {
-                    echo '<p>' . htmlspecialchars($lab['lab_description']) . '</p>';
-                }
-                
+                $lab_title = "Lab " . $lab['lab_number'];
                 if (!empty($lab['lab_link'])) {
-                    echo '<a href="' . htmlspecialchars($lab['lab_link']) . '" class="lab-link">View Lab</a>';
+                    echo '<a href="' . htmlspecialchars($lab['lab_link']) . '" class="visible">';
+                    echo $lab_title . ' <i class="fa-solid fa-flask"></i>';
+                    echo '</a>';
                 }
-                
-                echo '</div>';
             }
             
             echo '</div>';
@@ -45,6 +37,18 @@ require_once __DIR__ . '/Quiz3/conn.php';
             echo '<p>No labs found in the database.</p>';
         }
         ?>
+        
+        <div class="buttons">
+            <a href="index.php">
+                Home <i class="fa-solid fa-home"></i>
+            </a>
+            <a href="aboutme.php">
+                About Me <i class="fa-solid fa-user"></i>
+            </a>
+            <a href="resume.php">
+                Resume <i class="fa-solid fa-file"></i>
+            </a>
+        </div>
     </div>
 </div>
 
