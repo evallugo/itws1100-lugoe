@@ -32,8 +32,8 @@
       <a href="manage_labs.php" class="nav-link">Manage Labs</a>
     <?php endif; ?>
   <?php else: ?>
-    <a href="#" onclick="document.getElementById('loginModal').style.display='block'" class="nav-link">Login</a>
-  <?php endif; ?>
+    <a href="#" class="nav-link" onclick="document.getElementById('loginModal').style.display='block'; return false;">Login</a>
+    <?php endif; ?>
 </div>
 
 
