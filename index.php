@@ -1,10 +1,9 @@
 <?php
-//set page variables
 $page_title = "Eva Lugo";
 $page_class = "index";
 define('INCLUDED', true);
 
-//include the required files
+// Update paths to be relative to current directory
 require_once __DIR__ . '/Quiz3/includes/init.inc.php';
 ?>
 <head>
@@ -71,12 +70,7 @@ require_once __DIR__ . '/Quiz3/includes/init.inc.php';
 <!-- Include login modal -->
 <?php include __DIR__ . '/Quiz3/includes/nav.inc.php'; ?>
 
-<?php 
-// Include Quiz3 content if needed
-// include __DIR__ . '/Quiz3/index.php';
-
-require_once __DIR__ . '/Quiz3/includes/footer.inc.php'; 
-?> 
+<?php require_once __DIR__ . '/Quiz3/includes/footer.inc.php'; ?>
 
 <script>
 $(document).ready(function() {
@@ -104,5 +98,3 @@ $(document).ready(function() {
     });
 });
 </script>
-</body>
-</html> 
