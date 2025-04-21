@@ -17,7 +17,7 @@ require_once __DIR__ . '/Quiz3/conn.php';
         <p>Here are all my labs for Web Systems Development.</p>
     </div>
     
-    <div class="lab-grid">
+    <div class="buttons lab-grid">
         <?php
         // Query to get all labs from the database
         $query = "SELECT * FROM myLabs ORDER BY lab_number";
