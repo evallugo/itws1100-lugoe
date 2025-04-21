@@ -35,4 +35,4 @@ require_once __DIR__ . '/Quiz3/includes/nav.inc.php';
   </div>
 </div>
 
-<?php require_once __DIR__ . '/Quiz3/includes/footer.inc.php'; ?>
+<?php require_once __DIR__ . '/Quiz3/includes/footer.inc.php'; ?> 
