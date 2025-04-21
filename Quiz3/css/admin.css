@@ -184,43 +184,43 @@
     margin-top: 2rem;
 }
 
+/* Update Lab Button Styles to match homepage */
 .lab-button {
-    background: transparent;
-    border: 2px solid hotpink;
-    border-radius: 50px;
-    padding: 1rem 2rem;
-    text-decoration: none;
-    color: hotpink;
-    transition: all 0.3s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 1.1rem;
-    min-width: 200px;
     justify-content: center;
+    margin: 10px;
+    padding: 15px 30px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Alice', serif;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    backdrop-filter: blur(5px);
+    gap: 10px;
+    min-width: 150px;
 }
 
 .lab-button:hover {
-    background-color: hotpink;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
 }
 
 .lab-button i {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
+/* Remove conflicting styles */
 .lab-content {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline;
 }
 
 .lab-title {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 500;
+    display: inline;
 }
 
 .lab-description {
@@ -274,17 +274,6 @@
     justify-content: center;
     text-align: center;
     background-color: transparent;
-    position: relative;
-}
-
-.labs::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
 }
 
 .labs-intro {
@@ -309,41 +298,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 15px;
-    margin: 20px 0;
-    padding: 0 20px;
-}
-
-/* Lab Button Styles */
-.lab-button {
-    font-family: 'Alice', serif;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 5px 10px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    border-radius: 3px;
-    display: flex;
     align-items: center;
-    gap: 5px;
-    border: 2px solid hotpink;
-    margin: 0 5px;
-}
-
-.lab-button:hover {
-    background-color: white;
-    color: hotpink;
-}
-
-.lab-button i {
-    margin-left: 5px;
+    gap: 10px;
+    margin: 20px auto;
+    max-width: 800px;
 }
 
 /* No Labs Message */
 .no-labs {
     text-align: center;
     padding: 2rem;
-    color: white;
+    color: hotpink;
     font-style: italic;
 } 
