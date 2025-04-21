@@ -4,7 +4,8 @@ $page_title = "Eva Lugo";
 $page_class = "index";
 
 //include the required files
-include('Quiz3/includes/head.inc.php');
+require_once __DIR__ . '/Quiz3/includes/init.inc.php';
+require_once __DIR__ . '/Quiz3/includes/head.inc.php';
 ?>
 
 <div class="center">
@@ -30,4 +31,6 @@ include('Quiz3/includes/head.inc.php');
   </div>
 </div>
 
-<?php include('Quiz3/includes/foot.inc.php'); ?> 
+<?php 
+require_once __DIR__ . '/Quiz3/includes/foot.inc.php'; 
+?> 
