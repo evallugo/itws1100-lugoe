@@ -1,23 +1,38 @@
 <?php
-session_start();
-include("conn.php");
-include("includes/head.inc.php");
-include("includes/menubody.inc.php");
-?>
+$pageTitle = "Labs";
+$bodyClass = "labs";
+require_once 'conn.php';
+include 'includes/header.php';
 
-<h2>Labs</h2>
-
-<div class="labs-list">
-<?php
-$result = $conn->query("SELECT * FROM myLabs ORDER BY labid ASC");
-while ($lab = $result->fetch_assoc()) {
-    echo "<div class='lab-card'>";
-    echo "<h3>" . htmlspecialchars($lab['title']) . "</h3>";
-    echo "<p>" . htmlspecialchars($lab['description']) . "</p>";
-    echo "<a href='" . htmlspecialchars($lab['link']) . "' target='_blank'>View Lab</a>";
-    echo "</div>";
+//get labs from database
+$sql = "SELECT * FROM myLabs ORDER BY id";
+$result = $conn->query($sql);
+$labs = [];
+while ($row = $result->fetch_assoc()) {
+    $labs[] = $row;
 }
 ?>
+
+<div class="center">
+    <div class="center-content">
+        <h1>Labs</h1>
+        <div class="buttons">
+            <?php foreach ($labs as $lab): ?>
+                <a href="<?php echo htmlspecialchars($lab['path']); ?>" class="button">
+                    <?php echo htmlspecialchars($lab['name']); ?> 
+                    <i class="<?php echo htmlspecialchars($lab['image']); ?>"></i>
+                </a>
+            <?php endforeach; ?>
+        </div>
+        
+        <?php if (isset($_SESSION['user']) && $_SESSION['user']['type'] === 'admin'): ?>
+            <div class="admin-controls">
+                <h2>Manage Labs</h2>
+                <a href="admin/add_lab.php" class="button admin">Add New Lab</a>
+                <a href="admin/manage_labs.php" class="button admin">Manage Labs</a>
+            </div>
+        <?php endif; ?>
+    </div>
 </div>
 
-<?php include("includes/foot.inc.php"); ?>
+<?php include 'includes/footer.php'; ?>
