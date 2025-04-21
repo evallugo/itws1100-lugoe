@@ -20,15 +20,25 @@ require_once __DIR__ . '/Quiz3/conn.php';
             $query = "SELECT * FROM myLabs ORDER BY lab_number";
             $result = $db->query($query);
             
+            // Debug information
+            if (!$db) {
+                echo '<p style="color: white;">Database connection failed</p>';
+            }
+            
+            if (!$result) {
+                echo '<p style="color: white;">Query failed: ' . $db->error . '</p>';
+            }
+            
+            if ($result && $result->num_rows === 0) {
+                echo '<p style="color: white;">No labs found in the database</p>';
+            }
+            
             if ($result && $result->num_rows > 0) {
                 while ($lab = $result->fetch_assoc()) {
                     echo '<a href="' . htmlspecialchars($lab['lab_link']) . '">';
                     echo 'Lab ' . htmlspecialchars($lab['lab_number']) . ' <i class="fas fa-flask"></i>';
                     echo '</a>';
                 }
-            } else {
-                // Fallback message if no labs found in database
-                echo '<p class="no-labs">No labs found in the database.</p>';
             }
             ?>
         </div>
