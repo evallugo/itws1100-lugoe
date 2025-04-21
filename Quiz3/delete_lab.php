@@ -1,26 +1,22 @@
 <?php
 session_start();
-require_once 'includes/conn.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_type'] === 'admin') {
+    require_once 'includes/conn.php';
 
-// Check if user is admin
-if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
-    echo json_encode(['success' => false, 'message' => 'Unauthorized access']);
-    exit;
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = (int)$_POST['id'];
-    
-    $query = "DELETE FROM myLabs WHERE id = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $id);
-    
-    if ($stmt->execute()) {
-        echo json_encode(['success' => true]);
+    $id = intval($_POST['id'] ?? 0);
+    if ($id > 0) {
+        $stmt = $conn->prepare("DELETE FROM myLabs WHERE id = ?");
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            echo json_encode(['success' => true]);
+        } else {
+            echo json_encode(['success' => false, 'message' => 'Deletion failed.']);
+        }
+        $stmt->close();
     } else {
-        echo json_encode(['success' => false, 'message' => 'Error deleting lab']);
+        echo json_encode(['success' => false, 'message' => 'Invalid ID.']);
     }
-    
-    $stmt->close();
+} else {
+    echo json_encode(['success' => false, 'message' => 'Unauthorized request.']);
 }
 ?>
