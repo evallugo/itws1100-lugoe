@@ -8,6 +8,7 @@ require_once __DIR__ . '/Quiz3/includes/init.inc.php';
 require_once __DIR__ . '/Quiz3/includes/head.inc.php';
 require_once __DIR__ . '/Quiz3/includes/nav.inc.php';
 ?>
+<link rel="stylesheet" href="Quiz3/styles.css">
 
 <div class="center">
   <div class="center-content">
