@@ -1,6 +1,6 @@
 <div class="header">
     <nav>
-        <a href="/iit/index.php"><i class="fas fa-home"></i> Home</a>
+        <a href="/iit/index.php"><i class="fas fa-home"></i>Home</a>   
         <a href="/iit/Quiz3/aboutme.php"><i class="fa-solid fa-user"></i> About</a>
         <a href="/iit/Quiz3/resume.php"><i class="fa-solid fa-file"></i> Resume</a>
         <a href="/iit/Quiz3/labs.php"><i class="fa-solid fa-folder"></i> Labs</a>

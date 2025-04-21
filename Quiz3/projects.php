@@ -8,6 +8,7 @@ require_once __DIR__ . '/includes/head.inc.php';
 require_once __DIR__ . '/includes/nav.inc.php';
 require_once __DIR__ . '/includes/conn.php';
 ?>
+<link rel="stylesheet" href="styles.css">
 <title><?php echo $page_title; ?></title>
 <?php 
 ?>
