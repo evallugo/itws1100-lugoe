@@ -274,6 +274,17 @@
     justify-content: center;
     text-align: center;
     background-color: transparent;
+    position: relative;
+}
+
+.labs::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .labs-intro {
@@ -293,12 +304,14 @@
     margin: 0 auto;
 }
 
-/* Lab Grid Layout */
-.lab-grid {
+/* Lab Buttons Container */
+.buttons.lab-grid {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 15px;
+    margin: 20px 0;
+    padding: 0 20px;
 }
 
 /* Lab Button Styles */
@@ -315,11 +328,16 @@
     align-items: center;
     gap: 5px;
     border: 2px solid hotpink;
+    margin: 0 5px;
 }
 
 .lab-button:hover {
     background-color: white;
     color: hotpink;
+}
+
+.lab-button i {
+    margin-left: 5px;
 }
 
 /* No Labs Message */
