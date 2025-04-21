@@ -2,10 +2,10 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-$pageTitle = "Admin Dashboard";
-$bodyClass = "admin";
-require_once '../includes/conn.php';
-include '../includes/header.php';
+$pageTitle = "Home";
+$bodyClass = "home";
+require_once 'includes/conn.php';
+include 'includes/header.php';
 
 //check admin access
 if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
@@ -17,6 +17,14 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
 $labCount = $conn->query("SELECT COUNT(*) as count FROM myLabs")->fetch_assoc()['count'];
 $projectCount = $conn->query("SELECT COUNT(*) as count FROM myProjects")->fetch_assoc()['count'];
 $userCount = $conn->query("SELECT COUNT(*) as count FROM mySiteUsers")->fetch_assoc()['count'];
+
+// Get projects from database
+$sql = "SELECT * FROM myProjects ORDER BY id";
+$result = $conn->query($sql);
+$projects = [];
+while ($row = $result->fetch_assoc()) {
+    $projects[] = $row;
+}
 ?>
 
 <div class="content-wrapper">
