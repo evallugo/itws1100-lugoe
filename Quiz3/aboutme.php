@@ -20,8 +20,6 @@ require_once __DIR__ . '/includes/nav.inc.php';
   <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
 </head>
 <body class="about">
-  <div class="header"
-  </div>
   <div class="content-wrapper">
     <h1>About Me</h1>
     <img src="headsho.jpeg" alt="Eva Lugo" class="profile-pic">
@@ -41,9 +39,7 @@ require_once __DIR__ . '/includes/nav.inc.php';
       <p>My passion for web development drives my ambition to design and develop user-friendly and innovative digital experiences. I am particularly interested in how technology can improve online accessibility, streamline workflows, and create engaging digital interactions. In the future, I hope to work on real-world projects that integrate technology, design, and efficiency to enhance the user experience.</p>
     </div>
   </div>
-  <div class="footer">
-    &copy; 2025 Eva Lugo. All rights reserved.
-  </div>
+ 
 </body>
 </html>
     </div>
