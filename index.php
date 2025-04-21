@@ -36,5 +36,5 @@ require_once __DIR__ . '/Quiz3/includes/header.php';
 // Include Quiz3 content if needed
 // include __DIR__ . '/Quiz3/index.php';
 
-require_once __DIR__ . '/Quiz3/includes/foot.inc.php'; 
+require_once __DIR__ . '/Quiz3/includes/footer.php'; 
 ?> 
