@@ -49,6 +49,6 @@ require_once __DIR__ . '/includes/conn.php';
     </div>
 </div>
 
-<!-- Keep your admin modal and scripts for add/delete here if needed -->
+<?php require_once __DIR__ . '/includes/loginmodal.inc.php'; ?>
 
 <?php require_once __DIR__ . '/includes/footer.inc.php'; ?>

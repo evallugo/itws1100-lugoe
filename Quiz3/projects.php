@@ -93,4 +93,5 @@ require_once __DIR__ . '/includes/conn.php';
 }
 </style>
 
+<?php require_once __DIR__ . '/includes/loginmodal.inc.php'; ?>
 <?php require_once __DIR__ . '/includes/footer.inc.php'; ?>

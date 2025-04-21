@@ -24,4 +24,6 @@ require_once __DIR__ . '/includes/nav.inc.php';
   </div>
 </div>
 
+<?php require_once __DIR__ . '/includes/loginmodal.inc.php'; ?>
+
 <?php require_once __DIR__ . '/includes/footer.inc.php'; ?>
