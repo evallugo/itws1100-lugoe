@@ -362,4 +362,64 @@
     padding: 2rem;
     color: hotpink;
     font-style: italic;
+}
+
+/* Labs Page Specific Styling */
+.labs-page .labs {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.labs-page .labs-intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.labs-page .labs-intro h1 {
+    color: white;
+    font-size: 42px;
+    margin-bottom: 1rem;
+}
+
+.labs-page .labs-intro p {
+    color: white;
+    font-size: 1.1rem;
+}
+
+.labs-page .center-content {
+    text-align: center;
+}
+
+.labs-page .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.labs-page .buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 200px;
+    transition: all 0.3s ease;
+}
+
+.labs-page .buttons a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.labs-page .buttons a i {
+    margin-left: 10px;
 } 
