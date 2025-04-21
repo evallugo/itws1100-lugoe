@@ -24,23 +24,18 @@
 </div>
 
 <!-- Login Modal -->
-<div id="loginModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Login</h2>
-        <form id="loginForm" action="login.php" method="POST">
-            <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit">Login</button>
-        </form>
-    </div>
+<div class="nav-right">
+    <?php if (isset($_SESSION['user_name'])): ?>
+        <span class="nav-welcome">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+        <a href="logout.php" class="nav-link">Logout</a>
+        <?php if ($_SESSION['user_type'] === 'admin'): ?>
+            <a href="manage_labs.php" class="nav-link">Manage Labs</a>
+        <?php endif; ?>
+    <?php else: ?>
+        <a href="#" onclick="document.getElementById('loginModal').style.display='block'" class="nav-link">Login</a>
+    <?php endif; ?>
 </div>
+
 
 <style>
 /* Modal Styles */
