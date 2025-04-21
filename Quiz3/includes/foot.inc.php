@@ -1,4 +1,5 @@
-    </div>
+    </div><!-- end content -->
+    </div><!-- end container -->
     <div class="footer">
       <?php
       //include database connection
