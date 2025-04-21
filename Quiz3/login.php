@@ -1,9 +1,11 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $pageTitle = "Login";
 $bodyClass = "login";
-require_once 'conn.php';
-include 'includes/header.php';
+require_once __DIR__ . '/includes/conn.php';
+include __DIR__ . '/includes/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
@@ -45,8 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" class="button">Login</button>
     </form>
 </div>
 
-<?php include 'includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
