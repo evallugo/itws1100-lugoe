@@ -25,15 +25,15 @@
 
 <!-- Login Modal -->
 <div class="nav-right">
-    <?php if (isset($_SESSION['user_name'])): ?>
-        <span class="nav-welcome">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
-        <a href="logout.php" class="nav-link">Logout</a>
-        <?php if ($_SESSION['user_type'] === 'admin'): ?>
-            <a href="manage_labs.php" class="nav-link">Manage Labs</a>
-        <?php endif; ?>
-    <?php else: ?>
-        <a href="#" onclick="document.getElementById('loginModal').style.display='block'" class="nav-link">Login</a>
+  <?php if (isset($_SESSION['user_name'])): ?>
+    <span class="nav-welcome">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
+    <a href="logout.php" class="nav-link">Logout</a>
+    <?php if ($_SESSION['user_type'] === 'admin'): ?>
+      <a href="manage_labs.php" class="nav-link">Manage Labs</a>
     <?php endif; ?>
+  <?php else: ?>
+    <a href="#" onclick="document.getElementById('loginModal').style.display='block'" class="nav-link">Login</a>
+  <?php endif; ?>
 </div>
 
 
