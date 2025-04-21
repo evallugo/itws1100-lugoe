@@ -1,16 +1,18 @@
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 <?php
 $pageTitle = "Admin Dashboard";
 $bodyClass = "admin";
 require_once '../includes/conn.php';
 include '../includes/header.php';
 
-// Check admin access
+//check admin access
 if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
     header('Location: ../login.php');
     exit;
 }
 
-// Get counts
+//get counts
 $labCount = $conn->query("SELECT COUNT(*) as count FROM myLabs")->fetch_assoc()['count'];
 $projectCount = $conn->query("SELECT COUNT(*) as count FROM myProjects")->fetch_assoc()['count'];
 $userCount = $conn->query("SELECT COUNT(*) as count FROM mySiteUsers")->fetch_assoc()['count'];
