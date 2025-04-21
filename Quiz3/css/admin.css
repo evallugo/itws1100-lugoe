@@ -184,43 +184,40 @@
     margin-top: 2rem;
 }
 
-/* Update Lab Button Styles to match homepage */
 .lab-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 20px;
     margin: 10px;
-    padding: 15px 30px;
     text-decoration: none;
-    color: white;
-    font-family: 'Alice', serif;
-    font-size: 1.2rem;
+    color: hotpink;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
     transition: all 0.3s ease;
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    backdrop-filter: blur(5px);
-    gap: 10px;
-    min-width: 150px;
+    min-width: 200px;
 }
 
 .lab-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
 }
 
 .lab-button i {
-    font-size: 1.1rem;
+    margin-left: 10px;
 }
 
-/* Remove conflicting styles */
 .lab-content {
-    display: inline;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .lab-title {
-    display: inline;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .lab-description {
