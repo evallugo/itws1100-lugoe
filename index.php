@@ -6,21 +6,25 @@ define('INCLUDED', true);
 
 //include the required files
 require_once __DIR__ . '/Quiz3/includes/init.inc.php';
-require_once __DIR__ . '/Quiz3/includes/header.php';
+require_once __DIR__ . '/Quiz3/includes/head.inc.php';
+require_once __DIR__ . '/Quiz3/includes/nav.inc.php';
 ?>
 
 <div class="center">
   <div class="center-content">
     <h1>Eva Lugo</h1>
     <div class="buttons">
-      <a href="aboutme.php">
+      <a href="Quiz3/aboutme.php">
         About Me <i class="fa-solid fa-user"></i>
       </a>
-      <a href="resume.php">
+      <a href="Quiz3/resume.php">
         Resume <i class="fa-solid fa-file"></i>
       </a>
-      <a href="labs.php">
+      <a href="Quiz3/labs.php">
         Labs <i class="fa-solid fa-folder"></i>
+      </a>
+      <a href="Quiz3/projects.php">
+        Projects <i class="fa-solid fa-code"></i>
       </a>
       <a href="https://github.com/evallugo" target="_blank" rel="noopener noreferrer">
         GitHub <i class="fa-brands fa-github"></i>
@@ -36,5 +40,5 @@ require_once __DIR__ . '/Quiz3/includes/header.php';
 // Include Quiz3 content if needed
 // include __DIR__ . '/Quiz3/index.php';
 
-require_once __DIR__ . '/Quiz3/includes/footer.php'; 
+require_once __DIR__ . '/Quiz3/includes/footer.inc.php'; 
 ?> 
