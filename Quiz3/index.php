@@ -4,8 +4,8 @@ ini_set('display_errors', 1);
 
 $pageTitle = "Home";
 $bodyClass = "home";
-require_once 'includes/conn.php';
-include 'includes/header.php';
+require_once __DIR__ . '/includes/conn.php';
+include __DIR__ . '/includes/header.php';
 
 //check admin access
 if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
@@ -58,4 +58,4 @@ while ($row = $result->fetch_assoc()) {
     </div>
 </div>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
