@@ -27,8 +27,8 @@ require_once __DIR__ . '/Quiz3/conn.php';
             while ($lab = $result->fetch_assoc()) {
                 if (!empty($lab['lab_link'])) {
                     echo '<a href="' . htmlspecialchars($lab['lab_link']) . '" class="lab-button">';
+                    echo 'Lab ' . $lab['lab_number'];
                     echo '<i class="fa-solid fa-flask"></i>';
-                    echo '<span class="lab-title">Lab ' . $lab['lab_number'] . '</span>';
                     echo '</a>';
                 }
             }
