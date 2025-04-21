@@ -1,7 +1,7 @@
 <?php
 $pageTitle = "Manage Labs";
 $bodyClass = "admin";
-require_once '../conn.php';
+require_once '../includes/conn.php';
 include '../includes/header.php';
 
 //check if user is admin
