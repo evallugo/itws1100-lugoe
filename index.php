@@ -2,6 +2,7 @@
 //set page variables
 $page_title = "Eva Lugo";
 $page_class = "index";
+define('INCLUDED', true);
 
 //include the required files
 require_once __DIR__ . '/Quiz3/includes/init.inc.php';
@@ -32,5 +33,8 @@ require_once __DIR__ . '/Quiz3/includes/head.inc.php';
 </div>
 
 <?php 
+// Include Quiz3 content if needed
+// include __DIR__ . '/Quiz3/index.php';
+
 require_once __DIR__ . '/Quiz3/includes/foot.inc.php'; 
 ?> 

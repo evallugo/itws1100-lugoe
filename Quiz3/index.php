@@ -1,11 +1,13 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$pageTitle = "Home";
-$bodyClass = "home";
-require_once __DIR__ . '/includes/conn.php';
-include __DIR__ . '/includes/header.php';
+if (!defined('INCLUDED')) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    
+    $pageTitle = "Home";
+    $bodyClass = "home";
+    require_once __DIR__ . '/includes/conn.php';
+    include __DIR__ . '/includes/header.php';
+}
 
 //check admin access
 if (!isset($_SESSION['user']) || $_SESSION['user']['type'] !== 'admin') {
@@ -58,4 +60,8 @@ while ($row = $result->fetch_assoc()) {
     </div>
 </div>
 
-<?php include __DIR__ . '/includes/footer.php'; ?>
+<?php 
+if (!defined('INCLUDED')) {
+    include __DIR__ . '/includes/footer.php';
+} 
+?>
