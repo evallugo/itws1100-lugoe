@@ -15,6 +15,16 @@ body {
   flex-direction: column;
 }
 
+body.plain {
+  background-color: white !important;
+  background-image: none !important;
+  color: black !important;
+}
+
+body.plain::before {
+  display: none !important;
+}
+
 /* Add a dim overlay */
 body::before {
   content: '';
@@ -35,17 +45,6 @@ body::before {
   align-items: center;
   padding: 20px;
 }
-
-.center-content {
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 40px;
-  border-radius: 10px;
-  max-width: 800px;
-  margin: 0 auto;
-  backdrop-filter: blur(5px);
-}
-
 /* Navigation */
 .header {
   background-color:hotpink;

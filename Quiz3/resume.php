@@ -1,4 +1,5 @@
 <?php
+$page_type = 'plain';
 $page_title = "Resume - Eva Lugo";
 $page_class = "resume";
 define('INCLUDED', true);
