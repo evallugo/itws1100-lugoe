@@ -177,95 +177,80 @@
 }
 
 .lab-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin: 0 auto;
-}
-
-@media (max-width: 1024px) {
-    .lab-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .lab-grid {
-        grid-template-columns: 1fr;
-    }
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .lab-button {
-    background-color: white;
+    background: transparent;
     border: 2px solid hotpink;
-    border-radius: 8px;
-    padding: 1.5rem;
+    border-radius: 50px;
+    padding: 1rem 2rem;
     text-decoration: none;
-    color: black;
+    color: hotpink;
     transition: all 0.3s ease;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    min-width: 200px;
     justify-content: center;
-    text-align: center;
-    min-height: 200px;
 }
 
 .lab-button:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
     background-color: hotpink;
     color: white;
-    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
 }
 
 .lab-button i {
-    font-size: 2.5rem;
-    color: hotpink;
-    margin-bottom: 1rem;
+    font-size: 1.2rem;
 }
 
-.lab-button:hover i {
-    color: white;
+.lab-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .lab-title {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin: 0.5rem 0;
-    color: hotpink;
-}
-
-.lab-button:hover .lab-title {
-    color: white;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .lab-description {
-    font-size: 0.9em;
-    line-height: 1.4;
-    margin: 0;
-    color: #666;
-}
-
-.lab-button:hover .lab-description {
-    color: white;
+    display: none;
 }
 
 .no-labs {
     text-align: center;
+    padding: 2rem;
     color: #666;
     font-style: italic;
-    margin: 40px 0;
-    grid-column: 1 / -1;
+    width: 100%;
 }
 
 .labs-intro {
     text-align: center;
-    max-width: 800px;
-    margin: 40px auto 20px;
-    color: #333;
-    line-height: 1.6;
-    font-size: 1.1em;
+    margin-bottom: 3rem;
+}
+
+.labs-intro h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.labs-intro p {
+    font-size: 1.1rem;
+    color: #4b5563;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 /* Modern Admin Styles */
@@ -279,7 +264,7 @@
 }
 
 /* Labs Page Layout */
-.content-wrapper {
+.labs {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
@@ -287,11 +272,12 @@
 
 .labs-intro {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .labs-intro h1 {
     font-size: 2.5rem;
+    color: var(--text-color);
     margin-bottom: 1rem;
 }
 
@@ -305,78 +291,52 @@
 /* Lab Grid Layout */
 .lab-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    margin: 0 auto;
-}
-
-@media (max-width: 1024px) {
-    .lab-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .lab-grid {
-        grid-template-columns: 1fr;
-    }
+    margin-top: 2rem;
 }
 
 /* Lab Button Styles */
 .lab-button {
-    background-color: white;
-    border: 2px solid hotpink;
-    border-radius: 8px;
+    background: white;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
     padding: 1.5rem;
     text-decoration: none;
-    color: black;
-    transition: all 0.3s ease;
+    color: var(--text-color);
+    transition: var(--transition);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     text-align: center;
-    min-height: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: 0;
 }
 
 .lab-button:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
-    background-color: hotpink;
-    color: white;
-    text-decoration: none;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
 }
 
 .lab-button i {
-    font-size: 2.5rem;
-    color: hotpink;
+    font-size: 2rem;
+    color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
-.lab-button:hover i {
-    color: white;
-}
-
 .lab-title {
-    font-size: 1.4em;
-    font-weight: bold;
-    margin: 0.5rem 0;
-    color: hotpink;
-}
-
-.lab-button:hover .lab-title {
-    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
 }
 
 .lab-description {
-    font-size: 0.9em;
-    line-height: 1.4;
-    margin: 0;
+    font-size: 0.9rem;
     color: #666;
-}
-
-.lab-button:hover .lab-description {
-    color: white;
+    line-height: 1.5;
 }
 
 /* No Labs Message */
@@ -389,57 +349,4 @@
     color: var(--text-color);
     margin: 2rem auto;
     max-width: 600px;
-}
-
-/* Center content styles */
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    text-align: center;
-}
-
-.center-content {
-    padding: 2rem;
-}
-
-.center-content h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    color: #333;
-}
-
-/* Button styles matching index.php */
-.buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.buttons a {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: white;
-    color: black;
-    text-decoration: none;
-    border: 2px solid hotpink;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-}
-
-.buttons a:hover {
-    background-color: hotpink;
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
-}
-
-.buttons a i {
-    font-size: 1.2rem;
 } 
