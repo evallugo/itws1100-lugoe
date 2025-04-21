@@ -11,6 +11,9 @@
         <a href="https://www.linkedin.com/in/eva-lugo" target="_blank" rel="noopener noreferrer">
             <i class="fa-brands fa-linkedin"></i> LinkedIn
         </a>
+        <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin'): ?>
+            <li><a href="/iit/Quiz3/manage_labs.php">Manage Labs</a></li>
+        <?php endif; ?>
         <?php if(isset($_SESSION['user_name'])): ?>
             <span class="welcome-text">Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</span>
             <a href="logout.php" class="login-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
