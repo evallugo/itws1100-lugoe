@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title><?php echo isset($page_title) ? $page_title : "Eva Lugo"; ?></title>
-  <link rel="stylesheet" href="/itws1100-lugoe/labs/3/styles.css">
-  <link rel="stylesheet" href="/itws1100-lugoe/Quiz3/css/admin.css">
+  <?php
+  $base_path = dirname($_SERVER['PHP_SELF']);
+  if ($base_path == '/') $base_path = '';
+  ?>
+  <link rel="stylesheet" href="<?php echo $base_path; ?>/labs/3/styles.css">
+  <link rel="stylesheet" href="<?php echo $base_path; ?>/Quiz3/css/admin.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Alice&display=swap" rel="stylesheet">
   <!-- add jquery for ajax functionality -->
