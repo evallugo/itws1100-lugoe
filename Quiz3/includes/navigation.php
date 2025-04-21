@@ -1,7 +1,7 @@
-<a href="/iit/index.php"><i class="fas fa-home"></i> Home</a>
-<a href="/iit/about.php"><i class="fa-solid fa-user"></i> About</a>
-<a href="/iit/resume.php"><i class="fa-solid fa-file"></i> Resume</a>
-<a href="/iit/labs.php"><i class="fa-solid fa-folder"></i> Labs</a>
+<a href="index.php"><i class="fas fa-home"></i> Home</a>
+<a href="about.php"><i class="fa-solid fa-user"></i> About</a>
+<a href="resume.php"><i class="fa-solid fa-file"></i> Resume</a>
+<a href="labs.php"><i class="fa-solid fa-folder"></i> Labs</a>
 <a href="https://github.com/evallugo" target="_blank" rel="noopener noreferrer">
     <i class="fa-brands fa-github"></i> GitHub
 </a>
