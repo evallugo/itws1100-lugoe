@@ -13,8 +13,11 @@ require_once __DIR__ . '/includes/nav.inc.php';
     <div class="center-content">
         <h1>Eva Lugo</h1>
         <div id="contactInfo">
-            Madison, CT | <a href="mailto:lugoe@rpi.edu">lugoe@rpi.edu</a> | <a href="https://www.linkedin.com/in/eva-lugo/" target="_blank">https://www.linkedin.com/in/eva-lugo/</a> | (203)-343-2688
+            Madison, CT | <a href="mailto:lugoe@rpi.edu">lugoe@rpi.edu</a> |
+            <a href="https://www.linkedin.com/in/eva-lugo/" target="_blank">https://www.linkedin.com/in/eva-lugo/</a> |
+            (203)-343-2688
         </div>
+
         <div class="section">
             <div class="section-title">EDUCATION</div>
             <div class="subsection">
@@ -28,6 +31,7 @@ require_once __DIR__ . '/includes/nav.inc.php';
                 <div>GPA: 3.8</div>
             </div>
         </div>
+
         <div class="section">
             <div class="section-title">WORK EXPERIENCE</div>
             <div class="subsection">
@@ -36,10 +40,11 @@ require_once __DIR__ . '/includes/nav.inc.php';
                     <li><em>Nanny</em>, <em>Pet Sitter</em>, <em>House Sitter</em></li>
                     <li class="bullet indented">Provided attentive care, oversaw and managed household operations, and maintained clear communication with clients</li>
                     <li class="bullet indented">Resolved conflicts efficiently and quietly</li>
-                    <li class="bullet indented">Assisted over 100 families with children ages ranging from 9 mo.-13 yo. and households on the CT Shoreline</li>
+                    <li class="bullet indented">Assisted over 100 families with children ages ranging from 9 mo.–13 yo. and households on the CT Shoreline</li>
                 </ul>
             </div>
         </div>
+
         <div class="section">
             <div class="section-title">EXTRACURRICULARS</div>
             <div class="subsection">
@@ -51,6 +56,7 @@ require_once __DIR__ . '/includes/nav.inc.php';
                     <li class="bullet indented">Attending workshops to develop professionally through leadership and community outreach</li>
                 </ul>
             </div>
+
             <div class="subsection">
                 <div><strong>Alianza Latina</strong>, Troy, NY <span class="dates">Sep. 2024 – Present</span></div>
                 <ul>
@@ -58,13 +64,15 @@ require_once __DIR__ . '/includes/nav.inc.php';
                     <li class="bullet indented">Promote cultural awareness, celebrate Latin heritage, and support students from diverse backgrounds</li>
                 </ul>
             </div>
+
             <div class="subsection">
                 <div><strong>Association of Computing Machinery Women's Chapter</strong>, Troy, NY <span class="dates">Sep. 2024 – Present</span></div>
                 <ul>
                     <li><em>Member</em></li>
-                    <li class="bullet indented">Foster gender diversity in tech, organized professional development events, and fostered a supportive community for women in computing through networking and mentorship opportunities</li>
+                    <li class="bullet indented">Foster gender diversity in tech, organize professional development events, and foster a supportive community for women in computing through networking and mentorship opportunities</li>
                 </ul>
             </div>
+
             <div class="subsection">
                 <div><strong>Women at Rensselaer Mentor Program</strong>, Troy, NY <span class="dates">Sep. 2024 – Present</span></div>
                 <ul>
@@ -72,20 +80,23 @@ require_once __DIR__ . '/includes/nav.inc.php';
                     <li class="bullet indented">Support female students through mentorship, facilitate networking opportunities, and encourage personal and professional growth within the RPI community</li>
                 </ul>
             </div>
+
             <div class="subsection">
                 <div><strong>Daniel Hand Indoor and Outdoor Girls Track Team</strong>, Madison, CT <span class="dates">Aug. 2023 – Jun. 2024</span></div>
                 <ul>
                     <li><em>Team Captain</em></li>
-                    <li class="bullet indented">Cultivated supportive team environment, focused on empowering athletes, and modeled good sportsmanship</li>
+                    <li class="bullet indented">Cultivated a supportive team environment, focused on empowering athletes, and modeled good sportsmanship</li>
                 </ul>
             </div>
+
             <div class="subsection">
                 <div><strong>Handmade Makers Club</strong>, Madison, CT <span class="dates">Sep. 2023 – Jun. 2024</span></div>
                 <ul>
                     <li><em>President</em></li>
-                    <li class="bullet indented">Promoted innovation, led workshops, managed makerspace, and fostered collaborative environment for makers</li>
+                    <li class="bullet indented">Promoted innovation, led workshops, managed makerspace, and fostered a collaborative environment for makers</li>
                 </ul>
             </div>
+
             <div class="subsection">
                 <div><strong>Diversity Club</strong>, Madison, CT <span class="dates">Aug. 2024 – Jun. 2024</span></div>
                 <ul>
@@ -93,6 +104,7 @@ require_once __DIR__ . '/includes/nav.inc.php';
                     <li class="bullet indented">Advocated for inclusivity and cultural awareness within the school community</li>
                 </ul>
             </div>
+
             <div class="subsection">
                 <div><strong>National Honors Society Daniel Hand Chapter</strong>, Madison, CT <span class="dates">Sep. 2022 – Jun. 2024</span></div>
                 <ul>
@@ -101,15 +113,52 @@ require_once __DIR__ . '/includes/nav.inc.php';
                 </ul>
             </div>
         </div>
+
         <div class="section">
             <div class="section-title">SKILLS</div>
             <ul>
                 <li><strong>Fluent Languages:</strong> English and Spanish</li>
                 <li><strong>Programming Languages:</strong> Python, Java, C++, HTML, CSS</li>
-                <li><strong>Time management, Communication, Marketing, Interpersonal Skills, Adaptability, Problem-Solving</strong></li>
+                <li><strong>Soft Skills:</strong> Time management, Communication, Marketing, Interpersonal Skills, Adaptability, Problem-Solving</li>
             </ul>
         </div>
     </div>
 </div>
 
 <?php require_once __DIR__ . '/includes/footer.inc.php'; ?>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal" style="display:none;">
+  <div class="modal-content" style="padding:20px; background:white; border-radius:10px;">
+    <span onclick="document.getElementById('loginModal').style.display='none'" style="float:right; cursor:pointer;">&times;</span>
+    <h3>Login</h3>
+    <div id="loginError" style="color:red; display:none;"></div>
+    <form id="loginForm">
+      <label>Username:</label><br>
+      <input type="text" name="username" required><br><br>
+      <label>Password:</label><br>
+      <input type="password" name="password" required><br><br>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</div>
+
+<!-- LOGIN SCRIPT -->
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  fetch('login.php', {
+    method: 'POST',
+    body: new FormData(this)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      location.reload();
+    } else {
+      document.getElementById('loginError').innerText = data.message;
+      document.getElementById('loginError').style.display = 'block';
+    }
+  });
+});
+</script>

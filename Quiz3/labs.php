@@ -13,7 +13,7 @@ require_once __DIR__ . '/includes/conn.php';
 <div class="center">
     <div class="center-content">
         <h1>Labs</h1>
-        
+
         <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin'): ?>
         <!-- Admin Controls -->
         <div class="admin-controls">
@@ -31,16 +31,16 @@ require_once __DIR__ . '/includes/conn.php';
             if ($result) {
                 while ($lab = mysqli_fetch_assoc($result)) {
                     echo '<div class="lab-item">';
-echo '<a href="/iit/' . htmlspecialchars($lab['path']) . '" class="button">';
+                    echo '<a href="/iit/' . htmlspecialchars($lab['path']) . '" class="button">';
                     echo htmlspecialchars($lab['name']) . ' <i class="' . htmlspecialchars($lab['image']) . '"></i>';
                     echo '</a>';
-                    
-                    // Show delete button for admin
+
                     if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin') {
                         echo '<button class="delete-lab" data-id="' . $lab['id'] . '">';
                         echo '<i class="fas fa-trash"></i>';
                         echo '</button>';
                     }
+
                     echo '</div>';
                 }
                 mysqli_free_result($result);
@@ -50,8 +50,8 @@ echo '<a href="/iit/' . htmlspecialchars($lab['path']) . '" class="button">';
     </div>
 </div>
 
-<!-- Add Lab Modal (only visible to admin) -->
 <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin'): ?>
+<!-- Add Lab Modal -->
 <div id="addLabModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -73,20 +73,36 @@ echo '<a href="/iit/' . htmlspecialchars($lab['path']) . '" class="button">';
         </form>
     </div>
 </div>
+<?php endif; ?>
 
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal" style="display:none;">
+  <div class="modal-content" style="padding:20px; background:white; border-radius:10px;">
+    <span onclick="document.getElementById('loginModal').style.display='none'" style="float:right; cursor:pointer;">&times;</span>
+    <h3>Login</h3>
+    <div id="loginError" style="color:red; display:none;"></div>
+    <form id="loginForm">
+      <label>Username:</label><br>
+      <input type="text" name="username" required><br><br>
+      <label>Password:</label><br>
+      <input type="password" name="password" required><br><br>
+      <input type="submit" value="Login">
+    </form>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-    // Show Add Lab Modal
     $("#addLabBtn").click(function() {
         $("#addLabModal").show();
     });
 
-    // Close Modal
     $(".close").click(function() {
         $("#addLabModal").hide();
     });
 
-    // Add Lab Form Submission
     $("#addLabForm").submit(function(e) {
         e.preventDefault();
         $.ajax({
@@ -104,7 +120,6 @@ $(document).ready(function() {
         });
     });
 
-    // Delete Lab
     $(".delete-lab").click(function() {
         if(confirm("Are you sure you want to delete this lab?")) {
             var labId = $(this).data("id");
@@ -122,6 +137,24 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+
+    // LOGIN
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        fetch('login.php', {
+            method: 'POST',
+            body: new FormData(this)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                document.getElementById('loginError').innerText = data.message;
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
     });
 });
 </script>
@@ -160,6 +193,5 @@ $(document).ready(function() {
     background-color: #cc0000;
 }
 </style>
-<?php endif; ?>
 
 <?php require_once __DIR__ . '/includes/footer.inc.php'; ?>
