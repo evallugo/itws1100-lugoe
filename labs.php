@@ -19,21 +19,25 @@ require_once __DIR__ . '/Quiz3/conn.php';
     
     <div class="buttons lab-grid">
         <?php
-        // Query to get all labs from the database
-        $query = "SELECT * FROM myLabs ORDER BY lab_number";
-        $result = $db->query($query);
+        // For now, let's display static lab buttons until database is set up
+        $labs = [
+            ['number' => 1, 'link' => 'labs/1/index.html'],
+            ['number' => 2, 'link' => 'labs/2/index.html'],
+            ['number' => 3, 'link' => 'labs/3/index.html'],
+            ['number' => 4, 'link' => 'labs/4/index.html'],
+            ['number' => 5, 'link' => 'labs/5/index.html'],
+            ['number' => 6, 'link' => 'labs/6/index.html'],
+            ['number' => 7, 'link' => 'labs/7/index.html'],
+            ['number' => 8, 'link' => 'labs/8/index.html'],
+            ['number' => 9, 'link' => 'labs/9/index.html'],
+            ['number' => 10, 'link' => 'labs/10/index.html']
+        ];
         
-        if ($result && $result->num_rows > 0) {
-            while ($lab = $result->fetch_assoc()) {
-                if (!empty($lab['lab_link'])) {
-                    echo '<a href="' . htmlspecialchars($lab['lab_link']) . '" class="lab-button">';
-                    echo 'Lab ' . $lab['lab_number'];
-                    echo '<i class="fa-solid fa-flask"></i>';
-                    echo '</a>';
-                }
-            }
-        } else {
-            echo '<p class="no-labs">No labs found in the database.</p>';
+        foreach ($labs as $lab) {
+            echo '<a href="' . $lab['link'] . '" class="lab-button">';
+            echo 'Lab ' . $lab['number'];
+            echo '<i class="fa-solid fa-flask"></i>';
+            echo '</a>';
         }
         ?>
     </div>
