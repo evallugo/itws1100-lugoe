@@ -31,7 +31,7 @@ require_once __DIR__ . '/includes/conn.php';
             if ($result) {
                 while ($lab = mysqli_fetch_assoc($result)) {
                     echo '<div class="lab-item">';
-                    echo '<a href="/iit/' . htmlspecialchars($lab['path']) . '" class="button">';
+echo '<a href="/iit/' . htmlspecialchars($lab['path']) . '" class="button">';
                     echo htmlspecialchars($lab['name']) . ' <i class="' . htmlspecialchars($lab['image']) . '"></i>';
                     echo '</a>';
                     
