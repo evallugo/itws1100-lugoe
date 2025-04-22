@@ -12,8 +12,9 @@
             <i class="fa-brands fa-linkedin"></i> LinkedIn
         </a>
         <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'admin'): ?>
-            <li><a href="/iit/Quiz3/manage_labs.php">Manage Labs</a></li>
+          <a href="/iit/Quiz3/manage_labs.php"><i class="fas fa-cogs"></i> Manage Labs</a>
         <?php endif; ?>
+
         <?php if(isset($_SESSION['user_name'])): ?>
             <span class="welcome-text">Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</span>
             <a href="logout.php" class="login-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
@@ -25,18 +26,6 @@
     </nav>
 </div>
 
-<!-- Login Modal -->
-<div class="nav-right">
-  <?php if (isset($_SESSION['user_name'])): ?>
-    <span class="nav-welcome">Welcome, <?= htmlspecialchars($_SESSION['user_name']) ?>!</span>
-    <a href="logout.php" class="nav-link">Logout</a>
-    <?php if ($_SESSION['user_type'] === 'admin'): ?>
-      <a href="manage_labs.php" class="nav-link">Manage Labs</a>
-    <?php endif; ?>
-  <?php else: ?>
-    <a href="#" class="nav-link" onclick="document.getElementById('loginModal').style.display='block'; return false;">Login</a>
-    <?php endif; ?>
-</div>
 
 
 <style>
