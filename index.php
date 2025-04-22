@@ -3,7 +3,7 @@ $page_title = "Eva Lugo";
 $page_class = "index";
 define('INCLUDED', true);
 
-// Update the path to point to Quiz3 directory
+// Points to Quiz3 directory for includes
 require_once __DIR__ . '/Quiz3/includes/init.inc.php';
 require_once __DIR__ . '/Quiz3/includes/head.inc.php';
 require_once __DIR__ . '/Quiz3/includes/nav.inc.php';
@@ -35,7 +35,6 @@ require_once __DIR__ . '/Quiz3/includes/nav.inc.php';
     </div>
   </div>
 </div>
+
 <?php require_once __DIR__ . '/Quiz3/includes/loginmodal.inc.php'; ?>
-
-
 <?php require_once __DIR__ . '/Quiz3/includes/footer.inc.php'; ?>
