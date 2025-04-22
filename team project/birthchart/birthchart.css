@@ -1,0 +1,183 @@
+/*for final upload to github*/
+/* import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Quicksand:wght@300;400;500;600&display=swap');
+
+/* base styles */
+body {
+  font-family: 'Quicksand', sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #fff;
+  background-image: url('../astrobg.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+/* navigation styles */
+header {
+  background-color: #44008B;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  gap: 50px;
+}
+
+header nav ul li {
+  margin: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+header nav ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* birth chart specific styles */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+}
+
+.container h1 {
+  font-family: 'Cormorant Garamond', serif;
+  color: #e6e6fa;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+#section p:first-child {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: #e6e6fa;
+}
+
+#section p:not(:first-child) {
+  font-size: 1em;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+  font-size: 1.2em;
+  color: #e6e6fa;
+  background-color: rgba(68, 0, 139, 0.5);
+}
+
+td {
+  font-size: 1.1em;
+}
+
+#chart, #result {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  margin-bottom: 30px;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+    filter: blur(10px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.error-message {
+  background: rgba(220, 53, 69, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px 0;
+  border: 1px solid rgba(220, 53, 69, 0.3);
+}
+
+.error-message p {
+  margin: 10px 0;
+  color: #fff;
+}
+
+.profile-link {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: rgba(147, 112, 219, 0.7);
+  color: white;
+  text-decoration: none;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.profile-link:hover {
+  background-color: rgba(147, 112, 219, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(147, 112, 219, 0.3);
+}
+
+/* responsive design */
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+  }
+  
+  .container h1 {
+    font-size: 2em;
+  }
+  
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  header nav ul li {
+    margin: 10px 0;
+  }
+  
+  th, td {
+    padding: 8px;
+    font-size: 0.9em;
+  }
+} 

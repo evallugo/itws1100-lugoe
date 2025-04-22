@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Zodiac - Birth Chart</title>
+  <link rel="stylesheet" href="birthchart.css">
+  <script>
+    ////for final upload to github
+    // Clear storage and check login on page load
+    window.addEventListener('load', function() {
+      if (!localStorage.getItem('userId') || !localStorage.getItem('userData')) {
+        localStorage.clear();
+        window.location.href = "../homepage/home.html";
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="../profile/profile.html">Profile</a></li>
+        <li><a href="../dailyhoroscope/dailyhoroscope.html">Daily Horoscope</a></li>
+        <li><a href="birthchart.html">Birth Chart</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="container">
+    <h1>Your Birth Chart</h1>
+    <div id="chart">Loading chart...</div>
+    <div id="result">Loading analysis...</div>
+  </div>
+  
+  <script src="birthchart.js"></script>
+  <script>
+  window.addEventListener("DOMContentLoaded", getBirthChart);
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond the Zodiac - Daily Horoscope</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dailyhoroscope.css">
+    <script>
+      /* validate user authentication on page load */
+      window.addEventListener('load', function() {
+        if (!localStorage.getItem('userId') || !localStorage.getItem('userData')) {
+          localStorage.clear();
+          window.location.href = "../homepage/home.html";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- main navigation bar -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="../profile/profile.html">Profile</a></li>
+          <li><a href="dailyhoroscope.html">Daily Horoscope</a></li>
+          <li><a href="../birthchart/birthchart.html">Birth Chart</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="container">
+      <h1>Your Personalized Daily Horoscope</h1>
+      <div id="horoscope">
+        <div class="loading">
+          <h3>Loading your horoscope. Please wait while we consult the stars...</h3>
+        </div>
+      </div>
+    </div>
+
+    <script src="dailyhoroscope.js"></script>
+  </body>
+</html>

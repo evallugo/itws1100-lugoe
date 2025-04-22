@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Zodiac - Profile</title>
+  <link rel="stylesheet" href="profile.css">
+  <script>
+    // Clear storage and check login on page load
+    window.addEventListener('load', function() {
+      if (!localStorage.getItem('userId') || !localStorage.getItem('userData')) {
+        localStorage.clear();
+        window.location.href = "../homepage/home.html";
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="profileHeader">
+    <h1>Beyond the Zodiac</h1>
+  </div>
+  
+  <!-- navigation header -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="profile.html">Profile</a></li>
+        <li><a href="../dailyhoroscope/dailyhoroscope.html">Daily Horoscope</a></li>
+        <li><a href="../birthchart/birthchart.html">Birth Chart</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="profileContainer">
+    <div id="profileImg" class="profileImg">Profile Picture</div>
+    <div class="profileInfo">
+      <h2 id="profileHeader">User Information:</h2>
+      <h3 id="profileName">Name: </h3>
+      <h3 id="profileBD">Date of birth: </h3>
+      <h3 id="profileEmail">Email: </h3>
+    </div>
+  </div>
+
+  <div class="profileEdit" id="editSection">
+    <div class="editArea">
+      <label for="nameInput">First Name:</label>
+      <input type="text" id="nameInput" placeholder="Enter your name">
+    </div>
+    <div class="editArea">
+      <label for="surnameInput">Last Name:</label>
+      <input type="text" id="surnameInput" placeholder="Enter your surname">
+    </div>
+    <div class="editArea">
+      <label for="bdInput">Date of Birth:</label>
+      <input type="text" id="bdInput" placeholder="Enter your birthday (YYYY-MM-DD)">
+    </div>
+    <div class="editArea">
+      <label for="ImgInput">Profile Picture URL:</label>
+      <input type="text" id="ImgInput" placeholder="Enter a URL to your profile picture">
+    </div>
+    <button id="submit" onclick="updateProfile();">Update Information</button>
+  </div>
+
+  <!-- Button container at the bottom of the page -->
+  <div class="buttonContainer">
+    <button onclick="toggleEdit()" id="toggleButton">Edit Profile</button>
+    <button id="logoutBtn">Log Out</button>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>
