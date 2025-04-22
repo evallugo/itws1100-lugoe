@@ -12,7 +12,7 @@ $(document).ready(function() {
           if (response.success) {
             $("#" + curId).remove();
             $("#jsMessages").html("<h4>Lab deleted</h4>").show();
-            // Re-zebra
+            //re-zebra
             $("#labTable tr").removeClass("odd").each(function(i) {
               if (i % 2 === 1) $(this).addClass("odd");
             });
