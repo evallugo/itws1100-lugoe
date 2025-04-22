@@ -102,30 +102,30 @@
 
 <script>
 $(document).ready(function() {
-    // Get modal elements
+    //get modal elements
     var modal = document.getElementById("loginModal");
     var btn = document.getElementById("loginBtn");
     var span = document.getElementsByClassName("close")[0];
 
-    // Open modal
+    //open modal
     $("#loginBtn").click(function(e) {
         e.preventDefault();
         modal.style.display = "block";
     });
 
-    // Close modal
+    //close modal
     span.onclick = function() {
         modal.style.display = "none";
     }
 
-    // Close modal when clicking outside
+    //close modal when clicking outside
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
 
-    // Handle form submission
+    //handle form submission
     $("#loginForm").submit(function(e) {
         e.preventDefault();
         $.ajax({

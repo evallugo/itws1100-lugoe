@@ -4,11 +4,11 @@ $page_title = "About Me – Eva Lugo";
 $page_class = "about";
 define('INCLUDED', true);
 
-// Initialize session, etc.
+//initialize session, etc.
 require_once __DIR__ . '/includes/init.inc.php';
-// Outputs <head>… and opens <body>
+//outputs <head>… and opens <body>
 require_once __DIR__ . '/includes/head.inc.php';
-// Outputs your <nav>
+//outputs your <nav>
 require_once __DIR__ . '/includes/nav.inc.php';
 ?>
 
@@ -66,8 +66,6 @@ require_once __DIR__ . '/includes/nav.inc.php';
 </div>
 
 <?php
-// Injects the shared login modal + JS
 require_once __DIR__ . '/includes/loginmodal.inc.php';
-// Closes </body></html>
 require_once __DIR__ . '/includes/footer.inc.php';
 ?>

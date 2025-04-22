@@ -1,15 +1,11 @@
-<!-- LOGIN MODAL -->
+<?php //includes/loginmodal.inc.php ?>
+<!-- login modal -->
 <div id="loginModal" class="modal" style="display:none;">
   <div class="modal-content">
-    <span class="close" title="Close">&times;</span>
+    <span class="close">&times;</span>
     <h3>Login</h3>
     <div id="loginError" style="color:red; display:none;"></div>
-    <form
-      id="loginForm"
-      action="/iit/Quiz3/login.php"
-      method="post"
-      autocomplete="off"
-    >
+    <form id="loginForm" action="includes/login.php" method="post">
       <div class="form-group">
         <label for="login-username">Username</label>
         <input
@@ -37,29 +33,29 @@
 
 <script>
 $(document).ready(function() {
-  // 1) Open the modal
+  //open modal
   $('#loginBtn').on('click', function(e) {
     e.preventDefault();
     $('#loginModal').fadeIn(200);
   });
 
-  // 2) Close on × click
+  //close on ×
   $('.close').on('click', function() {
     $('#loginModal').fadeOut(200);
   });
 
-  // 3) Close if clicking outside modal-content
+  //close if click outside content
   $(window).on('click', function(e) {
     if ($(e.target).is('#loginModal')) {
       $('#loginModal').fadeOut(200);
     }
   });
 
-  // 4) AJAX login
+  //handle form submit
   $('#loginForm').on('submit', function(e) {
     e.preventDefault();
     $.ajax({
-      url: $(this).attr('action'),      // "/iit/Quiz3/login.php"
+      url: 'includes/login.php',
       type: 'POST',
       data: $(this).serialize(),
       dataType: 'json',
@@ -70,12 +66,12 @@ $(document).ready(function() {
           $('#loginError').text(resp.message).show();
         }
       },
-      error: function() {
-        $('#loginError')
-          .text('Server error, please try again.')
-          .show();
+      error: function(xhr, status, err) {
+        //no more alert(), just console.error
+        console.error('Login AJAX error:', status, err, xhr.responseText);
       }
     });
   });
 });
 </script>
+

@@ -1,14 +1,15 @@
 <?php
-$page_title = "Projects – Eva Lugo";
+$page_title = "Projects - Eva Lugo";
 $page_class = "projects";
 define('INCLUDED', true);
 
+// include required files
 require_once __DIR__ . '/includes/init.inc.php';
 require_once __DIR__ . '/includes/head.inc.php';
 require_once __DIR__ . '/includes/nav.inc.php';
 require_once __DIR__ . '/includes/conn.php';
 
-// turn on MySQLi errors so you’ll see them if something’s still wrong
+// enable mysqli error reporting
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 ?>
 <link rel="stylesheet" href="styles.css">
@@ -17,15 +18,12 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
   <div class="center-content">
     <h1>Projects</h1>
     <div class="projects-container">
-
       <?php
-      // order by id DESC (or name, whatever exists)
-      $query  = "SELECT * FROM myProjects ORDER BY id DESC";
+      // fetch all projects ordered by id
+      $query = "SELECT * FROM myProjects ORDER BY id DESC";
       $result = mysqli_query($conn, $query);
 
-      // debug: uncomment to see how many rows came back
-      // echo "<!-- rows returned: " . mysqli_num_rows($result) . " -->";
-
+      // display each project
       while ($project = mysqli_fetch_assoc($result)) {
           ?>
           <div class="project-card">
@@ -39,7 +37,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
             <?php if (!empty($project['url'])): ?>
               <a href="<?php echo htmlspecialchars($project['url']); ?>"
                  class="project-link" target="_blank" rel="noopener">
-                View Project <i class="fas fa-arrow-right"></i>
+                View Project <i class="fas fa-arrow-right"></i>
               </a>
             <?php endif; ?>
           </div>
@@ -48,7 +46,6 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
       mysqli_free_result($result);
       ?>
-
     </div>
   </div>
 </div>

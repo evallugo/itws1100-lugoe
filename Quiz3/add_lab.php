@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_type'] === 'admin')
     $name = $_POST['name'] ?? '';
     $description = $_POST['description'] ?? '';
     $path = $_POST['path'] ?? '';
-    $image = 'fas fa-flask'; // default icon
+    $image = 'fas fa-flask'; 
 
     if ($name && $path) {
         $stmt = $conn->prepare("INSERT INTO myLabs (name, description, path, image) VALUES (?, ?, ?, ?)");
