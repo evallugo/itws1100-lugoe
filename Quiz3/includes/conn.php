@@ -1,18 +1,18 @@
 <?php
-//database connection parameters
-$db_host = 'localhost';      // MariaDB/MySQL server hostname
-$db_user = 'root';          // Your database username
-$db_password = 'PRLugo22!';  // Your database password
-$db_name = 'mySite';        // Database name as specified in instructions
+// database connection parameters
+$db_host = 'localhost';
+$db_user = 'root';
+$db_password = 'PRLugo22!';
+$db_name = 'mySite';
 
-//create connection
+// establish database connection
 $conn = mysqli_connect($db_host, $db_user, $db_password, $db_name);
 
-//check connection
+// check if connection failed
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-//set charset to ensure proper handling of special characters
+// set charset for proper character handling
 mysqli_set_charset($conn, "utf8mb4");
 ?>

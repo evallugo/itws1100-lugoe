@@ -3,6 +3,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_SESSION['user_type'] === 'admin') {
     require_once 'includes/conn.php';
 
+    //validate and sanitize lab id
     $id = intval($_POST['id'] ?? 0);
     if ($id > 0) {
         $stmt = $conn->prepare("DELETE FROM myLabs WHERE id = ?");
