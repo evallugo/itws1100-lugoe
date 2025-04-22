@@ -15,20 +15,13 @@
 </div>
 
 <script>
-document.getElementById('loginForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  fetch('login.php', {
-    method: 'POST',
-    body: new FormData(this)
-  })
-  .then(res => res.json())
-  .then(data => {
-    if (data.success) {
-      location.reload();
-    } else {
-      document.getElementById('loginError').innerText = data.message;
-      document.getElementById('loginError').style.display = 'block';
-    }
-  });
+document.addEventListener('DOMContentLoaded', function () {
+  const btn = document.getElementById("loginBtn");
+  if (btn) {
+    btn.onclick = function(e) {
+      e.preventDefault();
+      document.getElementById("loginModal").style.display = 'block';
+    };
+  }
 });
 </script>
