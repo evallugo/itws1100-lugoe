@@ -3,19 +3,32 @@
     <span class="close">&times;</span>
     <h3>Login</h3>
     <div id="loginError" style="color:red; display:none;"></div>
-    <form id="loginForm">
+    <form id="loginForm" autocomplete="off">
       <div class="form-group">
-        <label>Username:</label>
-        <input type="text" name="username" required>
+        <label for="login-username">Username</label>
+        <input 
+          type="text" 
+          id="login-username" 
+          name="username" 
+          required 
+          autocomplete="username"
+        >
       </div>
       <div class="form-group">
-        <label>Password:</label>
-        <input type="password" name="password" required>
+        <label for="login-password">Password</label>
+        <input 
+          type="password" 
+          id="login-password" 
+          name="password" 
+          required 
+          autocomplete="current-password"
+        >
       </div>
       <button type="submit">Login</button>
     </form>
   </div>
 </div>
+
 
 
 <script>
