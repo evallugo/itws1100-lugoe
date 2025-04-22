@@ -1,7 +1,7 @@
 <!-- LOGIN MODAL -->
 <div id="loginModal" class="modal" style="display:none;">
   <div class="modal-content" style="padding:20px; background:white; border-radius:10px;">
-    <span onclick="document.getElementById('loginModal').style.display='none'" style="float:right; cursor:pointer;">&times;</span>
+    <span onclick="document.getElementById('loginModal').style.display="none"" style="float:right; cursor:pointer;">&times;</span>
     <h3>Login</h3>
     <div id="loginError" style="color:red; display:none;"></div>
     <form id="loginForm">
