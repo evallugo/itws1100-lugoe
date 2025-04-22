@@ -18,10 +18,14 @@
 document.addEventListener('DOMContentLoaded', function () {
   const btn = document.getElementById("loginBtn");
   if (btn) {
-    btn.onclick = function(e) {
-      e.preventDefault();
-      document.getElementById("loginModal").style.display = 'block';
-    };
+    btn.onclick = document.getElementById("loginModal").style.display = 'block';
+      
+    
+    
+    // function(e) {
+    //   e.preventDefault();
+    //   document.getElementById("loginModal").style.display = 'block';
+    // };
   }
 });
 </script>
