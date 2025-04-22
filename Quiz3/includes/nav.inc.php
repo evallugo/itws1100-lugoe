@@ -18,9 +18,9 @@
             <span class="welcome-text">Welcome, <?php echo htmlspecialchars($_SESSION['user_name']); ?>!</span>
             <a href="logout.php" class="login-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
         <?php else: ?>
-          <a href="#" id="loginBtn" class="login-btn" onclick="document.getElementById('loginModal').style.display="none""; return false;">
-           <i class="fas fa-sign-in-alt"></i> Login</a>
-            <a href="#" id="loginBtn" class="login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a href="#" id="loginBtn" class="login-btn">
+         <i class="fas fa-sign-in-alt"></i> Login
+</a>
         <?php endif; ?>
     </nav>
 </div>
