@@ -303,3 +303,44 @@ th {
 .indented {
     margin-left: 40px;
 }
+
+.project-link {
+  background-color: hotpink;
+  color: white;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.project-link:hover {
+  transform: translateY(-3px);
+  background-color: #ff369b;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+.button {
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+  background-color: #eb96c0;
+  box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+
