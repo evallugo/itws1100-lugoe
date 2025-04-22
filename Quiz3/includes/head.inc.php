@@ -1,5 +1,5 @@
 <?php
-// includes/head.inc.php
+// header template with common meta tags and resources
 ?>
 <!DOCTYPE html>
 <html lang="en">
